@@ -1,0 +1,451 @@
+
+
+================================================================
+== Vitis HLS Report for 'store_y_Pipeline_VITIS_LOOP_73_1'
+================================================================
+* Date:           Tue Dec 17 09:38:41 2024
+
+* Version:        2023.2 (Build 4023990 on Oct 11 2023)
+* Project:        kernel_nlp
+* Solution:       solution (Vitis Kernel Flow Target)
+* Product family: virtexuplusHBM
+* Target device:  xcu55c-fsvh2892-2L-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  4.00 ns|  2.920 ns|     1.08 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |      127|      127|  0.508 us|  0.508 us|  127|  127|       no|
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |                   |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |     Loop Name     |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +-------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |- VITIS_LOOP_73_1  |      125|      125|         2|          1|          1|   125|       yes|
+        +-------------------+---------+---------+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++---------------------+---------+------+---------+---------+-----+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
++---------------------+---------+------+---------+---------+-----+
+|DSP                  |        -|     -|        -|        -|    -|
+|Expression           |        -|     -|        0|       47|    -|
+|FIFO                 |        -|     -|        -|        -|    -|
+|Instance             |        -|     -|        0|     1302|    -|
+|Memory               |        -|     -|        -|        -|    -|
+|Multiplexer          |        -|     -|        -|       63|    -|
+|Register             |        -|     -|       82|        -|    -|
++---------------------+---------+------+---------+---------+-----+
+|Total                |        0|     0|       82|     1412|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available SLR        |     1344|  3008|   869120|   434560|  320|
++---------------------+---------+------+---------+---------+-----+
+|Utilization SLR (%)  |        0|     0|       ~0|       ~0|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available            |     4032|  9024|  2607360|  1303680|  960|
++---------------------+---------+------+---------+---------+-----+
+|Utilization (%)      |        0|     0|       ~0|       ~0|    0|
++---------------------+---------+------+---------+---------+-----+
+
++ Detail: 
+    * Instance: 
+    +-------------------------------+------------------------+---------+----+---+-----+-----+
+    |            Instance           |         Module         | BRAM_18K| DSP| FF| LUT | URAM|
+    +-------------------------------+------------------------+---------+----+---+-----+-----+
+    |sparsemux_251_8_32_1_1_U10574  |sparsemux_251_8_32_1_1  |        0|   0|  0|  651|    0|
+    |sparsemux_251_8_32_1_1_U10575  |sparsemux_251_8_32_1_1  |        0|   0|  0|  651|    0|
+    +-------------------------------+------------------------+---------+----+---+-----+-----+
+    |Total                          |                        |        0|   0|  0| 1302|    0|
+    +-------------------------------+------------------------+---------+----+---+-----+-----+
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +---------------------------+----------+----+---+----+------------+------------+
+    |       Variable Name       | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +---------------------------+----------+----+---+----+------------+------------+
+    |add_ln73_1_fu_2349_p2      |         +|   0|  0|  14|           7|           1|
+    |add_ln73_fu_3374_p2        |         +|   0|  0|  15|           8|           2|
+    |ap_block_pp0_stage0_11001  |       and|   0|  0|   2|           1|           1|
+    |icmp_ln73_fu_2343_p2       |      icmp|   0|  0|  14|           7|           3|
+    |ap_enable_pp0              |       xor|   0|  0|   2|           1|           2|
+    +---------------------------+----------+----+---+----+------------+------------+
+    |Total                      |          |   0|  0|  47|          24|           9|
+    +---------------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +------------------------------+----+-----------+-----+-----------+
+    |             Name             | LUT| Input Size| Bits| Total Bits|
+    +------------------------------+----+-----------+-----+-----------+
+    |ap_done_int                   |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter1       |   9|          2|    1|          2|
+    |ap_sig_allocacmp_i0_load      |   9|          2|    8|         16|
+    |ap_sig_allocacmp_indvar_load  |   9|          2|    7|         14|
+    |i0_fu_804                     |   9|          2|    8|         16|
+    |indvar_fu_808                 |   9|          2|    7|         14|
+    |kernel_y_blk_n_W              |   9|          2|    1|          2|
+    +------------------------------+----+-----------+-----+-----------+
+    |Total                         |  63|         14|   33|         66|
+    +------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-------------------------+----+----+-----+-----------+
+    |           Name          | FF | LUT| Bits| Const Bits|
+    +-------------------------+----+----+-----+-----------+
+    |ap_CS_fsm                |   1|   0|    1|          0|
+    |ap_done_reg              |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter1  |   1|   0|    1|          0|
+    |i0_fu_804                |   8|   0|    8|          0|
+    |indvar_fu_808            |   7|   0|    7|          0|
+    |tmp_reg_3433             |  32|   0|   32|          0|
+    |tmp_s_reg_3438           |  32|   0|   32|          0|
+    +-------------------------+----+----+-----+-----------+
+    |Total                    |  82|   0|   82|          0|
+    +-------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-------------------------+-----+-----+------------+----------------------------------+--------------+
+|        RTL Ports        | Dir | Bits|  Protocol  |           Source Object          |    C Type    |
++-------------------------+-----+-----+------------+----------------------------------+--------------+
+|ap_clk                   |   in|    1|  ap_ctrl_hs|  store_y_Pipeline_VITIS_LOOP_73_1|  return value|
+|ap_rst                   |   in|    1|  ap_ctrl_hs|  store_y_Pipeline_VITIS_LOOP_73_1|  return value|
+|ap_start                 |   in|    1|  ap_ctrl_hs|  store_y_Pipeline_VITIS_LOOP_73_1|  return value|
+|ap_done                  |  out|    1|  ap_ctrl_hs|  store_y_Pipeline_VITIS_LOOP_73_1|  return value|
+|ap_idle                  |  out|    1|  ap_ctrl_hs|  store_y_Pipeline_VITIS_LOOP_73_1|  return value|
+|ap_ready                 |  out|    1|  ap_ctrl_hs|  store_y_Pipeline_VITIS_LOOP_73_1|  return value|
+|m_axi_kernel_y_AWVALID   |  out|    1|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_AWREADY   |   in|    1|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_AWADDR    |  out|   64|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_AWID      |  out|    1|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_AWLEN     |  out|   32|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_AWSIZE    |  out|    3|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_AWBURST   |  out|    2|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_AWLOCK    |  out|    2|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_AWCACHE   |  out|    4|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_AWPROT    |  out|    3|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_AWQOS     |  out|    4|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_AWREGION  |  out|    4|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_AWUSER    |  out|    1|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_WVALID    |  out|    1|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_WREADY    |   in|    1|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_WDATA     |  out|   64|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_WSTRB     |  out|    8|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_WLAST     |  out|    1|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_WID       |  out|    1|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_WUSER     |  out|    1|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_ARVALID   |  out|    1|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_ARREADY   |   in|    1|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_ARADDR    |  out|   64|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_ARID      |  out|    1|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_ARLEN     |  out|   32|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_ARSIZE    |  out|    3|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_ARBURST   |  out|    2|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_ARLOCK    |  out|    2|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_ARCACHE   |  out|    4|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_ARPROT    |  out|    3|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_ARQOS     |  out|    4|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_ARREGION  |  out|    4|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_ARUSER    |  out|    1|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_RVALID    |   in|    1|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_RREADY    |  out|    1|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_RDATA     |   in|   64|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_RLAST     |   in|    1|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_RID       |   in|    1|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_RFIFONUM  |   in|    9|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_RUSER     |   in|    1|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_RRESP     |   in|    2|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_BVALID    |   in|    1|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_BREADY    |  out|    1|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_BRESP     |   in|    2|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_BID       |   in|    1|       m_axi|                          kernel_y|       pointer|
+|m_axi_kernel_y_BUSER     |   in|    1|       m_axi|                          kernel_y|       pointer|
+|sext_ln73                |   in|   61|     ap_none|                         sext_ln73|        scalar|
+|y_0_val                  |   in|   32|     ap_none|                           y_0_val|        scalar|
+|y_2_val                  |   in|   32|     ap_none|                           y_2_val|        scalar|
+|y_4_val                  |   in|   32|     ap_none|                           y_4_val|        scalar|
+|y_6_val                  |   in|   32|     ap_none|                           y_6_val|        scalar|
+|y_8_val                  |   in|   32|     ap_none|                           y_8_val|        scalar|
+|y_10_val                 |   in|   32|     ap_none|                          y_10_val|        scalar|
+|y_12_val                 |   in|   32|     ap_none|                          y_12_val|        scalar|
+|y_14_val                 |   in|   32|     ap_none|                          y_14_val|        scalar|
+|y_16_val                 |   in|   32|     ap_none|                          y_16_val|        scalar|
+|y_18_val                 |   in|   32|     ap_none|                          y_18_val|        scalar|
+|y_20_val                 |   in|   32|     ap_none|                          y_20_val|        scalar|
+|y_22_val                 |   in|   32|     ap_none|                          y_22_val|        scalar|
+|y_24_val                 |   in|   32|     ap_none|                          y_24_val|        scalar|
+|y_26_val                 |   in|   32|     ap_none|                          y_26_val|        scalar|
+|y_28_val                 |   in|   32|     ap_none|                          y_28_val|        scalar|
+|y_30_val                 |   in|   32|     ap_none|                          y_30_val|        scalar|
+|y_32_val                 |   in|   32|     ap_none|                          y_32_val|        scalar|
+|y_34_val                 |   in|   32|     ap_none|                          y_34_val|        scalar|
+|y_36_val                 |   in|   32|     ap_none|                          y_36_val|        scalar|
+|y_38_val                 |   in|   32|     ap_none|                          y_38_val|        scalar|
+|y_40_val                 |   in|   32|     ap_none|                          y_40_val|        scalar|
+|y_42_val                 |   in|   32|     ap_none|                          y_42_val|        scalar|
+|y_44_val                 |   in|   32|     ap_none|                          y_44_val|        scalar|
+|y_46_val                 |   in|   32|     ap_none|                          y_46_val|        scalar|
+|y_48_val                 |   in|   32|     ap_none|                          y_48_val|        scalar|
+|y_50_val                 |   in|   32|     ap_none|                          y_50_val|        scalar|
+|y_52_val                 |   in|   32|     ap_none|                          y_52_val|        scalar|
+|y_54_val                 |   in|   32|     ap_none|                          y_54_val|        scalar|
+|y_56_val                 |   in|   32|     ap_none|                          y_56_val|        scalar|
+|y_58_val                 |   in|   32|     ap_none|                          y_58_val|        scalar|
+|y_60_val                 |   in|   32|     ap_none|                          y_60_val|        scalar|
+|y_62_val                 |   in|   32|     ap_none|                          y_62_val|        scalar|
+|y_64_val                 |   in|   32|     ap_none|                          y_64_val|        scalar|
+|y_66_val                 |   in|   32|     ap_none|                          y_66_val|        scalar|
+|y_68_val                 |   in|   32|     ap_none|                          y_68_val|        scalar|
+|y_70_val                 |   in|   32|     ap_none|                          y_70_val|        scalar|
+|y_72_val                 |   in|   32|     ap_none|                          y_72_val|        scalar|
+|y_74_val                 |   in|   32|     ap_none|                          y_74_val|        scalar|
+|y_76_val                 |   in|   32|     ap_none|                          y_76_val|        scalar|
+|y_78_val                 |   in|   32|     ap_none|                          y_78_val|        scalar|
+|y_80_val                 |   in|   32|     ap_none|                          y_80_val|        scalar|
+|y_82_val                 |   in|   32|     ap_none|                          y_82_val|        scalar|
+|y_84_val                 |   in|   32|     ap_none|                          y_84_val|        scalar|
+|y_86_val                 |   in|   32|     ap_none|                          y_86_val|        scalar|
+|y_88_val                 |   in|   32|     ap_none|                          y_88_val|        scalar|
+|y_90_val                 |   in|   32|     ap_none|                          y_90_val|        scalar|
+|y_92_val                 |   in|   32|     ap_none|                          y_92_val|        scalar|
+|y_94_val                 |   in|   32|     ap_none|                          y_94_val|        scalar|
+|y_96_val                 |   in|   32|     ap_none|                          y_96_val|        scalar|
+|y_98_val                 |   in|   32|     ap_none|                          y_98_val|        scalar|
+|y_100_val                |   in|   32|     ap_none|                         y_100_val|        scalar|
+|y_102_val                |   in|   32|     ap_none|                         y_102_val|        scalar|
+|y_104_val                |   in|   32|     ap_none|                         y_104_val|        scalar|
+|y_106_val                |   in|   32|     ap_none|                         y_106_val|        scalar|
+|y_108_val                |   in|   32|     ap_none|                         y_108_val|        scalar|
+|y_110_val                |   in|   32|     ap_none|                         y_110_val|        scalar|
+|y_112_val                |   in|   32|     ap_none|                         y_112_val|        scalar|
+|y_114_val                |   in|   32|     ap_none|                         y_114_val|        scalar|
+|y_116_val                |   in|   32|     ap_none|                         y_116_val|        scalar|
+|y_118_val                |   in|   32|     ap_none|                         y_118_val|        scalar|
+|y_120_val                |   in|   32|     ap_none|                         y_120_val|        scalar|
+|y_122_val                |   in|   32|     ap_none|                         y_122_val|        scalar|
+|y_124_val                |   in|   32|     ap_none|                         y_124_val|        scalar|
+|y_126_val                |   in|   32|     ap_none|                         y_126_val|        scalar|
+|y_128_val                |   in|   32|     ap_none|                         y_128_val|        scalar|
+|y_130_val                |   in|   32|     ap_none|                         y_130_val|        scalar|
+|y_132_val                |   in|   32|     ap_none|                         y_132_val|        scalar|
+|y_134_val                |   in|   32|     ap_none|                         y_134_val|        scalar|
+|y_136_val                |   in|   32|     ap_none|                         y_136_val|        scalar|
+|y_138_val                |   in|   32|     ap_none|                         y_138_val|        scalar|
+|y_140_val                |   in|   32|     ap_none|                         y_140_val|        scalar|
+|y_142_val                |   in|   32|     ap_none|                         y_142_val|        scalar|
+|y_144_val                |   in|   32|     ap_none|                         y_144_val|        scalar|
+|y_146_val                |   in|   32|     ap_none|                         y_146_val|        scalar|
+|y_148_val                |   in|   32|     ap_none|                         y_148_val|        scalar|
+|y_150_val                |   in|   32|     ap_none|                         y_150_val|        scalar|
+|y_152_val                |   in|   32|     ap_none|                         y_152_val|        scalar|
+|y_154_val                |   in|   32|     ap_none|                         y_154_val|        scalar|
+|y_156_val                |   in|   32|     ap_none|                         y_156_val|        scalar|
+|y_158_val                |   in|   32|     ap_none|                         y_158_val|        scalar|
+|y_160_val                |   in|   32|     ap_none|                         y_160_val|        scalar|
+|y_162_val                |   in|   32|     ap_none|                         y_162_val|        scalar|
+|y_164_val                |   in|   32|     ap_none|                         y_164_val|        scalar|
+|y_166_val                |   in|   32|     ap_none|                         y_166_val|        scalar|
+|y_168_val                |   in|   32|     ap_none|                         y_168_val|        scalar|
+|y_170_val                |   in|   32|     ap_none|                         y_170_val|        scalar|
+|y_172_val                |   in|   32|     ap_none|                         y_172_val|        scalar|
+|y_174_val                |   in|   32|     ap_none|                         y_174_val|        scalar|
+|y_176_val                |   in|   32|     ap_none|                         y_176_val|        scalar|
+|y_178_val                |   in|   32|     ap_none|                         y_178_val|        scalar|
+|y_180_val                |   in|   32|     ap_none|                         y_180_val|        scalar|
+|y_182_val                |   in|   32|     ap_none|                         y_182_val|        scalar|
+|y_184_val                |   in|   32|     ap_none|                         y_184_val|        scalar|
+|y_186_val                |   in|   32|     ap_none|                         y_186_val|        scalar|
+|y_188_val                |   in|   32|     ap_none|                         y_188_val|        scalar|
+|y_190_val                |   in|   32|     ap_none|                         y_190_val|        scalar|
+|y_192_val                |   in|   32|     ap_none|                         y_192_val|        scalar|
+|y_194_val                |   in|   32|     ap_none|                         y_194_val|        scalar|
+|y_196_val                |   in|   32|     ap_none|                         y_196_val|        scalar|
+|y_198_val                |   in|   32|     ap_none|                         y_198_val|        scalar|
+|y_200_val                |   in|   32|     ap_none|                         y_200_val|        scalar|
+|y_202_val                |   in|   32|     ap_none|                         y_202_val|        scalar|
+|y_204_val                |   in|   32|     ap_none|                         y_204_val|        scalar|
+|y_206_val                |   in|   32|     ap_none|                         y_206_val|        scalar|
+|y_208_val                |   in|   32|     ap_none|                         y_208_val|        scalar|
+|y_210_val                |   in|   32|     ap_none|                         y_210_val|        scalar|
+|y_212_val                |   in|   32|     ap_none|                         y_212_val|        scalar|
+|y_214_val                |   in|   32|     ap_none|                         y_214_val|        scalar|
+|y_216_val                |   in|   32|     ap_none|                         y_216_val|        scalar|
+|y_218_val                |   in|   32|     ap_none|                         y_218_val|        scalar|
+|y_220_val                |   in|   32|     ap_none|                         y_220_val|        scalar|
+|y_222_val                |   in|   32|     ap_none|                         y_222_val|        scalar|
+|y_224_val                |   in|   32|     ap_none|                         y_224_val|        scalar|
+|y_226_val                |   in|   32|     ap_none|                         y_226_val|        scalar|
+|y_228_val                |   in|   32|     ap_none|                         y_228_val|        scalar|
+|y_230_val                |   in|   32|     ap_none|                         y_230_val|        scalar|
+|y_232_val                |   in|   32|     ap_none|                         y_232_val|        scalar|
+|y_234_val                |   in|   32|     ap_none|                         y_234_val|        scalar|
+|y_236_val                |   in|   32|     ap_none|                         y_236_val|        scalar|
+|y_238_val                |   in|   32|     ap_none|                         y_238_val|        scalar|
+|y_240_val                |   in|   32|     ap_none|                         y_240_val|        scalar|
+|y_242_val                |   in|   32|     ap_none|                         y_242_val|        scalar|
+|y_244_val                |   in|   32|     ap_none|                         y_244_val|        scalar|
+|y_246_val                |   in|   32|     ap_none|                         y_246_val|        scalar|
+|y_248_val                |   in|   32|     ap_none|                         y_248_val|        scalar|
+|y_1_val                  |   in|   32|     ap_none|                           y_1_val|        scalar|
+|y_3_val                  |   in|   32|     ap_none|                           y_3_val|        scalar|
+|y_5_val                  |   in|   32|     ap_none|                           y_5_val|        scalar|
+|y_7_val                  |   in|   32|     ap_none|                           y_7_val|        scalar|
+|y_9_val                  |   in|   32|     ap_none|                           y_9_val|        scalar|
+|y_11_val                 |   in|   32|     ap_none|                          y_11_val|        scalar|
+|y_13_val                 |   in|   32|     ap_none|                          y_13_val|        scalar|
+|y_15_val                 |   in|   32|     ap_none|                          y_15_val|        scalar|
+|y_17_val                 |   in|   32|     ap_none|                          y_17_val|        scalar|
+|y_19_val                 |   in|   32|     ap_none|                          y_19_val|        scalar|
+|y_21_val                 |   in|   32|     ap_none|                          y_21_val|        scalar|
+|y_23_val                 |   in|   32|     ap_none|                          y_23_val|        scalar|
+|y_25_val                 |   in|   32|     ap_none|                          y_25_val|        scalar|
+|y_27_val                 |   in|   32|     ap_none|                          y_27_val|        scalar|
+|y_29_val                 |   in|   32|     ap_none|                          y_29_val|        scalar|
+|y_31_val                 |   in|   32|     ap_none|                          y_31_val|        scalar|
+|y_33_val                 |   in|   32|     ap_none|                          y_33_val|        scalar|
+|y_35_val                 |   in|   32|     ap_none|                          y_35_val|        scalar|
+|y_37_val                 |   in|   32|     ap_none|                          y_37_val|        scalar|
+|y_39_val                 |   in|   32|     ap_none|                          y_39_val|        scalar|
+|y_41_val                 |   in|   32|     ap_none|                          y_41_val|        scalar|
+|y_43_val                 |   in|   32|     ap_none|                          y_43_val|        scalar|
+|y_45_val                 |   in|   32|     ap_none|                          y_45_val|        scalar|
+|y_47_val                 |   in|   32|     ap_none|                          y_47_val|        scalar|
+|y_49_val                 |   in|   32|     ap_none|                          y_49_val|        scalar|
+|y_51_val                 |   in|   32|     ap_none|                          y_51_val|        scalar|
+|y_53_val                 |   in|   32|     ap_none|                          y_53_val|        scalar|
+|y_55_val                 |   in|   32|     ap_none|                          y_55_val|        scalar|
+|y_57_val                 |   in|   32|     ap_none|                          y_57_val|        scalar|
+|y_59_val                 |   in|   32|     ap_none|                          y_59_val|        scalar|
+|y_61_val                 |   in|   32|     ap_none|                          y_61_val|        scalar|
+|y_63_val                 |   in|   32|     ap_none|                          y_63_val|        scalar|
+|y_65_val                 |   in|   32|     ap_none|                          y_65_val|        scalar|
+|y_67_val                 |   in|   32|     ap_none|                          y_67_val|        scalar|
+|y_69_val                 |   in|   32|     ap_none|                          y_69_val|        scalar|
+|y_71_val                 |   in|   32|     ap_none|                          y_71_val|        scalar|
+|y_73_val                 |   in|   32|     ap_none|                          y_73_val|        scalar|
+|y_75_val                 |   in|   32|     ap_none|                          y_75_val|        scalar|
+|y_77_val                 |   in|   32|     ap_none|                          y_77_val|        scalar|
+|y_79_val                 |   in|   32|     ap_none|                          y_79_val|        scalar|
+|y_81_val                 |   in|   32|     ap_none|                          y_81_val|        scalar|
+|y_83_val                 |   in|   32|     ap_none|                          y_83_val|        scalar|
+|y_85_val                 |   in|   32|     ap_none|                          y_85_val|        scalar|
+|y_87_val                 |   in|   32|     ap_none|                          y_87_val|        scalar|
+|y_89_val                 |   in|   32|     ap_none|                          y_89_val|        scalar|
+|y_91_val                 |   in|   32|     ap_none|                          y_91_val|        scalar|
+|y_93_val                 |   in|   32|     ap_none|                          y_93_val|        scalar|
+|y_95_val                 |   in|   32|     ap_none|                          y_95_val|        scalar|
+|y_97_val                 |   in|   32|     ap_none|                          y_97_val|        scalar|
+|y_99_val                 |   in|   32|     ap_none|                          y_99_val|        scalar|
+|y_101_val                |   in|   32|     ap_none|                         y_101_val|        scalar|
+|y_103_val                |   in|   32|     ap_none|                         y_103_val|        scalar|
+|y_105_val                |   in|   32|     ap_none|                         y_105_val|        scalar|
+|y_107_val                |   in|   32|     ap_none|                         y_107_val|        scalar|
+|y_109_val                |   in|   32|     ap_none|                         y_109_val|        scalar|
+|y_111_val                |   in|   32|     ap_none|                         y_111_val|        scalar|
+|y_113_val                |   in|   32|     ap_none|                         y_113_val|        scalar|
+|y_115_val                |   in|   32|     ap_none|                         y_115_val|        scalar|
+|y_117_val                |   in|   32|     ap_none|                         y_117_val|        scalar|
+|y_119_val                |   in|   32|     ap_none|                         y_119_val|        scalar|
+|y_121_val                |   in|   32|     ap_none|                         y_121_val|        scalar|
+|y_123_val                |   in|   32|     ap_none|                         y_123_val|        scalar|
+|y_125_val                |   in|   32|     ap_none|                         y_125_val|        scalar|
+|y_127_val                |   in|   32|     ap_none|                         y_127_val|        scalar|
+|y_129_val                |   in|   32|     ap_none|                         y_129_val|        scalar|
+|y_131_val                |   in|   32|     ap_none|                         y_131_val|        scalar|
+|y_133_val                |   in|   32|     ap_none|                         y_133_val|        scalar|
+|y_135_val                |   in|   32|     ap_none|                         y_135_val|        scalar|
+|y_137_val                |   in|   32|     ap_none|                         y_137_val|        scalar|
+|y_139_val                |   in|   32|     ap_none|                         y_139_val|        scalar|
+|y_141_val                |   in|   32|     ap_none|                         y_141_val|        scalar|
+|y_143_val                |   in|   32|     ap_none|                         y_143_val|        scalar|
+|y_145_val                |   in|   32|     ap_none|                         y_145_val|        scalar|
+|y_147_val                |   in|   32|     ap_none|                         y_147_val|        scalar|
+|y_149_val                |   in|   32|     ap_none|                         y_149_val|        scalar|
+|y_151_val                |   in|   32|     ap_none|                         y_151_val|        scalar|
+|y_153_val                |   in|   32|     ap_none|                         y_153_val|        scalar|
+|y_155_val                |   in|   32|     ap_none|                         y_155_val|        scalar|
+|y_157_val                |   in|   32|     ap_none|                         y_157_val|        scalar|
+|y_159_val                |   in|   32|     ap_none|                         y_159_val|        scalar|
+|y_161_val                |   in|   32|     ap_none|                         y_161_val|        scalar|
+|y_163_val                |   in|   32|     ap_none|                         y_163_val|        scalar|
+|y_165_val                |   in|   32|     ap_none|                         y_165_val|        scalar|
+|y_167_val                |   in|   32|     ap_none|                         y_167_val|        scalar|
+|y_169_val                |   in|   32|     ap_none|                         y_169_val|        scalar|
+|y_171_val                |   in|   32|     ap_none|                         y_171_val|        scalar|
+|y_173_val                |   in|   32|     ap_none|                         y_173_val|        scalar|
+|y_175_val                |   in|   32|     ap_none|                         y_175_val|        scalar|
+|y_177_val                |   in|   32|     ap_none|                         y_177_val|        scalar|
+|y_179_val                |   in|   32|     ap_none|                         y_179_val|        scalar|
+|y_181_val                |   in|   32|     ap_none|                         y_181_val|        scalar|
+|y_183_val                |   in|   32|     ap_none|                         y_183_val|        scalar|
+|y_185_val                |   in|   32|     ap_none|                         y_185_val|        scalar|
+|y_187_val                |   in|   32|     ap_none|                         y_187_val|        scalar|
+|y_189_val                |   in|   32|     ap_none|                         y_189_val|        scalar|
+|y_191_val                |   in|   32|     ap_none|                         y_191_val|        scalar|
+|y_193_val                |   in|   32|     ap_none|                         y_193_val|        scalar|
+|y_195_val                |   in|   32|     ap_none|                         y_195_val|        scalar|
+|y_197_val                |   in|   32|     ap_none|                         y_197_val|        scalar|
+|y_199_val                |   in|   32|     ap_none|                         y_199_val|        scalar|
+|y_201_val                |   in|   32|     ap_none|                         y_201_val|        scalar|
+|y_203_val                |   in|   32|     ap_none|                         y_203_val|        scalar|
+|y_205_val                |   in|   32|     ap_none|                         y_205_val|        scalar|
+|y_207_val                |   in|   32|     ap_none|                         y_207_val|        scalar|
+|y_209_val                |   in|   32|     ap_none|                         y_209_val|        scalar|
+|y_211_val                |   in|   32|     ap_none|                         y_211_val|        scalar|
+|y_213_val                |   in|   32|     ap_none|                         y_213_val|        scalar|
+|y_215_val                |   in|   32|     ap_none|                         y_215_val|        scalar|
+|y_217_val                |   in|   32|     ap_none|                         y_217_val|        scalar|
+|y_219_val                |   in|   32|     ap_none|                         y_219_val|        scalar|
+|y_221_val                |   in|   32|     ap_none|                         y_221_val|        scalar|
+|y_223_val                |   in|   32|     ap_none|                         y_223_val|        scalar|
+|y_225_val                |   in|   32|     ap_none|                         y_225_val|        scalar|
+|y_227_val                |   in|   32|     ap_none|                         y_227_val|        scalar|
+|y_229_val                |   in|   32|     ap_none|                         y_229_val|        scalar|
+|y_231_val                |   in|   32|     ap_none|                         y_231_val|        scalar|
+|y_233_val                |   in|   32|     ap_none|                         y_233_val|        scalar|
+|y_235_val                |   in|   32|     ap_none|                         y_235_val|        scalar|
+|y_237_val                |   in|   32|     ap_none|                         y_237_val|        scalar|
+|y_239_val                |   in|   32|     ap_none|                         y_239_val|        scalar|
+|y_241_val                |   in|   32|     ap_none|                         y_241_val|        scalar|
+|y_243_val                |   in|   32|     ap_none|                         y_243_val|        scalar|
+|y_245_val                |   in|   32|     ap_none|                         y_245_val|        scalar|
+|y_247_val                |   in|   32|     ap_none|                         y_247_val|        scalar|
+|y_249_val                |   in|   32|     ap_none|                         y_249_val|        scalar|
++-------------------------+-----+-----+------------+----------------------------------+--------------+
+

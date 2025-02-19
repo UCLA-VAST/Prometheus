@@ -1,0 +1,773 @@
+
+
+================================================================
+== Synthesis Summary Report of 'kernel_nlp'
+================================================================
++ General Information: 
+    * Date:           Tue Dec 17 08:34:08 2024
+    * Version:        2023.2 (Build 4023990 on Oct 11 2023)
+    * Project:        kernel_nlp
+    * Solution:       solution (Vitis Kernel Flow Target)
+    * Product family: virtexuplusHBM
+    * Target device:  xcu55c-fsvh2892-2L-e
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +----------------------------------------------------------------------------+--------+-------+---------+-----------+----------+---------+-------+----------+------------+----------+-------------+-------------+---------+
+    |                                   Modules                                  |  Issue |       | Latency |  Latency  | Iteration|         |  Trip |          |            |          |             |             |         |
+    |                                   & Loops                                  |  Type  | Slack | (cycles)|    (ns)   |  Latency | Interval| Count | Pipelined|    BRAM    |    DSP   |      FF     |     LUT     |   URAM  |
+    +----------------------------------------------------------------------------+--------+-------+---------+-----------+----------+---------+-------+----------+------------+----------+-------------+-------------+---------+
+    |+ kernel_nlp*                                                               |  Timing|  -0.35|    90600|  3.624e+05|         -|    81195|      -|  dataflow|  1372 (34%)|  242 (2%)|  133980 (5%)|  103708 (7%)|  82 (8%)|
+    | + Loop_VITIS_LOOP_113_1_proc                                               |  Timing|  -0.35|    10214|  4.086e+04|         -|    10214|      -|        no|           -|   1 (~0%)|   1336 (~0%)|    643 (~0%)|        -|
+    |  o VITIS_LOOP_113_1_VITIS_LOOP_114_2                                       |       -|   2.92|    10212|  4.085e+04|        74|        1|  10140|       yes|           -|         -|            -|            -|        -|
+    | + Loop_VITIS_LOOP_123_4_proc                                               |  Timing|  -0.34|    81194|  3.248e+05|         -|    81194|      -|        no|           -|  16 (~0%)|   7845 (~0%)|   13356 (1%)|        -|
+    |  o VITIS_LOOP_123_4_VITIS_LOOP_124_5                                       |      II|   2.92|    81192|  3.248e+05|        81|        8|  10140|       yes|           -|         -|            -|            -|        -|
+    | + Loop_VITIS_LOOP_133_7_proc                                               |       -|   0.00|      490|  1.960e+03|         -|      490|      -|        no|           -|         -|    978 (~0%)|   2456 (~0%)|        -|
+    |  o VITIS_LOOP_133_7_VITIS_LOOP_135_8                                       |       -|   2.92|      488|  1.952e+03|        74|        1|    416|       yes|           -|         -|            -|            -|        -|
+    | + Block_for_end93_proc                                                     |       -|   2.92|        0|      0.000|         -|        0|      -|        no|           -|         -|     60 (~0%)|     20 (~0%)|        -|
+    | + Loop_VITIS_LOOP_141_9_proc                                               |  Timing|  -0.35|     9405|  3.762e+04|         -|     9405|      -|        no|     2 (~0%)|  225 (2%)|  108867 (4%)|   71166 (5%)|        -|
+    |  + Loop_VITIS_LOOP_141_9_proc_Pipeline_VITIS_LOOP_141_9_VITIS_LOOP_143_10  |  Timing|  -0.35|      429|  1.716e+03|         -|      429|      -|        no|           -|   1 (~0%)|   1080 (~0%)|   2665 (~0%)|        -|
+    |   o VITIS_LOOP_141_9_VITIS_LOOP_143_10                                     |       -|   2.92|      427|  1.708e+03|        13|        1|    416|       yes|           -|         -|            -|            -|        -|
+    |  + stage_M                                                                 |  Timing|  -0.35|     4907|  1.963e+04|         -|     4907|      -|        no|           -|   2 (~0%)|   9227 (~0%)|   8698 (~0%)|        -|
+    |   + stage_M_Pipeline_VITIS_LOOP_36_1                                       |       -|   0.80|      392|  1.568e+03|         -|      392|      -|        no|           -|         -|     40 (~0%)|    146 (~0%)|        -|
+    |    o VITIS_LOOP_36_1                                                       |       -|   2.92|      390|  1.560e+03|         1|        1|    390|       yes|           -|         -|            -|            -|        -|
+    |   + stage_M_Pipeline_l_S_m_0_r_l_m                                         |  Timing|  -0.35|     4118|  1.647e+04|         -|     4118|      -|        no|           -|   2 (~0%)|   7890 (~0%)|   3166 (~0%)|        -|
+    |    o l_S_m_0_r_l_m                                                         |       -|   2.92|     4116|  1.646e+04|        18|        1|   4100|       yes|           -|         -|            -|            -|        -|
+    |   + stage_M_Pipeline_VITIS_LOOP_53_2                                       |       -|   0.29|      392|  1.568e+03|         -|      392|      -|        no|           -|         -|     40 (~0%)|    348 (~0%)|        -|
+    |    o VITIS_LOOP_53_2                                                       |       -|   2.92|      390|  1.560e+03|         2|        1|    390|       yes|           -|         -|            -|            -|        -|
+    |  + stage_N                                                                 |  Timing|  -0.35|     4310|  1.724e+04|         -|     4310|      -|        no|     1 (~0%)|  11 (~0%)|   9153 (~0%)|   2969 (~0%)|        -|
+    |   + stage_N_Pipeline_VITIS_LOOP_68_1                                       |       -|   0.53|      392|  1.568e+03|         -|      392|      -|        no|           -|         -|     21 (~0%)|     81 (~0%)|        -|
+    |    o VITIS_LOOP_68_1                                                       |       -|   2.92|      390|  1.560e+03|         2|        1|    390|       yes|           -|         -|            -|            -|        -|
+    |   + stage_N_Pipeline_l_S_n_0_k_l_n                                         |  Timing|  -0.35|     3915|  1.566e+04|         -|     3915|      -|        no|           -|  11 (~0%)|   9126 (~0%)|   2114 (~0%)|        -|
+    |    o l_S_n_0_k_l_n                                                         |       -|   2.92|     3913|  1.565e+04|        15|        1|   3900|       yes|           -|         -|            -|            -|        -|
+    |  + Loop_VITIS_LOOP_141_9_proc_Pipeline_VITIS_LOOP_163_11                   |  Timing|  -0.03|       43|    172.000|         -|       43|      -|        no|           -|  16 (~0%)|   69806 (2%)|   31150 (2%)|        -|
+    |   o VITIS_LOOP_163_11                                                      |       -|   2.92|       41|    164.000|        17|        1|     26|       yes|           -|         -|            -|            -|        -|
+    +----------------------------------------------------------------------------+--------+-------+---------+-----------+----------+---------+-------+----------+------------+----------+-------------+-------------+---------+
+
+
+================================================================
+== HW Interfaces
+================================================================
+* M_AXI
++-------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+-------------------+
+| Interface   | Data Width | Address Width | Latency | Offset | Register | Max Widen | Max Read     | Max Write    | Num Read    | Num Write   | Resource Estimate |
+|             | (SW->HW)   |               |         |        |          | Bitwidth  | Burst Length | Burst Length | Outstanding | Outstanding |                   |
++-------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+-------------------+
+| m_axi_gmem0 | 512 -> 512 | 64            | 64      | slave  | 0        | 512       | 16           | 16           | 16          | 16          | BRAM=30           |
+| m_axi_gmem1 | 512 -> 512 | 64            | 64      | slave  | 0        | 512       | 16           | 16           | 16          | 16          | BRAM=30           |
+| m_axi_gmem2 | 512 -> 512 | 64            | 64      | slave  | 0        | 512       | 16           | 16           | 16          | 16          | BRAM=30           |
+| m_axi_gmem3 | 512 -> 512 | 64            | 64      | slave  | 0        | 512       | 16           | 16           | 16          | 16          | BRAM=30           |
++-------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+-------------------+
+
+* S_AXILITE Interfaces
++---------------+------------+---------------+--------+----------+
+| Interface     | Data Width | Address Width | Offset | Register |
++---------------+------------+---------------+--------+----------+
+| s_axi_control | 32         | 6             | 16     | 0        |
++---------------+------------+---------------+--------+----------+
+
+* S_AXILITE Registers
++---------------+----------+--------+-------+--------+----------------------------------+------------------------------------------------------------------------------------+
+| Interface     | Register | Offset | Width | Access | Description                      | Bit Fields                                                                         |
++---------------+----------+--------+-------+--------+----------------------------------+------------------------------------------------------------------------------------+
+| s_axi_control | CTRL     | 0x00   | 32    | RW     | Control signals                  | 0=AP_START 1=AP_DONE 2=AP_IDLE 3=AP_READY 4=AP_CONTINUE 7=AUTO_RESTART 9=INTERRUPT |
+| s_axi_control | GIER     | 0x04   | 32    | RW     | Global Interrupt Enable Register | 0=Enable                                                                           |
+| s_axi_control | IP_IER   | 0x08   | 32    | RW     | IP Interrupt Enable Register     | 0=CHAN0_INT_EN 1=CHAN1_INT_EN                                                      |
+| s_axi_control | IP_ISR   | 0x0c   | 32    | RW     | IP Interrupt Status Register     | 0=CHAN0_INT_ST 1=CHAN1_INT_ST                                                      |
+| s_axi_control | vv20_1   | 0x10   | 32    | W      | Data signal of vv20              |                                                                                    |
+| s_axi_control | vv20_2   | 0x14   | 32    | W      | Data signal of vv20              |                                                                                    |
+| s_axi_control | vv21_1   | 0x1c   | 32    | W      | Data signal of vv21              |                                                                                    |
+| s_axi_control | vv21_2   | 0x20   | 32    | W      | Data signal of vv21              |                                                                                    |
+| s_axi_control | vv22_1   | 0x28   | 32    | W      | Data signal of vv22              |                                                                                    |
+| s_axi_control | vv22_2   | 0x2c   | 32    | W      | Data signal of vv22              |                                                                                    |
+| s_axi_control | vv23_1   | 0x34   | 32    | W      | Data signal of vv23              |                                                                                    |
+| s_axi_control | vv23_2   | 0x38   | 32    | W      | Data signal of vv23              |                                                                                    |
++---------------+----------+--------+-------+--------+----------------------------------+------------------------------------------------------------------------------------+
+
+* TOP LEVEL CONTROL
++-----------+---------------+-----------+
+| Interface | Type          | Ports     |
++-----------+---------------+-----------+
+| ap_clk    | clock         | ap_clk    |
+| ap_rst_n  | reset         | ap_rst_n  |
+| interrupt | interrupt     | interrupt |
+| ap_ctrl   | ap_ctrl_chain |           |
++-----------+---------------+-----------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++----------+-----------+--------------------+
+| Argument | Direction | Datatype           |
++----------+-----------+--------------------+
+| vv20     | in        | vector<float, 16>* |
+| vv21     | in        | vector<float, 16>* |
+| vv22     | in        | vector<float, 16>* |
+| vv23     | inout     | vector<float, 16>* |
++----------+-----------+--------------------+
+
+* SW-to-HW Mapping
++----------+---------------+-----------+----------+----------------------------------+
+| Argument | HW Interface  | HW Type   | HW Usage | HW Info                          |
++----------+---------------+-----------+----------+----------------------------------+
+| vv20     | m_axi_gmem0   | interface |          |                                  |
+| vv20     | s_axi_control | register  | offset   | name=vv20_1 offset=0x10 range=32 |
+| vv20     | s_axi_control | register  | offset   | name=vv20_2 offset=0x14 range=32 |
+| vv21     | m_axi_gmem1   | interface |          |                                  |
+| vv21     | s_axi_control | register  | offset   | name=vv21_1 offset=0x1c range=32 |
+| vv21     | s_axi_control | register  | offset   | name=vv21_2 offset=0x20 range=32 |
+| vv22     | m_axi_gmem2   | interface |          |                                  |
+| vv22     | s_axi_control | register  | offset   | name=vv22_1 offset=0x28 range=32 |
+| vv22     | s_axi_control | register  | offset   | name=vv22_2 offset=0x2c range=32 |
+| vv23     | m_axi_gmem3   | interface |          |                                  |
+| vv23     | s_axi_control | register  | offset   | name=vv23_1 offset=0x34 range=32 |
+| vv23     | s_axi_control | register  | offset   | name=vv23_2 offset=0x38 range=32 |
++----------+---------------+-----------+----------+----------------------------------+
+
+
+================================================================
+== M_AXI Burst Information
+================================================================
+ Note: All burst requests might be further partitioned into multiple requests during RTL generation based on max_read_burst_length or max_write_burst_length settings.
+
+* Inferred Burst Summary
++--------------+-----------+--------+-------+-------------------+----------------------------------------------------------+
+| HW Interface | Direction | Length | Width | Loop              | Loop Location                                            |
++--------------+-----------+--------+-------+-------------------+----------------------------------------------------------+
+| m_axi_gmem0  | read      | 10140  | 512   | VITIS_LOOP_113_1  | /scratch/spouget/rtl_allo_mem_atax/src/output.cpp:113:21 |
+| m_axi_gmem1  | read      | 10140  | 512   | VITIS_LOOP_123_4  | /scratch/spouget/rtl_allo_mem_atax/src/output.cpp:123:21 |
+| m_axi_gmem2  | read      | 26     | 512   | VITIS_LOOP_133_7  | /scratch/spouget/rtl_allo_mem_atax/src/output.cpp:133:21 |
+| m_axi_gmem3  | read      | 26     | 512   | VITIS_LOOP_141_9  | /scratch/spouget/rtl_allo_mem_atax/src/output.cpp:141:21 |
+| m_axi_gmem3  | write     | 26     | 512   | VITIS_LOOP_163_11 | /scratch/spouget/rtl_allo_mem_atax/src/output.cpp:163:22 |
++--------------+-----------+--------+-------+-------------------+----------------------------------------------------------+
+
+* All M_AXI Variable Accesses
++--------------+----------+----------------------------------------------------------+-----------+--------------+--------+-------------------+----------------------------------------------------------+------------+----------------------------------------------------------------------------------------------------------+
+| HW Interface | Variable | Access Location                                          | Direction | Burst Status | Length | Loop              | Loop Location                                            | Resolution | Problem                                                                                                  |
++--------------+----------+----------------------------------------------------------+-----------+--------------+--------+-------------------+----------------------------------------------------------+------------+----------------------------------------------------------------------------------------------------------+
+| m_axi_gmem0  | vv20     | /scratch/spouget/rtl_allo_mem_atax/src/output.cpp:115:21 | read      | Widen Fail   |        | VITIS_LOOP_114_2  | /scratch/spouget/rtl_allo_mem_atax/src/output.cpp:114:23 | 214-353    | Could not widen since type i512 size is greater than or equal to the max_widen_bitwidth threshold of 512 |
+| m_axi_gmem0  | vv20     | /scratch/spouget/rtl_allo_mem_atax/src/output.cpp:115:21 | read      | Inferred     | 10140  | VITIS_LOOP_113_1  | /scratch/spouget/rtl_allo_mem_atax/src/output.cpp:113:21 |            |                                                                                                          |
+| m_axi_gmem1  | vv21     | /scratch/spouget/rtl_allo_mem_atax/src/output.cpp:125:21 | read      | Widen Fail   |        | VITIS_LOOP_124_5  | /scratch/spouget/rtl_allo_mem_atax/src/output.cpp:124:23 | 214-353    | Could not widen since type i512 size is greater than or equal to the max_widen_bitwidth threshold of 512 |
+| m_axi_gmem1  | vv21     | /scratch/spouget/rtl_allo_mem_atax/src/output.cpp:125:21 | read      | Inferred     | 10140  | VITIS_LOOP_123_4  | /scratch/spouget/rtl_allo_mem_atax/src/output.cpp:123:21 |            |                                                                                                          |
+| m_axi_gmem2  | vv22     | /scratch/spouget/rtl_allo_mem_atax/src/output.cpp:134:17 | read      | Inferred     | 26     | VITIS_LOOP_133_7  | /scratch/spouget/rtl_allo_mem_atax/src/output.cpp:133:21 |            |                                                                                                          |
+| m_axi_gmem3  | vv23     | /scratch/spouget/rtl_allo_mem_atax/src/output.cpp:142:17 | read      | Inferred     | 26     | VITIS_LOOP_141_9  | /scratch/spouget/rtl_allo_mem_atax/src/output.cpp:141:21 |            |                                                                                                          |
+| m_axi_gmem3  | vv23     | /scratch/spouget/rtl_allo_mem_atax/src/output.cpp:169:16 | write     | Inferred     | 26     | VITIS_LOOP_163_11 | /scratch/spouget/rtl_allo_mem_atax/src/output.cpp:163:22 |            |                                                                                                          |
++--------------+----------+----------------------------------------------------------+-----------+--------------+--------+-------------------+----------------------------------------------------------+------------+----------------------------------------------------------------------------------------------------------+
+
+    * Resolution URL: docs.xilinx.com/access/sources/dita/topic?Doc_Version=2023.2%20English&url=ug1448-hls-guidance&resourceid=XXX-YYY.html (replace XXX-YYY with column value)
+
+================================================================
+== Bind Op Report
+================================================================
++----------------------------------------------------------------------------+-----+--------+--------------+------+-----------+---------+
+| Name                                                                       | DSP | Pragma | Variable     | Op   | Impl      | Latency |
++----------------------------------------------------------------------------+-----+--------+--------------+------+-----------+---------+
+| + kernel_nlp                                                               | 242 |        |              |      |           |         |
+|  + Loop_VITIS_LOOP_113_1_proc                                              | 1   |        |              |      |           |         |
+|    add_ln113_1_fu_8731_p2                                                  |     |        | add_ln113_1  | add  | fabric    | 0       |
+|    add_ln113_fu_8768_p2                                                    |     |        | add_ln113    | add  | fabric    | 0       |
+|    mul_9ns_11ns_19_1_1_U1                                                  | 1   |        | mul_ln113    | mul  | auto      | 0       |
+|    mul_4ns_7ns_10_1_1_U3                                                   |     |        | mul_ln118    | mul  | auto      | 0       |
+|    add_ln118_fu_9103_p2                                                    |     |        | add_ln118    | add  | fabric    | 0       |
+|    add_ln118_1_fu_9811_p2                                                  |     |        | add_ln118_1  | add  | fabric    | 0       |
+|    add_ln114_fu_9089_p2                                                    |     |        | add_ln114    | add  | fabric    | 0       |
+|    add_ln114_1_fu_8814_p2                                                  |     |        | add_ln114_1  | add  | fabric    | 0       |
+|  + Loop_VITIS_LOOP_123_4_proc                                              | 16  |        |              |      |           |         |
+|    add_ln123_1_fu_6033_p2                                                  |     |        | add_ln123_1  | add  | fabric    | 0       |
+|    add_ln123_fu_6703_p2                                                    |     |        | add_ln123    | add  | fabric    | 0       |
+|    add_ln128_fu_6736_p2                                                    |     |        | add_ln128    | add  | fabric    | 0       |
+|    mul_9ns_11ns_19_1_1_U321                                                | 1   |        | mul_ln127    | mul  | auto      | 0       |
+|    add_ln128_1_fu_6944_p2                                                  |     |        | add_ln128_1  | add  | fabric    | 0       |
+|    mul_9ns_11ns_19_1_1_U323                                                | 1   |        | mul_ln127_1  | mul  | auto      | 0       |
+|    add_ln128_2_fu_6997_p2                                                  |     |        | add_ln128_2  | add  | fabric    | 0       |
+|    mul_9ns_11ns_19_1_1_U325                                                | 1   |        | mul_ln127_2  | mul  | auto      | 0       |
+|    add_ln128_3_fu_7050_p2                                                  |     |        | add_ln128_3  | add  | fabric    | 0       |
+|    mul_9ns_11ns_19_1_1_U327                                                | 1   |        | mul_ln127_3  | mul  | auto      | 0       |
+|    add_ln128_4_fu_7147_p2                                                  |     |        | add_ln128_4  | add  | fabric    | 0       |
+|    mul_9ns_11ns_19_1_1_U329                                                | 1   |        | mul_ln127_4  | mul  | auto      | 0       |
+|    add_ln128_5_fu_7200_p2                                                  |     |        | add_ln128_5  | add  | fabric    | 0       |
+|    mul_9ns_11ns_19_1_1_U331                                                | 1   |        | mul_ln127_5  | mul  | auto      | 0       |
+|    add_ln128_6_fu_7297_p2                                                  |     |        | add_ln128_6  | add  | fabric    | 0       |
+|    mul_9ns_11ns_19_1_1_U333                                                | 1   |        | mul_ln127_6  | mul  | auto      | 0       |
+|    add_ln128_7_fu_7350_p2                                                  |     |        | add_ln128_7  | add  | fabric    | 0       |
+|    mul_9ns_11ns_19_1_1_U335                                                | 1   |        | mul_ln127_7  | mul  | auto      | 0       |
+|    add_ln128_8_fu_7447_p2                                                  |     |        | add_ln128_8  | add  | fabric    | 0       |
+|    mul_9ns_11ns_19_1_1_U337                                                | 1   |        | mul_ln127_8  | mul  | auto      | 0       |
+|    add_ln128_9_fu_7544_p2                                                  |     |        | add_ln128_9  | add  | fabric    | 0       |
+|    mul_9ns_11ns_19_1_1_U339                                                | 1   |        | mul_ln127_9  | mul  | auto      | 0       |
+|    add_ln128_10_fu_7641_p2                                                 |     |        | add_ln128_10 | add  | fabric    | 0       |
+|    mul_9ns_11ns_19_1_1_U341                                                | 1   |        | mul_ln127_10 | mul  | auto      | 0       |
+|    add_ln128_11_fu_7738_p2                                                 |     |        | add_ln128_11 | add  | fabric    | 0       |
+|    mul_9ns_11ns_19_1_1_U343                                                | 1   |        | mul_ln127_11 | mul  | auto      | 0       |
+|    add_ln128_12_fu_7791_p2                                                 |     |        | add_ln128_12 | add  | fabric    | 0       |
+|    mul_9ns_11ns_19_1_1_U345                                                | 1   |        | mul_ln127_12 | mul  | auto      | 0       |
+|    add_ln128_13_fu_7844_p2                                                 |     |        | add_ln128_13 | add  | fabric    | 0       |
+|    mul_9ns_11ns_19_1_1_U347                                                | 1   |        | mul_ln127_13 | mul  | auto      | 0       |
+|    add_ln128_14_fu_7897_p2                                                 |     |        | add_ln128_14 | add  | fabric    | 0       |
+|    mul_9ns_11ns_19_1_1_U349                                                | 1   |        | mul_ln127_14 | mul  | auto      | 0       |
+|    add_ln128_15_fu_7950_p2                                                 |     |        | add_ln128_15 | add  | fabric    | 0       |
+|    mul_9ns_11ns_19_1_1_U351                                                | 1   |        | mul_ln127_15 | mul  | auto      | 0       |
+|    add_ln128_16_fu_7958_p2                                                 |     |        | add_ln128_16 | add  | fabric    | 0       |
+|    add_ln124_fu_6609_p2                                                    |     |        | add_ln124    | add  | fabric    | 0       |
+|    add_ln124_1_fu_6614_p2                                                  |     |        | add_ln124_1  | add  | fabric    | 0       |
+|  + Loop_VITIS_LOOP_133_7_proc                                              | 0   |        |              |      |           |         |
+|    add_ln133_1_fu_161_p2                                                   |     |        | add_ln133_1  | add  | fabric    | 0       |
+|    add_ln136_fu_263_p2                                                     |     |        | add_ln136    | add  | fabric    | 0       |
+|    add_ln135_fu_215_p2                                                     |     |        | add_ln135    | add  | fabric    | 0       |
+|    add_ln133_fu_244_p2                                                     |     |        | add_ln133    | add  | fabric    | 0       |
+|  + Loop_VITIS_LOOP_141_9_proc                                              | 225 |        |              |      |           |         |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U1850                                    |     |        | p_read_1     | fifo | srl       | 0       |
+|   + Loop_VITIS_LOOP_141_9_proc_Pipeline_VITIS_LOOP_141_9_VITIS_LOOP_143_10 | 1   |        |              |      |           |         |
+|     add_ln141_1_fu_837_p2                                                  |     |        | add_ln141_1  | add  | fabric    | 0       |
+|     add_ln144_fu_884_p2                                                    |     |        | add_ln144    | add  | fabric    | 0       |
+|     mul_9ns_11ns_19_1_1_U401                                               | 1   |        | mul_ln144    | mul  | auto      | 0       |
+|     add_ln143_fu_906_p2                                                    |     |        | add_ln143    | add  | fabric    | 0       |
+|     add_ln141_fu_912_p2                                                    |     |        | add_ln141    | add  | fabric    | 0       |
+|   + stage_M                                                                | 2   |        |              |      |           |         |
+|    + stage_M_Pipeline_VITIS_LOOP_36_1                                      | 0   |        |              |      |           |         |
+|      add_ln36_fu_779_p2                                                    |     |        | add_ln36     | add  | fabric    | 0       |
+|      add_ln36_1_fu_788_p2                                                  |     |        | add_ln36_1   | add  | fabric    | 0       |
+|      add_ln36_2_fu_851_p2                                                  |     |        | add_ln36_2   | add  | fabric    | 0       |
+|    + stage_M_Pipeline_l_S_m_0_r_l_m                                        | 2   |        |              |      |           |         |
+|      add_ln40_1_fu_5852_p2                                                 |     |        | add_ln40_1   | add  | fabric    | 0       |
+|      add_ln40_fu_5917_p2                                                   |     |        | add_ln40     | add  | fabric    | 0       |
+|      mul_9ns_11ns_19_1_1_U562                                              | 1   |        | mul_ln41     | mul  | auto      | 0       |
+|      mac_muladd_4ns_6ns_6ns_10_4_1_U602                                    | 1   |        | mul_ln44     | mul  | dsp_slice | 3       |
+|      mac_muladd_4ns_6ns_6ns_10_4_1_U602                                    | 1   |        | add_ln44     | add  | dsp_slice | 3       |
+|      add_ln41_fu_5895_p2                                                   |     |        | add_ln41     | add  | fabric    | 0       |
+|    + stage_M_Pipeline_VITIS_LOOP_53_2                                      | 0   |        |              |      |           |         |
+|      add_ln53_fu_756_p2                                                    |     |        | add_ln53     | add  | fabric    | 0       |
+|      add_ln53_1_fu_837_p2                                                  |     |        | add_ln53_1   | add  | fabric    | 0       |
+|      add_ln53_2_fu_765_p2                                                  |     |        | add_ln53_2   | add  | fabric    | 0       |
+|   + stage_N                                                                | 11  |        |              |      |           |         |
+|    + stage_N_Pipeline_VITIS_LOOP_68_1                                      | 0   |        |              |      |           |         |
+|      add_ln68_fu_73_p2                                                     |     |        | add_ln68     | add  | fabric    | 0       |
+|    + stage_N_Pipeline_l_S_n_0_k_l_n                                        | 11  |        |              |      |           |         |
+|      add_ln72_1_fu_1821_p2                                                 |     |        | add_ln72_1   | add  | fabric    | 0       |
+|      add_ln72_fu_1833_p2                                                   |     |        | add_ln72     | add  | fabric    | 0       |
+|      mul_9ns_11ns_19_1_1_U1476                                             | 1   |        | mul_ln73     | mul  | auto      | 0       |
+|      fmul_32ns_32ns_32_4_max_dsp_1_U1474                                   | 3   |        | v17_38       | fmul | maxdsp    | 3       |
+|      fmul_32ns_32ns_32_4_max_dsp_1_U1475                                   | 3   |        | v17_39       | fmul | maxdsp    | 3       |
+|      fadd_32ns_32ns_32_7_full_dsp_1_U1433                                  | 2   |        | v19_38       | fadd | fulldsp   | 6       |
+|      fadd_32ns_32ns_32_7_full_dsp_1_U1434                                  | 2   |        | v19_39       | fadd | fulldsp   | 6       |
+|      add_ln73_fu_1881_p2                                                   |     |        | add_ln73     | add  | fabric    | 0       |
+|   + Loop_VITIS_LOOP_141_9_proc_Pipeline_VITIS_LOOP_163_11                  | 16  |        |              |      |           |         |
+|     add_ln163_1_fu_8250_p2                                                 |     |        | add_ln163_1  | add  | fabric    | 0       |
+|     mul_9ns_11ns_19_1_1_U1722                                              | 1   |        | mul_ln166    | mul  | auto      | 0       |
+|     mul_9ns_11ns_19_1_1_U1724                                              | 1   |        | mul_ln166_1  | mul  | auto      | 0       |
+|     mul_9ns_11ns_19_1_1_U1726                                              | 1   |        | mul_ln166_2  | mul  | auto      | 0       |
+|     mul_9ns_11ns_19_1_1_U1728                                              | 1   |        | mul_ln166_3  | mul  | auto      | 0       |
+|     mul_9ns_11ns_19_1_1_U1730                                              | 1   |        | mul_ln166_4  | mul  | auto      | 0       |
+|     mul_9ns_11ns_19_1_1_U1732                                              | 1   |        | mul_ln166_5  | mul  | auto      | 0       |
+|     mul_9ns_11ns_19_1_1_U1734                                              | 1   |        | mul_ln166_6  | mul  | auto      | 0       |
+|     mul_9ns_11ns_19_1_1_U1736                                              | 1   |        | mul_ln166_7  | mul  | auto      | 0       |
+|     mul_9ns_11ns_19_1_1_U1738                                              | 1   |        | mul_ln166_8  | mul  | auto      | 0       |
+|     mul_9ns_11ns_19_1_1_U1740                                              | 1   |        | mul_ln166_9  | mul  | auto      | 0       |
+|     mul_9ns_11ns_19_1_1_U1742                                              | 1   |        | mul_ln166_10 | mul  | auto      | 0       |
+|     mul_9ns_11ns_19_1_1_U1744                                              | 1   |        | mul_ln166_11 | mul  | auto      | 0       |
+|     mul_9ns_11ns_19_1_1_U1746                                              | 1   |        | mul_ln166_12 | mul  | auto      | 0       |
+|     mul_9ns_11ns_19_1_1_U1748                                              | 1   |        | mul_ln166_13 | mul  | auto      | 0       |
+|     mul_9ns_11ns_19_1_1_U1750                                              | 1   |        | mul_ln166_14 | mul  | auto      | 0       |
+|     mul_9ns_11ns_19_1_1_U1752                                              | 1   |        | mul_ln166_15 | mul  | auto      | 0       |
+|     add_ln163_fu_9575_p2                                                   |     |        | add_ln163    | add  | fabric    | 0       |
++----------------------------------------------------------------------------+-----+--------+--------------+------+-----------+---------+
+
+
+================================================================
+== Storage Report
+================================================================
++-----------------------------------------+-----------------+------------+------+------+--------+------------------------+--------+---------+------------------+
+| Name                                    | Usage           | Type       | BRAM | URAM | Pragma | Variable               | Impl   | Latency | Bitwidth, Depth, |
+|                                         |                 |            |      |      |        |                        |        |         | Banks            |
++-----------------------------------------+-----------------+------------+------+------+--------+------------------------+--------+---------+------------------+
+| + kernel_nlp                            |                 |            | 1372 | 82   |        |                        |        |         |                  |
+|   control_s_axi_U                       | interface       | s_axilite  |      |      |        |                        |        |         |                  |
+|   gmem0_m_axi_U                         | interface       | m_axi      | 30   |      |        |                        |        |         |                  |
+|   gmem1_m_axi_U                         | interface       | m_axi      | 30   |      |        |                        |        |         |                  |
+|   gmem2_m_axi_U                         | interface       | m_axi      | 30   |      |        |                        |        |         |                  |
+|   gmem3_m_axi_U                         | interface       | m_axi      | 30   |      |        |                        |        |         |                  |
+|   v20_311_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_311                | auto   | 1       | 32, 520, 2       |
+|   v20_310_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_310                | auto   | 1       | 32, 520, 2       |
+|   v20_309_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_309                | auto   | 1       | 32, 520, 2       |
+|   v20_308_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_308                | auto   | 1       | 32, 520, 2       |
+|   v20_307_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_307                | auto   | 1       | 32, 520, 2       |
+|   v20_306_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_306                | auto   | 1       | 32, 520, 2       |
+|   v20_305_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_305                | auto   | 1       | 32, 520, 2       |
+|   v20_304_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_304                | auto   | 1       | 32, 520, 2       |
+|   v20_303_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_303                | auto   | 1       | 32, 520, 2       |
+|   v20_302_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_302                | auto   | 1       | 32, 520, 2       |
+|   v20_301_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_301                | auto   | 1       | 32, 520, 2       |
+|   v20_300_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_300                | auto   | 1       | 32, 520, 2       |
+|   v20_299_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_299                | auto   | 1       | 32, 520, 2       |
+|   v20_298_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_298                | auto   | 1       | 32, 520, 2       |
+|   v20_297_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_297                | auto   | 1       | 32, 520, 2       |
+|   v20_296_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_296                | auto   | 1       | 32, 520, 2       |
+|   v20_295_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_295                | auto   | 1       | 32, 520, 2       |
+|   v20_294_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_294                | auto   | 1       | 32, 520, 2       |
+|   v20_293_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_293                | auto   | 1       | 32, 520, 2       |
+|   v20_292_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_292                | auto   | 1       | 32, 520, 2       |
+|   v20_291_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_291                | auto   | 1       | 32, 520, 2       |
+|   v20_290_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_290                | auto   | 1       | 32, 520, 2       |
+|   v20_289_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_289                | auto   | 1       | 32, 520, 2       |
+|   v20_288_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_288                | auto   | 1       | 32, 520, 2       |
+|   v20_287_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_287                | auto   | 1       | 32, 520, 2       |
+|   v20_286_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_286                | auto   | 1       | 32, 520, 2       |
+|   v20_285_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_285                | auto   | 1       | 32, 520, 2       |
+|   v20_284_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_284                | auto   | 1       | 32, 520, 2       |
+|   v20_283_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_283                | auto   | 1       | 32, 520, 2       |
+|   v20_282_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_282                | auto   | 1       | 32, 520, 2       |
+|   v20_281_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_281                | auto   | 1       | 32, 520, 2       |
+|   v20_280_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_280                | auto   | 1       | 32, 520, 2       |
+|   v20_279_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_279                | auto   | 1       | 32, 520, 2       |
+|   v20_278_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_278                | auto   | 1       | 32, 520, 2       |
+|   v20_277_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_277                | auto   | 1       | 32, 520, 2       |
+|   v20_276_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_276                | auto   | 1       | 32, 520, 2       |
+|   v20_275_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_275                | auto   | 1       | 32, 520, 2       |
+|   v20_274_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_274                | auto   | 1       | 32, 520, 2       |
+|   v20_273_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_273                | auto   | 1       | 32, 520, 2       |
+|   v20_272_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_272                | auto   | 1       | 32, 520, 2       |
+|   v20_271_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_271                | auto   | 1       | 32, 520, 2       |
+|   v20_270_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_270                | auto   | 1       | 32, 520, 2       |
+|   v20_269_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_269                | auto   | 1       | 32, 520, 2       |
+|   v20_268_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_268                | auto   | 1       | 32, 520, 2       |
+|   v20_267_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_267                | auto   | 1       | 32, 520, 2       |
+|   v20_266_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_266                | auto   | 1       | 32, 520, 2       |
+|   v20_265_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_265                | auto   | 1       | 32, 520, 2       |
+|   v20_264_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_264                | auto   | 1       | 32, 520, 2       |
+|   v20_263_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_263                | auto   | 1       | 32, 520, 2       |
+|   v20_262_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_262                | auto   | 1       | 32, 520, 2       |
+|   v20_261_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_261                | auto   | 1       | 32, 520, 2       |
+|   v20_260_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_260                | auto   | 1       | 32, 520, 2       |
+|   v20_259_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_259                | auto   | 1       | 32, 520, 2       |
+|   v20_258_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_258                | auto   | 1       | 32, 520, 2       |
+|   v20_257_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_257                | auto   | 1       | 32, 520, 2       |
+|   v20_256_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_256                | auto   | 1       | 32, 520, 2       |
+|   v20_255_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_255                | auto   | 1       | 32, 520, 2       |
+|   v20_254_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_254                | auto   | 1       | 32, 520, 2       |
+|   v20_253_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_253                | auto   | 1       | 32, 520, 2       |
+|   v20_252_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_252                | auto   | 1       | 32, 520, 2       |
+|   v20_251_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_251                | auto   | 1       | 32, 520, 2       |
+|   v20_250_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_250                | auto   | 1       | 32, 520, 2       |
+|   v20_249_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_249                | auto   | 1       | 32, 520, 2       |
+|   v20_248_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_248                | auto   | 1       | 32, 520, 2       |
+|   v20_247_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_247                | auto   | 1       | 32, 520, 2       |
+|   v20_246_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_246                | auto   | 1       | 32, 520, 2       |
+|   v20_245_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_245                | auto   | 1       | 32, 520, 2       |
+|   v20_244_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_244                | auto   | 1       | 32, 520, 2       |
+|   v20_243_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_243                | auto   | 1       | 32, 520, 2       |
+|   v20_242_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_242                | auto   | 1       | 32, 520, 2       |
+|   v20_241_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_241                | auto   | 1       | 32, 520, 2       |
+|   v20_240_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_240                | auto   | 1       | 32, 520, 2       |
+|   v20_239_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_239                | auto   | 1       | 32, 520, 2       |
+|   v20_238_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_238                | auto   | 1       | 32, 520, 2       |
+|   v20_237_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_237                | auto   | 1       | 32, 520, 2       |
+|   v20_236_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_236                | auto   | 1       | 32, 520, 2       |
+|   v20_235_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_235                | auto   | 1       | 32, 520, 2       |
+|   v20_234_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_234                | auto   | 1       | 32, 520, 2       |
+|   v20_233_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_233                | auto   | 1       | 32, 520, 2       |
+|   v20_232_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_232                | auto   | 1       | 32, 520, 2       |
+|   v20_231_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_231                | auto   | 1       | 32, 520, 2       |
+|   v20_230_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_230                | auto   | 1       | 32, 520, 2       |
+|   v20_229_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_229                | auto   | 1       | 32, 520, 2       |
+|   v20_228_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_228                | auto   | 1       | 32, 520, 2       |
+|   v20_227_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_227                | auto   | 1       | 32, 520, 2       |
+|   v20_226_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_226                | auto   | 1       | 32, 520, 2       |
+|   v20_225_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_225                | auto   | 1       | 32, 520, 2       |
+|   v20_224_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_224                | auto   | 1       | 32, 520, 2       |
+|   v20_223_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_223                | auto   | 1       | 32, 520, 2       |
+|   v20_222_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_222                | auto   | 1       | 32, 520, 2       |
+|   v20_221_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_221                | auto   | 1       | 32, 520, 2       |
+|   v20_220_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_220                | auto   | 1       | 32, 520, 2       |
+|   v20_219_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_219                | auto   | 1       | 32, 520, 2       |
+|   v20_218_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_218                | auto   | 1       | 32, 520, 2       |
+|   v20_217_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_217                | auto   | 1       | 32, 520, 2       |
+|   v20_216_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_216                | auto   | 1       | 32, 520, 2       |
+|   v20_215_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_215                | auto   | 1       | 32, 520, 2       |
+|   v20_214_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_214                | auto   | 1       | 32, 520, 2       |
+|   v20_213_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_213                | auto   | 1       | 32, 520, 2       |
+|   v20_212_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_212                | auto   | 1       | 32, 520, 2       |
+|   v20_211_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_211                | auto   | 1       | 32, 520, 2       |
+|   v20_210_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_210                | auto   | 1       | 32, 520, 2       |
+|   v20_209_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_209                | auto   | 1       | 32, 520, 2       |
+|   v20_208_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_208                | auto   | 1       | 32, 520, 2       |
+|   v20_207_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_207                | auto   | 1       | 32, 520, 2       |
+|   v20_206_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_206                | auto   | 1       | 32, 520, 2       |
+|   v20_205_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_205                | auto   | 1       | 32, 520, 2       |
+|   v20_204_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_204                | auto   | 1       | 32, 520, 2       |
+|   v20_203_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_203                | auto   | 1       | 32, 520, 2       |
+|   v20_202_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_202                | auto   | 1       | 32, 520, 2       |
+|   v20_201_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_201                | auto   | 1       | 32, 520, 2       |
+|   v20_200_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_200                | auto   | 1       | 32, 520, 2       |
+|   v20_199_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_199                | auto   | 1       | 32, 520, 2       |
+|   v20_198_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_198                | auto   | 1       | 32, 520, 2       |
+|   v20_197_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_197                | auto   | 1       | 32, 520, 2       |
+|   v20_196_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_196                | auto   | 1       | 32, 520, 2       |
+|   v20_195_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_195                | auto   | 1       | 32, 520, 2       |
+|   v20_194_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_194                | auto   | 1       | 32, 520, 2       |
+|   v20_193_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_193                | auto   | 1       | 32, 520, 2       |
+|   v20_192_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_192                | auto   | 1       | 32, 520, 2       |
+|   v20_191_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_191                | auto   | 1       | 32, 520, 2       |
+|   v20_190_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_190                | auto   | 1       | 32, 520, 2       |
+|   v20_189_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_189                | auto   | 1       | 32, 520, 2       |
+|   v20_188_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_188                | auto   | 1       | 32, 520, 2       |
+|   v20_187_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_187                | auto   | 1       | 32, 520, 2       |
+|   v20_186_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_186                | auto   | 1       | 32, 520, 2       |
+|   v20_185_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_185                | auto   | 1       | 32, 520, 2       |
+|   v20_184_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_184                | auto   | 1       | 32, 520, 2       |
+|   v20_183_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_183                | auto   | 1       | 32, 520, 2       |
+|   v20_182_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_182                | auto   | 1       | 32, 520, 2       |
+|   v20_181_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_181                | auto   | 1       | 32, 520, 2       |
+|   v20_180_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_180                | auto   | 1       | 32, 520, 2       |
+|   v20_179_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_179                | auto   | 1       | 32, 520, 2       |
+|   v20_178_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_178                | auto   | 1       | 32, 520, 2       |
+|   v20_177_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_177                | auto   | 1       | 32, 520, 2       |
+|   v20_176_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_176                | auto   | 1       | 32, 520, 2       |
+|   v20_175_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_175                | auto   | 1       | 32, 520, 2       |
+|   v20_174_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_174                | auto   | 1       | 32, 520, 2       |
+|   v20_173_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_173                | auto   | 1       | 32, 520, 2       |
+|   v20_172_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_172                | auto   | 1       | 32, 520, 2       |
+|   v20_171_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_171                | auto   | 1       | 32, 520, 2       |
+|   v20_170_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_170                | auto   | 1       | 32, 520, 2       |
+|   v20_169_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_169                | auto   | 1       | 32, 520, 2       |
+|   v20_168_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_168                | auto   | 1       | 32, 520, 2       |
+|   v20_167_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_167                | auto   | 1       | 32, 520, 2       |
+|   v20_166_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_166                | auto   | 1       | 32, 520, 2       |
+|   v20_165_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_165                | auto   | 1       | 32, 520, 2       |
+|   v20_164_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_164                | auto   | 1       | 32, 520, 2       |
+|   v20_163_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_163                | auto   | 1       | 32, 520, 2       |
+|   v20_162_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_162                | auto   | 1       | 32, 520, 2       |
+|   v20_161_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_161                | auto   | 1       | 32, 520, 2       |
+|   v20_160_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_160                | auto   | 1       | 32, 520, 2       |
+|   v20_159_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_159                | auto   | 1       | 32, 520, 2       |
+|   v20_158_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_158                | auto   | 1       | 32, 520, 2       |
+|   v20_157_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_157                | auto   | 1       | 32, 520, 2       |
+|   v20_156_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_156                | auto   | 1       | 32, 520, 2       |
+|   v20_155_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_155                | auto   | 1       | 32, 520, 2       |
+|   v20_154_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_154                | auto   | 1       | 32, 520, 2       |
+|   v20_153_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_153                | auto   | 1       | 32, 520, 2       |
+|   v20_152_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_152                | auto   | 1       | 32, 520, 2       |
+|   v20_151_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_151                | auto   | 1       | 32, 520, 2       |
+|   v20_150_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_150                | auto   | 1       | 32, 520, 2       |
+|   v20_149_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_149                | auto   | 1       | 32, 520, 2       |
+|   v20_148_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_148                | auto   | 1       | 32, 520, 2       |
+|   v20_147_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_147                | auto   | 1       | 32, 520, 2       |
+|   v20_146_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_146                | auto   | 1       | 32, 520, 2       |
+|   v20_145_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_145                | auto   | 1       | 32, 520, 2       |
+|   v20_144_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_144                | auto   | 1       | 32, 520, 2       |
+|   v20_143_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_143                | auto   | 1       | 32, 520, 2       |
+|   v20_142_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_142                | auto   | 1       | 32, 520, 2       |
+|   v20_141_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_141                | auto   | 1       | 32, 520, 2       |
+|   v20_140_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_140                | auto   | 1       | 32, 520, 2       |
+|   v20_139_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_139                | auto   | 1       | 32, 520, 2       |
+|   v20_138_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_138                | auto   | 1       | 32, 520, 2       |
+|   v20_137_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_137                | auto   | 1       | 32, 520, 2       |
+|   v20_136_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_136                | auto   | 1       | 32, 520, 2       |
+|   v20_135_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_135                | auto   | 1       | 32, 520, 2       |
+|   v20_134_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_134                | auto   | 1       | 32, 520, 2       |
+|   v20_133_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_133                | auto   | 1       | 32, 520, 2       |
+|   v20_132_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_132                | auto   | 1       | 32, 520, 2       |
+|   v20_131_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_131                | auto   | 1       | 32, 520, 2       |
+|   v20_130_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_130                | auto   | 1       | 32, 520, 2       |
+|   v20_129_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_129                | auto   | 1       | 32, 520, 2       |
+|   v20_128_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_128                | auto   | 1       | 32, 520, 2       |
+|   v20_127_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_127                | auto   | 1       | 32, 520, 2       |
+|   v20_126_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_126                | auto   | 1       | 32, 520, 2       |
+|   v20_125_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_125                | auto   | 1       | 32, 520, 2       |
+|   v20_124_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_124                | auto   | 1       | 32, 520, 2       |
+|   v20_123_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_123                | auto   | 1       | 32, 520, 2       |
+|   v20_122_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_122                | auto   | 1       | 32, 520, 2       |
+|   v20_121_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_121                | auto   | 1       | 32, 520, 2       |
+|   v20_120_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_120                | auto   | 1       | 32, 520, 2       |
+|   v20_119_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_119                | auto   | 1       | 32, 520, 2       |
+|   v20_118_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_118                | auto   | 1       | 32, 520, 2       |
+|   v20_117_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_117                | auto   | 1       | 32, 520, 2       |
+|   v20_116_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_116                | auto   | 1       | 32, 520, 2       |
+|   v20_115_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_115                | auto   | 1       | 32, 520, 2       |
+|   v20_114_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_114                | auto   | 1       | 32, 520, 2       |
+|   v20_113_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_113                | auto   | 1       | 32, 520, 2       |
+|   v20_112_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_112                | auto   | 1       | 32, 520, 2       |
+|   v20_111_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_111                | auto   | 1       | 32, 520, 2       |
+|   v20_110_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_110                | auto   | 1       | 32, 520, 2       |
+|   v20_109_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_109                | auto   | 1       | 32, 520, 2       |
+|   v20_108_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_108                | auto   | 1       | 32, 520, 2       |
+|   v20_107_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_107                | auto   | 1       | 32, 520, 2       |
+|   v20_106_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_106                | auto   | 1       | 32, 520, 2       |
+|   v20_105_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_105                | auto   | 1       | 32, 520, 2       |
+|   v20_104_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_104                | auto   | 1       | 32, 520, 2       |
+|   v20_103_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_103                | auto   | 1       | 32, 520, 2       |
+|   v20_102_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_102                | auto   | 1       | 32, 520, 2       |
+|   v20_101_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_101                | auto   | 1       | 32, 520, 2       |
+|   v20_100_U                             | ram_t2p channel | pipo       | 4    |      |        | v20_100                | auto   | 1       | 32, 520, 2       |
+|   v20_99_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_99                 | auto   | 1       | 32, 520, 2       |
+|   v20_98_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_98                 | auto   | 1       | 32, 520, 2       |
+|   v20_97_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_97                 | auto   | 1       | 32, 520, 2       |
+|   v20_96_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_96                 | auto   | 1       | 32, 520, 2       |
+|   v20_95_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_95                 | auto   | 1       | 32, 520, 2       |
+|   v20_94_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_94                 | auto   | 1       | 32, 520, 2       |
+|   v20_93_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_93                 | auto   | 1       | 32, 520, 2       |
+|   v20_92_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_92                 | auto   | 1       | 32, 520, 2       |
+|   v20_91_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_91                 | auto   | 1       | 32, 520, 2       |
+|   v20_90_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_90                 | auto   | 1       | 32, 520, 2       |
+|   v20_89_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_89                 | auto   | 1       | 32, 520, 2       |
+|   v20_88_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_88                 | auto   | 1       | 32, 520, 2       |
+|   v20_87_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_87                 | auto   | 1       | 32, 520, 2       |
+|   v20_86_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_86                 | auto   | 1       | 32, 520, 2       |
+|   v20_85_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_85                 | auto   | 1       | 32, 520, 2       |
+|   v20_84_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_84                 | auto   | 1       | 32, 520, 2       |
+|   v20_83_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_83                 | auto   | 1       | 32, 520, 2       |
+|   v20_82_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_82                 | auto   | 1       | 32, 520, 2       |
+|   v20_81_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_81                 | auto   | 1       | 32, 520, 2       |
+|   v20_80_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_80                 | auto   | 1       | 32, 520, 2       |
+|   v20_79_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_79                 | auto   | 1       | 32, 520, 2       |
+|   v20_78_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_78                 | auto   | 1       | 32, 520, 2       |
+|   v20_77_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_77                 | auto   | 1       | 32, 520, 2       |
+|   v20_76_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_76                 | auto   | 1       | 32, 520, 2       |
+|   v20_75_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_75                 | auto   | 1       | 32, 520, 2       |
+|   v20_74_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_74                 | auto   | 1       | 32, 520, 2       |
+|   v20_73_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_73                 | auto   | 1       | 32, 520, 2       |
+|   v20_72_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_72                 | auto   | 1       | 32, 520, 2       |
+|   v20_71_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_71                 | auto   | 1       | 32, 520, 2       |
+|   v20_70_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_70                 | auto   | 1       | 32, 520, 2       |
+|   v20_69_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_69                 | auto   | 1       | 32, 520, 2       |
+|   v20_68_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_68                 | auto   | 1       | 32, 520, 2       |
+|   v20_67_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_67                 | auto   | 1       | 32, 520, 2       |
+|   v20_66_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_66                 | auto   | 1       | 32, 520, 2       |
+|   v20_65_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_65                 | auto   | 1       | 32, 520, 2       |
+|   v20_64_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_64                 | auto   | 1       | 32, 520, 2       |
+|   v20_63_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_63                 | auto   | 1       | 32, 520, 2       |
+|   v20_62_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_62                 | auto   | 1       | 32, 520, 2       |
+|   v20_61_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_61                 | auto   | 1       | 32, 520, 2       |
+|   v20_60_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_60                 | auto   | 1       | 32, 520, 2       |
+|   v20_59_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_59                 | auto   | 1       | 32, 520, 2       |
+|   v20_58_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_58                 | auto   | 1       | 32, 520, 2       |
+|   v20_57_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_57                 | auto   | 1       | 32, 520, 2       |
+|   v20_56_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_56                 | auto   | 1       | 32, 520, 2       |
+|   v20_55_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_55                 | auto   | 1       | 32, 520, 2       |
+|   v20_54_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_54                 | auto   | 1       | 32, 520, 2       |
+|   v20_53_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_53                 | auto   | 1       | 32, 520, 2       |
+|   v20_52_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_52                 | auto   | 1       | 32, 520, 2       |
+|   v20_51_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_51                 | auto   | 1       | 32, 520, 2       |
+|   v20_50_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_50                 | auto   | 1       | 32, 520, 2       |
+|   v20_49_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_49                 | auto   | 1       | 32, 520, 2       |
+|   v20_48_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_48                 | auto   | 1       | 32, 520, 2       |
+|   v20_47_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_47                 | auto   | 1       | 32, 520, 2       |
+|   v20_46_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_46                 | auto   | 1       | 32, 520, 2       |
+|   v20_45_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_45                 | auto   | 1       | 32, 520, 2       |
+|   v20_44_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_44                 | auto   | 1       | 32, 520, 2       |
+|   v20_43_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_43                 | auto   | 1       | 32, 520, 2       |
+|   v20_42_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_42                 | auto   | 1       | 32, 520, 2       |
+|   v20_41_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_41                 | auto   | 1       | 32, 520, 2       |
+|   v20_40_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_40                 | auto   | 1       | 32, 520, 2       |
+|   v20_39_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_39                 | auto   | 1       | 32, 520, 2       |
+|   v20_38_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_38                 | auto   | 1       | 32, 520, 2       |
+|   v20_37_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_37                 | auto   | 1       | 32, 520, 2       |
+|   v20_36_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_36                 | auto   | 1       | 32, 520, 2       |
+|   v20_35_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_35                 | auto   | 1       | 32, 520, 2       |
+|   v20_34_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_34                 | auto   | 1       | 32, 520, 2       |
+|   v20_33_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_33                 | auto   | 1       | 32, 520, 2       |
+|   v20_32_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_32                 | auto   | 1       | 32, 520, 2       |
+|   v20_31_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_31                 | auto   | 1       | 32, 520, 2       |
+|   v20_30_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_30                 | auto   | 1       | 32, 520, 2       |
+|   v20_29_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_29                 | auto   | 1       | 32, 520, 2       |
+|   v20_28_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_28                 | auto   | 1       | 32, 520, 2       |
+|   v20_27_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_27                 | auto   | 1       | 32, 520, 2       |
+|   v20_26_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_26                 | auto   | 1       | 32, 520, 2       |
+|   v20_25_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_25                 | auto   | 1       | 32, 520, 2       |
+|   v20_24_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_24                 | auto   | 1       | 32, 520, 2       |
+|   v20_23_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_23                 | auto   | 1       | 32, 520, 2       |
+|   v20_22_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_22                 | auto   | 1       | 32, 520, 2       |
+|   v20_21_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_21                 | auto   | 1       | 32, 520, 2       |
+|   v20_20_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_20                 | auto   | 1       | 32, 520, 2       |
+|   v20_19_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_19                 | auto   | 1       | 32, 520, 2       |
+|   v20_18_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_18                 | auto   | 1       | 32, 520, 2       |
+|   v20_17_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_17                 | auto   | 1       | 32, 520, 2       |
+|   v20_16_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_16                 | auto   | 1       | 32, 520, 2       |
+|   v20_15_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_15                 | auto   | 1       | 32, 520, 2       |
+|   v20_14_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_14                 | auto   | 1       | 32, 520, 2       |
+|   v20_13_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_13                 | auto   | 1       | 32, 520, 2       |
+|   v20_12_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_12                 | auto   | 1       | 32, 520, 2       |
+|   v20_11_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_11                 | auto   | 1       | 32, 520, 2       |
+|   v20_10_U                              | ram_t2p channel | pipo       | 4    |      |        | v20_10                 | auto   | 1       | 32, 520, 2       |
+|   v20_9_U                               | ram_t2p channel | pipo       | 4    |      |        | v20_9                  | auto   | 1       | 32, 520, 2       |
+|   v20_8_U                               | ram_t2p channel | pipo       | 4    |      |        | v20_8                  | auto   | 1       | 32, 520, 2       |
+|   v20_7_U                               | ram_t2p channel | pipo       | 4    |      |        | v20_7                  | auto   | 1       | 32, 520, 2       |
+|   v20_6_U                               | ram_t2p channel | pipo       | 4    |      |        | v20_6                  | auto   | 1       | 32, 520, 2       |
+|   v20_5_U                               | ram_t2p channel | pipo       | 4    |      |        | v20_5                  | auto   | 1       | 32, 520, 2       |
+|   v20_4_U                               | ram_t2p channel | pipo       | 4    |      |        | v20_4                  | auto   | 1       | 32, 520, 2       |
+|   v20_3_U                               | ram_t2p channel | pipo       | 4    |      |        | v20_3                  | auto   | 1       | 32, 520, 2       |
+|   v20_2_U                               | ram_t2p channel | pipo       | 4    |      |        | v20_2                  | auto   | 1       | 32, 520, 2       |
+|   v20_1_U                               | ram_t2p channel | pipo       | 4    |      |        | v20_1                  | auto   | 1       | 32, 520, 2       |
+|   v20_U                                 | ram_t2p channel | pipo       | 4    |      |        | v20                    | auto   | 1       | 32, 520, 2       |
+|   v21_40_U                              | ram_t2p channel | pipo       | 16   |      |        | v21_40                 | auto   | 1       | 32, 3900, 2      |
+|   v21_39_U                              | ram_t2p channel | pipo       | 16   |      |        | v21_39                 | auto   | 1       | 32, 3900, 2      |
+|   v21_38_U                              | ram_t2p channel | pipo       | 16   |      |        | v21_38                 | auto   | 1       | 32, 3900, 2      |
+|   v21_37_U                              | ram_t2p channel | pipo       | 16   |      |        | v21_37                 | auto   | 1       | 32, 3900, 2      |
+|   v21_36_U                              | ram_t2p channel | pipo       | 16   |      |        | v21_36                 | auto   | 1       | 32, 3900, 2      |
+|   v21_35_U                              | ram_t2p channel | pipo       | 16   |      |        | v21_35                 | auto   | 1       | 32, 3900, 2      |
+|   v21_34_U                              | ram_t2p channel | pipo       | 16   |      |        | v21_34                 | auto   | 1       | 32, 3900, 2      |
+|   v21_33_U                              | ram_t2p channel | pipo       | 16   |      |        | v21_33                 | auto   | 1       | 32, 3900, 2      |
+|   v21_32_U                              | ram_t2p channel | pipo       | 16   |      |        | v21_32                 | auto   | 1       | 32, 3900, 2      |
+|   v21_31_U                              | ram_t2p channel | pipo       | 16   |      |        | v21_31                 | auto   | 1       | 32, 3900, 2      |
+|   v21_30_U                              | ram_t2p channel | pipo       | 16   |      |        | v21_30                 | auto   | 1       | 32, 3900, 2      |
+|   v21_29_U                              | ram_t2p channel | pipo       | 16   |      |        | v21_29                 | auto   | 1       | 32, 3900, 2      |
+|   v21_28_U                              | ram_t2p channel | pipo       | 16   |      |        | v21_28                 | auto   | 1       | 32, 3900, 2      |
+|   v21_27_U                              | ram_t2p channel | pipo       | 16   |      |        | v21_27                 | auto   | 1       | 32, 3900, 2      |
+|   v21_26_U                              | ram_t2p channel | pipo       | 16   |      |        | v21_26                 | auto   | 1       | 32, 3900, 2      |
+|   v21_25_U                              | ram_t2p channel | pipo       | 16   |      |        | v21_25                 | auto   | 1       | 32, 3900, 2      |
+|   v21_24_U                              | ram_t2p channel | pipo       | 16   |      |        | v21_24                 | auto   | 1       | 32, 3900, 2      |
+|   v21_23_U                              | ram_t2p channel | pipo       | 16   |      |        | v21_23                 | auto   | 1       | 32, 3900, 2      |
+|   v21_22_U                              | ram_t2p channel | pipo       | 16   |      |        | v21_22                 | auto   | 1       | 32, 3900, 2      |
+|   v21_21_U                              | ram_t2p channel | pipo       | 16   |      |        | v21_21                 | auto   | 1       | 32, 3900, 2      |
+|   v21_20_U                              | ram_t2p channel | pipo       | 16   |      |        | v21_20                 | auto   | 1       | 32, 3900, 2      |
+|   v21_19_U                              | ram_t2p channel | pipo       | 16   |      |        | v21_19                 | auto   | 1       | 32, 3900, 2      |
+|   v21_18_U                              | ram_t2p channel | pipo       | 16   |      |        | v21_18                 | auto   | 1       | 32, 3900, 2      |
+|   v21_17_U                              | ram_t2p channel | pipo       | 16   |      |        | v21_17                 | auto   | 1       | 32, 3900, 2      |
+|   v21_16_U                              | ram_t2p channel | pipo       | 16   |      |        | v21_16                 | auto   | 1       | 32, 3900, 2      |
+|   v21_15_U                              | ram_t2p channel | pipo       | 16   |      |        | v21_15                 | auto   | 1       | 32, 3900, 2      |
+|   v21_14_U                              | ram_t2p channel | pipo       | 16   |      |        | v21_14                 | auto   | 1       | 32, 3900, 2      |
+|   v21_13_U                              | ram_t2p channel | pipo       | 16   |      |        | v21_13                 | auto   | 1       | 32, 3900, 2      |
+|   v21_12_U                              | ram_t2p channel | pipo       | 16   |      |        | v21_12                 | auto   | 1       | 32, 3900, 2      |
+|   v21_11_U                              | ram_t2p channel | pipo       | 16   |      |        | v21_11                 | auto   | 1       | 32, 3900, 2      |
+|   v21_10_U                              | ram_t2p channel | pipo       | 16   |      |        | v21_10                 | auto   | 1       | 32, 3900, 2      |
+|   v21_9_U                               | ram_t2p channel | pipo       | 16   |      |        | v21_9                  | auto   | 1       | 32, 3900, 2      |
+|   v21_8_U                               | ram_t2p channel | pipo       | 16   |      |        | v21_8                  | auto   | 1       | 32, 3900, 2      |
+|   v21_7_U                               | ram_t2p channel | pipo       | 16   |      |        | v21_7                  | auto   | 1       | 32, 3900, 2      |
+|   v21_6_U                               | ram_t2p channel | pipo       | 16   |      |        | v21_6                  | auto   | 1       | 32, 3900, 2      |
+|   v21_5_U                               | ram_t2p channel | pipo       | 16   |      |        | v21_5                  | auto   | 1       | 32, 3900, 2      |
+|   v21_4_U                               | ram_t2p channel | pipo       | 16   |      |        | v21_4                  | auto   | 1       | 32, 3900, 2      |
+|   v21_3_U                               | ram_t2p channel | pipo       | 16   |      |        | v21_3                  | auto   | 1       | 32, 3900, 2      |
+|   v21_2_U                               | ram_t2p channel | pipo       | 16   |      |        | v21_2                  | auto   | 1       | 32, 3900, 2      |
+|   v21_1_U                               | ram_t2p channel | pipo       | 16   |      |        | v21_1                  | auto   | 1       | 32, 3900, 2      |
+|   v21_U                                 | ram_t2p channel | pipo       | 16   |      |        | v21                    | auto   | 1       | 32, 3900, 2      |
+|   v22_U                                 | ram_1p channel  | pipo       | 2    |      |        | v22                    | auto   | 1       | 32, 410, 2       |
+|   sext_ln141_loc_channel_U              | fifo channel    | task level |      |      |        | sext_ln141_loc_channel | srl    | 0       | 58, 2, 1         |
+|  + Loop_VITIS_LOOP_141_9_proc           |                 |            | 2    | 0    |        |                        |        |         |                  |
+|    v23_U                                | rom_np array    |            |      |      |        | v23                    | auto   | 1       | 32, 10, 1        |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U1852 | rom_np array    |            |      |      |        | v23_1                  | auto   | 1       | 32, 10, 1        |
+|    v23_2_U                              | rom_np array    |            |      |      |        | v23_2                  | auto   | 1       | 32, 10, 1        |
+|    v23_3_U                              | rom_np array    |            |      |      |        | v23_3                  | auto   | 1       | 32, 10, 1        |
+|    v23_4_U                              | rom_np array    |            |      |      |        | v23_4                  | auto   | 1       | 32, 10, 1        |
+|    v23_5_U                              | rom_np array    |            |      |      |        | v23_5                  | auto   | 1       | 32, 10, 1        |
+|    v23_6_U                              | rom_np array    |            |      |      |        | v23_6                  | auto   | 1       | 32, 10, 1        |
+|    v23_7_U                              | rom_np array    |            |      |      |        | v23_7                  | auto   | 1       | 32, 10, 1        |
+|    v23_8_U                              | rom_np array    |            |      |      |        | v23_8                  | auto   | 1       | 32, 10, 1        |
+|    v23_9_U                              | rom_np array    |            |      |      |        | v23_9                  | auto   | 1       | 32, 10, 1        |
+|    v23_10_U                             | rom_np array    |            |      |      |        | v23_10                 | auto   | 1       | 32, 10, 1        |
+|    v23_11_U                             | rom_np array    |            |      |      |        | v23_11                 | auto   | 1       | 32, 10, 1        |
+|    v23_12_U                             | rom_np array    |            |      |      |        | v23_12                 | auto   | 1       | 32, 10, 1        |
+|    v23_13_U                             | rom_np array    |            |      |      |        | v23_13                 | auto   | 1       | 32, 10, 1        |
+|    v23_14_U                             | rom_np array    |            |      |      |        | v23_14                 | auto   | 1       | 32, 10, 1        |
+|    v23_15_U                             | rom_np array    |            |      |      |        | v23_15                 | auto   | 1       | 32, 10, 1        |
+|    v23_16_U                             | rom_np array    |            |      |      |        | v23_16                 | auto   | 1       | 32, 10, 1        |
+|    v23_17_U                             | rom_np array    |            |      |      |        | v23_17                 | auto   | 1       | 32, 10, 1        |
+|    v23_18_U                             | rom_np array    |            |      |      |        | v23_18                 | auto   | 1       | 32, 10, 1        |
+|    v23_19_U                             | rom_np array    |            |      |      |        | v23_19                 | auto   | 1       | 32, 10, 1        |
+|    v23_20_U                             | rom_np array    |            |      |      |        | v23_20                 | auto   | 1       | 32, 10, 1        |
+|    v23_21_U                             | rom_np array    |            |      |      |        | v23_21                 | auto   | 1       | 32, 10, 1        |
+|    v23_22_U                             | rom_np array    |            |      |      |        | v23_22                 | auto   | 1       | 32, 10, 1        |
+|    v23_23_U                             | rom_np array    |            |      |      |        | v23_23                 | auto   | 1       | 32, 10, 1        |
+|    v23_24_U                             | rom_np array    |            |      |      |        | v23_24                 | auto   | 1       | 32, 10, 1        |
+|    v23_25_U                             | rom_np array    |            |      |      |        | v23_25                 | auto   | 1       | 32, 10, 1        |
+|    v23_26_U                             | rom_np array    |            |      |      |        | v23_26                 | auto   | 1       | 32, 10, 1        |
+|    v23_27_U                             | rom_np array    |            |      |      |        | v23_27                 | auto   | 1       | 32, 10, 1        |
+|    v23_28_U                             | rom_np array    |            |      |      |        | v23_28                 | auto   | 1       | 32, 10, 1        |
+|    v23_29_U                             | rom_np array    |            |      |      |        | v23_29                 | auto   | 1       | 32, 10, 1        |
+|    v23_30_U                             | rom_np array    |            |      |      |        | v23_30                 | auto   | 1       | 32, 10, 1        |
+|    v23_31_U                             | rom_np array    |            |      |      |        | v23_31                 | auto   | 1       | 32, 10, 1        |
+|    v23_32_U                             | rom_np array    |            |      |      |        | v23_32                 | auto   | 1       | 32, 10, 1        |
+|    v23_33_U                             | rom_np array    |            |      |      |        | v23_33                 | auto   | 1       | 32, 10, 1        |
+|    v23_34_U                             | rom_np array    |            |      |      |        | v23_34                 | auto   | 1       | 32, 10, 1        |
+|    v23_35_U                             | rom_np array    |            |      |      |        | v23_35                 | auto   | 1       | 32, 10, 1        |
+|    v23_36_U                             | rom_np array    |            |      |      |        | v23_36                 | auto   | 1       | 32, 10, 1        |
+|    v23_37_U                             | rom_np array    |            |      |      |        | v23_37                 | auto   | 1       | 32, 10, 1        |
+|    v23_38_U                             | rom_np array    |            |      |      |        | v23_38                 | auto   | 1       | 32, 10, 1        |
+|    v23_39_U                             | rom_np array    |            |      |      |        | v23_39                 | auto   | 1       | 32, 10, 1        |
+|    v23_40_U                             | rom_np array    |            |      |      |        | v23_40                 | auto   | 1       | 32, 10, 1        |
+|    out_Ax_fifo_fifo_U                   | fifo array      |            | 1    |      |        | out_Ax_fifo            | memory | 0       | 32, 390, 1       |
+|   + stage_M                             |                 |            | 0    | 0    |        |                        |        |         |                  |
+|     v2_U                                | ram_s2p array   |            |      |      |        | v2                     | auto   | 1       | 32, 10, 1        |
+|     v2_1_U                              | ram_s2p array   |            |      |      |        | v2_1                   | auto   | 1       | 32, 10, 1        |
+|     v2_2_U                              | ram_s2p array   |            |      |      |        | v2_2                   | auto   | 1       | 32, 10, 1        |
+|     v2_3_U                              | ram_s2p array   |            |      |      |        | v2_3                   | auto   | 1       | 32, 10, 1        |
+|     v2_4_U                              | ram_s2p array   |            |      |      |        | v2_4                   | auto   | 1       | 32, 10, 1        |
+|     v2_5_U                              | ram_s2p array   |            |      |      |        | v2_5                   | auto   | 1       | 32, 10, 1        |
+|     v2_6_U                              | ram_s2p array   |            |      |      |        | v2_6                   | auto   | 1       | 32, 10, 1        |
+|     v2_7_U                              | ram_s2p array   |            |      |      |        | v2_7                   | auto   | 1       | 32, 10, 1        |
+|     v2_8_U                              | ram_s2p array   |            |      |      |        | v2_8                   | auto   | 1       | 32, 10, 1        |
+|     v2_9_U                              | ram_s2p array   |            |      |      |        | v2_9                   | auto   | 1       | 32, 10, 1        |
+|     v2_10_U                             | ram_s2p array   |            |      |      |        | v2_10                  | auto   | 1       | 32, 10, 1        |
+|     v2_11_U                             | ram_s2p array   |            |      |      |        | v2_11                  | auto   | 1       | 32, 10, 1        |
+|     v2_12_U                             | ram_s2p array   |            |      |      |        | v2_12                  | auto   | 1       | 32, 10, 1        |
+|     v2_13_U                             | ram_s2p array   |            |      |      |        | v2_13                  | auto   | 1       | 32, 10, 1        |
+|     v2_14_U                             | ram_s2p array   |            |      |      |        | v2_14                  | auto   | 1       | 32, 10, 1        |
+|     v2_15_U                             | ram_s2p array   |            |      |      |        | v2_15                  | auto   | 1       | 32, 10, 1        |
+|     v2_16_U                             | ram_s2p array   |            |      |      |        | v2_16                  | auto   | 1       | 32, 10, 1        |
+|     v2_17_U                             | ram_s2p array   |            |      |      |        | v2_17                  | auto   | 1       | 32, 10, 1        |
+|     v2_18_U                             | ram_s2p array   |            |      |      |        | v2_18                  | auto   | 1       | 32, 10, 1        |
+|     v2_19_U                             | ram_s2p array   |            |      |      |        | v2_19                  | auto   | 1       | 32, 10, 1        |
+|     v2_20_U                             | ram_s2p array   |            |      |      |        | v2_20                  | auto   | 1       | 32, 10, 1        |
+|     v2_21_U                             | ram_s2p array   |            |      |      |        | v2_21                  | auto   | 1       | 32, 10, 1        |
+|     v2_22_U                             | ram_s2p array   |            |      |      |        | v2_22                  | auto   | 1       | 32, 10, 1        |
+|     v2_23_U                             | ram_s2p array   |            |      |      |        | v2_23                  | auto   | 1       | 32, 10, 1        |
+|     v2_24_U                             | ram_s2p array   |            |      |      |        | v2_24                  | auto   | 1       | 32, 10, 1        |
+|     v2_25_U                             | ram_s2p array   |            |      |      |        | v2_25                  | auto   | 1       | 32, 10, 1        |
+|     v2_26_U                             | ram_s2p array   |            |      |      |        | v2_26                  | auto   | 1       | 32, 10, 1        |
+|     v2_27_U                             | ram_s2p array   |            |      |      |        | v2_27                  | auto   | 1       | 32, 10, 1        |
+|     v2_28_U                             | ram_s2p array   |            |      |      |        | v2_28                  | auto   | 1       | 32, 10, 1        |
+|     v2_29_U                             | ram_s2p array   |            |      |      |        | v2_29                  | auto   | 1       | 32, 10, 1        |
+|     v2_30_U                             | ram_s2p array   |            |      |      |        | v2_30                  | auto   | 1       | 32, 10, 1        |
+|     v2_31_U                             | ram_s2p array   |            |      |      |        | v2_31                  | auto   | 1       | 32, 10, 1        |
+|     v2_32_U                             | ram_s2p array   |            |      |      |        | v2_32                  | auto   | 1       | 32, 10, 1        |
+|     v2_33_U                             | ram_s2p array   |            |      |      |        | v2_33                  | auto   | 1       | 32, 10, 1        |
+|     v2_34_U                             | ram_s2p array   |            |      |      |        | v2_34                  | auto   | 1       | 32, 10, 1        |
+|     v2_35_U                             | ram_s2p array   |            |      |      |        | v2_35                  | auto   | 1       | 32, 10, 1        |
+|     v2_36_U                             | ram_s2p array   |            |      |      |        | v2_36                  | auto   | 1       | 32, 10, 1        |
+|     v2_37_U                             | ram_s2p array   |            |      |      |        | v2_37                  | auto   | 1       | 32, 10, 1        |
+|     v2_38_U                             | ram_s2p array   |            |      |      |        | v2_38                  | auto   | 1       | 32, 10, 1        |
+|   + stage_N                             |                 |            | 1    | 0    |        |                        |        |         |                  |
+|     v11_U                               | ram_1p array    |            | 1    |      |        | v11                    | auto   | 1       | 32, 390, 1       |
++-----------------------------------------+-----------------+------------+------+------+--------+------------------------+--------+---------+------------------+
+
+
+================================================================
+== Pragma Report
+================================================================
+* Pragmas with Warnings
++----------+---------+-------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Type     | Options | Location                                  | Messages                                                                                                                                                                           |
++----------+---------+-------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| dataflow |         | ../../../src/output.cpp:154 in kernel_nlp | Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region |
+|          |         |                                           | There are a total of 5 such instances of non-canonical statements in the dataflow region                                                                                           |
++----------+---------+-------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+* Valid Pragma Syntax
++-----------------+-------------------------------------------+--------------------------------------------------------+
+| Type            | Options                                   | Location                                               |
++-----------------+-------------------------------------------+--------------------------------------------------------+
+| array_partition | variable=v0 cyclic factor=39 dim=1        | ../../../src/output.cpp:32 in stage_m, v0              |
+| array_partition | variable=v2 cyclic factor=39 dim=1        | ../../../src/output.cpp:35 in stage_m, v2              |
+| pipeline        | II=1                                      | ../../../src/output.cpp:42 in stage_m                  |
+| unroll          | factor=39                                 | ../../../src/output.cpp:43 in stage_m                  |
+| array_partition | variable=v10 cyclic factor=41 dim=2       | ../../../src/output.cpp:64 in stage_n, v10             |
+| array_partition | variable=v12 cyclic factor=41 dim=1       | ../../../src/output.cpp:65 in stage_n, v12             |
+| pipeline        | II=1                                      | ../../../src/output.cpp:74 in stage_n                  |
+| unroll          | factor=41                                 | ../../../src/output.cpp:75 in stage_n                  |
+| aggregate       | variable = vv20                           | ../../../src/output.cpp:92 in kernel_nlp               |
+| interface       | m_axi port=vv20 offset=slave bundle=gmem0 | ../../../src/output.cpp:93 in kernel_nlp, vv20         |
+| interface       | m_axi port=vv21 offset=slave bundle=gmem1 | ../../../src/output.cpp:94 in kernel_nlp, vv21         |
+| interface       | m_axi port=vv22 offset=slave bundle=gmem2 | ../../../src/output.cpp:95 in kernel_nlp, vv22         |
+| interface       | m_axi port=vv23 offset=slave bundle=gmem3 | ../../../src/output.cpp:96 in kernel_nlp, vv23         |
+| aggregate       | variable = vv23                           | ../../../src/output.cpp:98 in kernel_nlp               |
+| interface       | s_axilite port = vv20 bundle = control    | ../../../src/output.cpp:100 in kernel_nlp              |
+| interface       | s_axilite port = vv21 bundle = control    | ../../../src/output.cpp:101 in kernel_nlp              |
+| interface       | s_axilite port = vv22 bundle = control    | ../../../src/output.cpp:102 in kernel_nlp              |
+| interface       | s_axilite port = vv23 bundle = control    | ../../../src/output.cpp:103 in kernel_nlp              |
+| interface       | s_axilite port = return bundle = control  | ../../../src/output.cpp:106 in kernel_nlp              |
+| stream          | variable=out_Ax_fifo depth=390            | ../../../src/output.cpp:157 in kernel_nlp, out_Ax_fifo |
++-----------------+-------------------------------------------+--------------------------------------------------------+
+
+

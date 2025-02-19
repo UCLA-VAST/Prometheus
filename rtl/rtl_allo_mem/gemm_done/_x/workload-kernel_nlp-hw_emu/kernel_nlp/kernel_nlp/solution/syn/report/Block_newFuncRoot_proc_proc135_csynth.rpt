@@ -1,0 +1,139 @@
+
+
+================================================================
+== Vitis HLS Report for 'Block_newFuncRoot_proc_proc135'
+================================================================
+* Date:           Tue Dec 17 08:35:40 2024
+
+* Version:        2023.2 (Build 4023990 on Oct 11 2023)
+* Project:        kernel_nlp
+* Solution:       solution (Vitis Kernel Flow Target)
+* Product family: virtexuplusHBM
+* Target device:  xcu55c-fsvh2892-2L-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  4.00 ns|  2.625 ns|     1.08 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |        0|        0|      0 ns|      0 ns|    0|    0|       no|
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++---------------------+---------+------+---------+---------+-----+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
++---------------------+---------+------+---------+---------+-----+
+|DSP                  |        -|     -|        -|        -|    -|
+|Expression           |        -|     -|        0|        2|    -|
+|FIFO                 |        -|     -|        -|        -|    -|
+|Instance             |        -|     -|        -|        -|    -|
+|Memory               |        -|     -|        -|        -|    -|
+|Multiplexer          |        -|     -|        -|       18|    -|
+|Register             |        -|     -|        2|        -|    -|
++---------------------+---------+------+---------+---------+-----+
+|Total                |        0|     0|        2|       20|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available SLR        |     1344|  3008|   869120|   434560|  320|
++---------------------+---------+------+---------+---------+-----+
+|Utilization SLR (%)  |        0|     0|       ~0|       ~0|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available            |     4032|  9024|  2607360|  1303680|  960|
++---------------------+---------+------+---------+---------+-----+
+|Utilization (%)      |        0|     0|       ~0|       ~0|    0|
++---------------------+---------+------+---------+---------+-----+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +-----------------+----------+----+---+----+------------+------------+
+    |  Variable Name  | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +-----------------+----------+----+---+----+------------+------------+
+    |ap_block_state1  |        or|   0|  0|   2|           1|           1|
+    +-----------------+----------+----+---+----+------------+------------+
+    |Total            |          |   0|  0|   2|           1|           1|
+    +-----------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +-------------------+----+-----------+-----+-----------+
+    |        Name       | LUT| Input Size| Bits| Total Bits|
+    +-------------------+----+-----------+-----+-----------+
+    |ap_done            |   9|          2|    1|          2|
+    |indvars_iv7_blk_n  |   9|          2|    1|          2|
+    +-------------------+----+-----------+-----+-----------+
+    |Total              |  18|          4|    2|          4|
+    +-------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-------------+---+----+-----+-----------+
+    |     Name    | FF| LUT| Bits| Const Bits|
+    +-------------+---+----+-----+-----------+
+    |ap_CS_fsm    |  1|   0|    1|          0|
+    |ap_done_reg  |  1|   0|    1|          0|
+    +-------------+---+----+-----+-----------+
+    |Total        |  2|   0|    2|          0|
+    +-------------+---+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++----------------------------+-----+-----+------------+--------------------------------+--------------+
+|          RTL Ports         | Dir | Bits|  Protocol  |          Source Object         |    C Type    |
++----------------------------+-----+-----+------------+--------------------------------+--------------+
+|ap_clk                      |   in|    1|  ap_ctrl_hs|  Block_newFuncRoot_proc_proc135|  return value|
+|ap_rst                      |   in|    1|  ap_ctrl_hs|  Block_newFuncRoot_proc_proc135|  return value|
+|ap_start                    |   in|    1|  ap_ctrl_hs|  Block_newFuncRoot_proc_proc135|  return value|
+|ap_done                     |  out|    1|  ap_ctrl_hs|  Block_newFuncRoot_proc_proc135|  return value|
+|ap_continue                 |   in|    1|  ap_ctrl_hs|  Block_newFuncRoot_proc_proc135|  return value|
+|ap_idle                     |  out|    1|  ap_ctrl_hs|  Block_newFuncRoot_proc_proc135|  return value|
+|ap_ready                    |  out|    1|  ap_ctrl_hs|  Block_newFuncRoot_proc_proc135|  return value|
+|p_read                      |   in|   32|     ap_none|                          p_read|        scalar|
+|v2_134_address0             |  out|    8|   ap_memory|                          v2_134|         array|
+|v2_134_ce0                  |  out|    1|   ap_memory|                          v2_134|         array|
+|v2_134_we0                  |  out|    1|   ap_memory|                          v2_134|         array|
+|v2_134_d0                   |  out|   32|   ap_memory|                          v2_134|         array|
+|indvars_iv7_dout            |   in|    8|     ap_fifo|                     indvars_iv7|       pointer|
+|indvars_iv7_num_data_valid  |   in|    3|     ap_fifo|                     indvars_iv7|       pointer|
+|indvars_iv7_fifo_cap        |   in|    3|     ap_fifo|                     indvars_iv7|       pointer|
+|indvars_iv7_empty_n         |   in|    1|     ap_fifo|                     indvars_iv7|       pointer|
+|indvars_iv7_read            |  out|    1|     ap_fifo|                     indvars_iv7|       pointer|
++----------------------------+-----+-----+------------+--------------------------------+--------------+
+

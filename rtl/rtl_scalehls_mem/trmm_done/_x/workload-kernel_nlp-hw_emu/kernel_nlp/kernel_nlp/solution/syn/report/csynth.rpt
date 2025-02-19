@@ -1,0 +1,240 @@
+
+
+================================================================
+== Synthesis Summary Report of 'kernel_nlp'
+================================================================
++ General Information: 
+    * Date:           Tue Dec 17 08:57:55 2024
+    * Version:        2023.2 (Build 4023990 on Oct 11 2023)
+    * Project:        kernel_nlp
+    * Solution:       solution (Vitis Kernel Flow Target)
+    * Product family: virtexuplusHBM
+    * Target device:  xcu55c-fsvh2892-2L-e
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +------------------------------------------------------------------------+--------+-------+----------+-----------+----------+----------+---------+----------+----------+---------+-------------+-------------+-----+
+    |                                 Modules                                |  Issue |       | Latency  |  Latency  | Iteration|          |   Trip  |          |          |         |             |             |     |
+    |                                 & Loops                                |  Type  | Slack | (cycles) |    (ns)   |  Latency | Interval |  Count  | Pipelined|   BRAM   |   DSP   |      FF     |     LUT     | URAM|
+    +------------------------------------------------------------------------+--------+-------+----------+-----------+----------+----------+---------+----------+----------+---------+-------------+-------------+-----+
+    |+ kernel_nlp                                                            |  Timing|  -0.00|  38406176|  1.536e+08|         -|  38406177|        -|        no|  316 (7%)|  6 (~0%)|  11124 (~0%)|  10601 (~0%)|    -|
+    | + kernel_nlp_Pipeline_VITIS_LOOP_46_1_VITIS_LOOP_47_2                  |       -|   0.00|      2603|  1.041e+04|         -|      2603|        -|        no|         -|        -|    564 (~0%)|    298 (~0%)|    -|
+    |  o VITIS_LOOP_46_1_VITIS_LOOP_47_2                                     |       -|   2.92|      2601|  1.040e+04|         3|         1|     2600|       yes|         -|        -|            -|            -|    -|
+    | + kernel_nlp_Pipeline_VITIS_LOOP_56_4_VITIS_LOOP_57_5                  |       -|   0.00|      3003|  1.201e+04|         -|      3003|        -|        no|         -|        -|    558 (~0%)|    253 (~0%)|    -|
+    |  o VITIS_LOOP_56_4_VITIS_LOOP_57_5                                     |       -|   2.92|      3001|  1.200e+04|         3|         1|     3000|       yes|         -|        -|            -|            -|    -|
+    | + kernel_nlp_Pipeline_VITIS_LOOP_73_7_VITIS_LOOP_74_8_VITIS_LOOP_75_9  |  Timing|  -0.00|  38400024|  1.536e+08|         -|  38400024|        -|        no|         -|  6 (~0%)|   1852 (~0%)|   1508 (~0%)|    -|
+    |  o VITIS_LOOP_73_7_VITIS_LOOP_74_8_VITIS_LOOP_75_9                     |       -|   2.92|  38400022|  1.536e+08|        27|         4|  9600000|       yes|         -|        -|            -|            -|    -|
+    | + kernel_nlp_Pipeline_VITIS_LOOP_94_10_VITIS_LOOP_95_11                |       -|   0.00|      3004|  1.202e+04|         -|      3004|        -|        no|         -|        -|    560 (~0%)|    271 (~0%)|    -|
+    |  o VITIS_LOOP_94_10_VITIS_LOOP_95_11                                   |       -|   2.92|      3002|  1.201e+04|         4|         1|     3000|       yes|         -|        -|            -|            -|    -|
+    +------------------------------------------------------------------------+--------+-------+----------+-----------+----------+----------+---------+----------+----------+---------+-------------+-------------+-----+
+
+
+================================================================
+== HW Interfaces
+================================================================
+* M_AXI
++-------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+-------------------+
+| Interface   | Data Width | Address Width | Latency | Offset | Register | Max Widen | Max Read     | Max Write    | Num Read    | Num Write   | Resource Estimate |
+|             | (SW->HW)   |               |         |        |          | Bitwidth  | Burst Length | Burst Length | Outstanding | Outstanding |                   |
++-------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+-------------------+
+| m_axi_gmem1 | 512 -> 512 | 64            | 64      | slave  | 0        | 512       | 16           | 16           | 16          | 16          | BRAM=30           |
+| m_axi_gmem2 | 512 -> 512 | 64            | 64      | slave  | 0        | 512       | 16           | 16           | 16          | 16          | BRAM=30           |
++-------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+-------------------+
+
+* S_AXILITE Interfaces
++---------------+------------+---------------+--------+----------+
+| Interface     | Data Width | Address Width | Offset | Register |
++---------------+------------+---------------+--------+----------+
+| s_axi_control | 32         | 6             | 16     | 0        |
++---------------+------------+---------------+--------+----------+
+
+* S_AXILITE Registers
++---------------+----------+--------+-------+--------+----------------------------------+------------------------------------------------------------------------------------+
+| Interface     | Register | Offset | Width | Access | Description                      | Bit Fields                                                                         |
++---------------+----------+--------+-------+--------+----------------------------------+------------------------------------------------------------------------------------+
+| s_axi_control | CTRL     | 0x00   | 32    | RW     | Control signals                  | 0=AP_START 1=AP_DONE 2=AP_IDLE 3=AP_READY 4=AP_CONTINUE 7=AUTO_RESTART 9=INTERRUPT |
+| s_axi_control | GIER     | 0x04   | 32    | RW     | Global Interrupt Enable Register | 0=Enable                                                                           |
+| s_axi_control | IP_IER   | 0x08   | 32    | RW     | IP Interrupt Enable Register     | 0=CHAN0_INT_EN 1=CHAN1_INT_EN                                                      |
+| s_axi_control | IP_ISR   | 0x0c   | 32    | RW     | IP Interrupt Status Register     | 0=CHAN0_INT_ST 1=CHAN1_INT_ST                                                      |
+| s_axi_control | v0       | 0x10   | 32    | W      | Data signal of v0                |                                                                                    |
+| s_axi_control | vv1_1    | 0x18   | 32    | W      | Data signal of vv1               |                                                                                    |
+| s_axi_control | vv1_2    | 0x1c   | 32    | W      | Data signal of vv1               |                                                                                    |
+| s_axi_control | vv2_1    | 0x24   | 32    | W      | Data signal of vv2               |                                                                                    |
+| s_axi_control | vv2_2    | 0x28   | 32    | W      | Data signal of vv2               |                                                                                    |
++---------------+----------+--------+-------+--------+----------------------------------+------------------------------------------------------------------------------------+
+
+* TOP LEVEL CONTROL
++-----------+---------------+-----------+
+| Interface | Type          | Ports     |
++-----------+---------------+-----------+
+| ap_clk    | clock         | ap_clk    |
+| ap_rst_n  | reset         | ap_rst_n  |
+| interrupt | interrupt     | interrupt |
+| ap_ctrl   | ap_ctrl_chain |           |
++-----------+---------------+-----------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++----------+-----------+--------------------+
+| Argument | Direction | Datatype           |
++----------+-----------+--------------------+
+| v0       | in        | float              |
+| vv1      | in        | vector<float, 16>* |
+| vv2      | inout     | vector<float, 16>* |
++----------+-----------+--------------------+
+
+* SW-to-HW Mapping
++----------+---------------+-----------+----------+---------------------------------+
+| Argument | HW Interface  | HW Type   | HW Usage | HW Info                         |
++----------+---------------+-----------+----------+---------------------------------+
+| v0       | s_axi_control | register  |          | name=v0 offset=0x10 range=32    |
+| vv1      | m_axi_gmem1   | interface |          |                                 |
+| vv1      | s_axi_control | register  | offset   | name=vv1_1 offset=0x18 range=32 |
+| vv1      | s_axi_control | register  | offset   | name=vv1_2 offset=0x1c range=32 |
+| vv2      | m_axi_gmem2   | interface |          |                                 |
+| vv2      | s_axi_control | register  | offset   | name=vv2_1 offset=0x24 range=32 |
+| vv2      | s_axi_control | register  | offset   | name=vv2_2 offset=0x28 range=32 |
++----------+---------------+-----------+----------+---------------------------------+
+
+
+================================================================
+== M_AXI Burst Information
+================================================================
+ Note: All burst requests might be further partitioned into multiple requests during RTL generation based on max_read_burst_length or max_write_burst_length settings.
+
+* Inferred Burst Summary
++--------------+-----------+--------+-------+------------------+-------------------------------------------------------------+
+| HW Interface | Direction | Length | Width | Loop             | Loop Location                                               |
++--------------+-----------+--------+-------+------------------+-------------------------------------------------------------+
+| m_axi_gmem1  | read      | 2600   | 512   | VITIS_LOOP_46_1  | /scratch/spouget/rtl_scalehls_mem_trmm/src/output.cpp:46:20 |
+| m_axi_gmem2  | read      | 3000   | 512   | VITIS_LOOP_56_4  | /scratch/spouget/rtl_scalehls_mem_trmm/src/output.cpp:56:20 |
+| m_axi_gmem2  | write     | 3000   | 512   | VITIS_LOOP_94_10 | /scratch/spouget/rtl_scalehls_mem_trmm/src/output.cpp:94:21 |
++--------------+-----------+--------+-------+------------------+-------------------------------------------------------------+
+
+* All M_AXI Variable Accesses
++--------------+----------+--------------------------------------------------------------+-----------+--------------+--------+------------------+-------------------------------------------------------------+------------+----------------------------------------------------------------------------------------------------------+
+| HW Interface | Variable | Access Location                                              | Direction | Burst Status | Length | Loop             | Loop Location                                               | Resolution | Problem                                                                                                  |
++--------------+----------+--------------------------------------------------------------+-----------+--------------+--------+------------------+-------------------------------------------------------------+------------+----------------------------------------------------------------------------------------------------------+
+| m_axi_gmem1  | vv1      | /scratch/spouget/rtl_scalehls_mem_trmm/src/output.cpp:48:21  | read      | Widen Fail   |        | VITIS_LOOP_47_2  | /scratch/spouget/rtl_scalehls_mem_trmm/src/output.cpp:47:22 | 214-353    | Could not widen since type i512 size is greater than or equal to the max_widen_bitwidth threshold of 512 |
+| m_axi_gmem1  | vv1      | /scratch/spouget/rtl_scalehls_mem_trmm/src/output.cpp:48:21  | read      | Inferred     | 2600   | VITIS_LOOP_46_1  | /scratch/spouget/rtl_scalehls_mem_trmm/src/output.cpp:46:20 |            |                                                                                                          |
+| m_axi_gmem2  | vv2      | /scratch/spouget/rtl_scalehls_mem_trmm/src/output.cpp:58:21  | read      | Widen Fail   |        | VITIS_LOOP_57_5  | /scratch/spouget/rtl_scalehls_mem_trmm/src/output.cpp:57:22 | 214-353    | Could not widen since type i512 size is greater than or equal to the max_widen_bitwidth threshold of 512 |
+| m_axi_gmem2  | vv2      | /scratch/spouget/rtl_scalehls_mem_trmm/src/output.cpp:58:21  | read      | Inferred     | 3000   | VITIS_LOOP_56_4  | /scratch/spouget/rtl_scalehls_mem_trmm/src/output.cpp:56:20 |            |                                                                                                          |
+| m_axi_gmem2  | vv2      | /scratch/spouget/rtl_scalehls_mem_trmm/src/output.cpp:101:28 | write     | Widen Fail   |        | VITIS_LOOP_95_11 | /scratch/spouget/rtl_scalehls_mem_trmm/src/output.cpp:95:23 | 214-353    | Could not widen since type i512 size is greater than or equal to the max_widen_bitwidth threshold of 512 |
+| m_axi_gmem2  | vv2      | /scratch/spouget/rtl_scalehls_mem_trmm/src/output.cpp:101:28 | write     | Inferred     | 3000   | VITIS_LOOP_94_10 | /scratch/spouget/rtl_scalehls_mem_trmm/src/output.cpp:94:21 |            |                                                                                                          |
++--------------+----------+--------------------------------------------------------------+-----------+--------------+--------+------------------+-------------------------------------------------------------+------------+----------------------------------------------------------------------------------------------------------+
+
+    * Resolution URL: docs.xilinx.com/access/sources/dita/topic?Doc_Version=2023.2%20English&url=ug1448-hls-guidance&resourceid=XXX-YYY.html (replace XXX-YYY with column value)
+
+================================================================
+== Bind Op Report
+================================================================
++------------------------------------------------------------------------+-----+--------+------------+------+-----------+---------+
+| Name                                                                   | DSP | Pragma | Variable   | Op   | Impl      | Latency |
++------------------------------------------------------------------------+-----+--------+------------+------+-----------+---------+
+| + kernel_nlp                                                           | 6   |        |            |      |           |         |
+|  + kernel_nlp_Pipeline_VITIS_LOOP_46_1_VITIS_LOOP_47_2                 | 0   |        |            |      |           |         |
+|    add_ln46_1_fu_418_p2                                                |     |        | add_ln46_1 | add  | fabric    | 0       |
+|    add_ln46_fu_441_p2                                                  |     |        | add_ln46   | add  | fabric    | 0       |
+|    mul_8ns_6ns_13_1_1_U1                                               |     |        | mul_ln51   | mul  | auto      | 0       |
+|    add_ln51_fu_679_p2                                                  |     |        | add_ln51   | add  | fabric    | 0       |
+|    add_ln51_1_fu_738_p2                                                |     |        | add_ln51_1 | add  | fabric    | 0       |
+|    add_ln47_fu_793_p2                                                  |     |        | add_ln47   | add  | fabric    | 0       |
+|    add_ln47_1_fu_625_p2                                                |     |        | add_ln47_1 | add  | fabric    | 0       |
+|  + kernel_nlp_Pipeline_VITIS_LOOP_56_4_VITIS_LOOP_57_5                 | 0   |        |            |      |           |         |
+|    add_ln56_1_fu_420_p2                                                |     |        | add_ln56_1 | add  | fabric    | 0       |
+|    add_ln56_fu_443_p2                                                  |     |        | add_ln56   | add  | fabric    | 0       |
+|    sub_ln61_fu_669_p2                                                  |     |        | sub_ln61   | sub  | fabric    | 0       |
+|    add_ln61_fu_689_p2                                                  |     |        | add_ln61   | add  | fabric    | 0       |
+|    add_ln61_1_fu_753_p2                                                |     |        | add_ln61_1 | add  | fabric    | 0       |
+|    add_ln57_fu_799_p2                                                  |     |        | add_ln57   | add  | fabric    | 0       |
+|    add_ln57_1_fu_617_p2                                                |     |        | add_ln57_1 | add  | fabric    | 0       |
+|  + kernel_nlp_Pipeline_VITIS_LOOP_73_7_VITIS_LOOP_74_8_VITIS_LOOP_75_9 | 6   |        |            |      |           |         |
+|    add_ln73_1_fu_503_p2                                                |     |        | add_ln73_1 | add  | fabric    | 0       |
+|    add_ln73_fu_638_p2                                                  |     |        | add_ln73   | add  | fabric    | 0       |
+|    add_ln74_fu_547_p2                                                  |     |        | add_ln74   | add  | fabric    | 0       |
+|    empty_24_fu_718_p2                                                  |     |        | empty_24   | sub  | fabric    | 0       |
+|    mac_muladd_8ns_5ns_5ns_13_4_1_U29                                   | 1   |        | empty_25   | mul  | dsp_slice | 3       |
+|    mac_muladd_8ns_5ns_5ns_13_4_1_U29                                   | 1   |        | empty_26   | add  | dsp_slice | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U24                                   | 3   |        | v8         | fmul | maxdsp    | 3       |
+|    fadd_32ns_32ns_32_7_full_dsp_1_U23                                  | 2   |        | v10        | fadd | fulldsp   | 6       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U24                                   | 3   |        | v12        | fmul | maxdsp    | 3       |
+|    add_ln75_fu_595_p2                                                  |     |        | add_ln75   | add  | fabric    | 0       |
+|    add_ln74_1_fu_601_p2                                                |     |        | add_ln74_1 | add  | fabric    | 0       |
+|  + kernel_nlp_Pipeline_VITIS_LOOP_94_10_VITIS_LOOP_95_11               | 0   |        |            |      |           |         |
+|    add_ln94_1_fu_365_p2                                                |     |        | add_ln94_1 | add  | fabric    | 0       |
+|    add_ln94_fu_377_p2                                                  |     |        | add_ln94   | add  | fabric    | 0       |
+|    sub_ln99_fu_454_p2                                                  |     |        | sub_ln99   | sub  | fabric    | 0       |
+|    add_ln99_fu_474_p2                                                  |     |        | add_ln99   | add  | fabric    | 0       |
+|    add_ln99_1_fu_502_p2                                                |     |        | add_ln99_1 | add  | fabric    | 0       |
+|    add_ln95_fu_520_p2                                                  |     |        | add_ln95   | add  | fabric    | 0       |
+|    add_ln95_1_fu_397_p2                                                |     |        | add_ln95_1 | add  | fabric    | 0       |
++------------------------------------------------------------------------+-----+--------+------------+------+-----------+---------+
+
+
+================================================================
+== Storage Report
+================================================================
++-------------------+---------------+-----------+------+------+--------+----------+------+---------+------------------+
+| Name              | Usage         | Type      | BRAM | URAM | Pragma | Variable | Impl | Latency | Bitwidth, Depth, |
+|                   |               |           |      |      |        |          |      |         | Banks            |
++-------------------+---------------+-----------+------+------+--------+----------+------+---------+------------------+
+| + kernel_nlp      |               |           | 316  | 0    |        |          |      |         |                  |
+|   control_s_axi_U | interface     | s_axilite |      |      |        |          |      |         |                  |
+|   gmem1_m_axi_U   | interface     | m_axi     | 30   |      |        |          |      |         |                  |
+|   gmem2_m_axi_U   | interface     | m_axi     | 30   |      |        |          |      |         |                  |
+|   v1_U            | ram_t2p array |           | 16   |      | yes    | v1       | bram | 1       | 32, 5000, 1      |
+|   v1_1_U          | ram_t2p array |           | 16   |      | yes    | v1_1     | bram | 1       | 32, 5000, 1      |
+|   v1_2_U          | ram_t2p array |           | 16   |      | yes    | v1_2     | bram | 1       | 32, 5000, 1      |
+|   v1_3_U          | ram_t2p array |           | 16   |      | yes    | v1_3     | bram | 1       | 32, 5000, 1      |
+|   v1_4_U          | ram_t2p array |           | 16   |      | yes    | v1_4     | bram | 1       | 32, 5000, 1      |
+|   v1_5_U          | ram_t2p array |           | 16   |      | yes    | v1_5     | bram | 1       | 32, 5000, 1      |
+|   v1_6_U          | ram_t2p array |           | 16   |      | yes    | v1_6     | bram | 1       | 32, 5000, 1      |
+|   v1_7_U          | ram_t2p array |           | 16   |      | yes    | v1_7     | bram | 1       | 32, 5000, 1      |
+|   v2_U            | ram_t2p array |           | 16   |      | yes    | v2       | bram | 1       | 32, 6000, 1      |
+|   v2_1_U          | ram_t2p array |           | 16   |      | yes    | v2_1     | bram | 1       | 32, 6000, 1      |
+|   v2_2_U          | ram_t2p array |           | 16   |      | yes    | v2_2     | bram | 1       | 32, 6000, 1      |
+|   v2_3_U          | ram_t2p array |           | 16   |      | yes    | v2_3     | bram | 1       | 32, 6000, 1      |
+|   v2_4_U          | ram_t2p array |           | 16   |      | yes    | v2_4     | bram | 1       | 32, 6000, 1      |
+|   v2_5_U          | ram_t2p array |           | 16   |      | yes    | v2_5     | bram | 1       | 32, 6000, 1      |
+|   v2_6_U          | ram_t2p array |           | 16   |      | yes    | v2_6     | bram | 1       | 32, 6000, 1      |
+|   v2_7_U          | ram_t2p array |           | 16   |      | yes    | v2_7     | bram | 1       | 32, 6000, 1      |
++-------------------+---------------+-----------+------+------+--------+----------+------+---------+------------------+
+
+
+================================================================
+== Pragma Report
+================================================================
+* Ignored Pragmas
++-----------+-----------------------------------------+----------------------------------------------+-----------------------------------------------------------------------+
+| Type      | Options                                 | Location                                     | Messages                                                              |
++-----------+-----------------------------------------+----------------------------------------------+-----------------------------------------------------------------------+
+| interface | m_axi port=v0 offset=slave bundle=gmem0 | ../../../src/output.cpp:35 in kernel_nlp, v0 | Unsupported interface port data type in '#pragma HLS interface m_axi' |
++-----------+-----------------------------------------+----------------------------------------------+-----------------------------------------------------------------------+
+
+* Pragmas with Warnings
++----------+-------------------------------+----------------------------------------------+----------------------------------------------------------------------------+
+| Type     | Options                       | Location                                     | Messages                                                                   |
++----------+-------------------------------+----------------------------------------------+----------------------------------------------------------------------------+
+| resource | variable=v1 core=ram_t2p_bram | ../../../src/output.cpp:69 in kernel_nlp, v1 | 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead |
+| resource | variable=v2 core=ram_t2p_bram | ../../../src/output.cpp:71 in kernel_nlp, v2 | 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead |
++----------+-------------------------------+----------------------------------------------+----------------------------------------------------------------------------+
+
+* Valid Pragma Syntax
++-----------+------------------------------------------+-----------------------------------------------+
+| Type      | Options                                  | Location                                      |
++-----------+------------------------------------------+-----------------------------------------------+
+| interface | m_axi port=vv1 offset=slave bundle=gmem1 | ../../../src/output.cpp:36 in kernel_nlp, vv1 |
+| interface | m_axi port=vv2 offset=slave bundle=gmem2 | ../../../src/output.cpp:37 in kernel_nlp, vv2 |
+| interface | s_axilite port = v0 bundle = control     | ../../../src/output.cpp:39 in kernel_nlp      |
+| interface | s_axilite port = vv1 bundle = control    | ../../../src/output.cpp:40 in kernel_nlp      |
+| interface | s_axilite port = vv2 bundle = control    | ../../../src/output.cpp:41 in kernel_nlp      |
+| interface | s_axilite port = return bundle = control | ../../../src/output.cpp:67 in kernel_nlp      |
+| pipeline  | II=4                                     | ../../../src/output.cpp:76 in kernel_nlp      |
++-----------+------------------------------------------+-----------------------------------------------+
+
+

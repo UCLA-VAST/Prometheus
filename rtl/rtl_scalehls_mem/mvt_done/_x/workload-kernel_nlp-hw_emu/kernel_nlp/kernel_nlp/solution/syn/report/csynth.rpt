@@ -1,0 +1,582 @@
+
+
+================================================================
+== Synthesis Summary Report of 'kernel_nlp'
+================================================================
++ General Information: 
+    * Date:           Tue Dec 17 08:44:50 2024
+    * Version:        2023.2 (Build 4023990 on Oct 11 2023)
+    * Project:        kernel_nlp
+    * Solution:       solution (Vitis Kernel Flow Target)
+    * Product family: virtexuplusHBM
+    * Target device:  xcu55c-fsvh2892-2L-e
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +------------------------------------------------------------+------+------+---------+-----------+----------+---------+-------+----------+-----------+----------+-------------+------------+-----+
+    |                           Modules                          | Issue|      | Latency |  Latency  | Iteration|         |  Trip |          |           |          |             |            |     |
+    |                           & Loops                          | Type | Slack| (cycles)|    (ns)   |  Latency | Interval| Count | Pipelined|   BRAM    |    DSP   |      FF     |     LUT    | URAM|
+    +------------------------------------------------------------+------+------+---------+-----------+----------+---------+-------+----------+-----------+----------+-------------+------------+-----+
+    |+ kernel_nlp                                                |     -|  0.00|    15267|  6.107e+04|         -|    15268|      -|        no|  710 (17%)|  323 (3%)|   83654 (3%)|  73744 (5%)|    -|
+    | + kernel_nlp_Pipeline_VITIS_LOOP_62_1_VITIS_LOOP_63_2      |     -|  0.00|    10004|  4.002e+04|         -|    10004|      -|        no|          -|   1 (~0%)|    626 (~0%)|   247 (~0%)|    -|
+    |  o VITIS_LOOP_62_1_VITIS_LOOP_63_2                         |     -|  2.92|    10002|  4.001e+04|         4|        1|  10000|       yes|          -|         -|            -|           -|    -|
+    | + kernel_nlp_Pipeline_VITIS_LOOP_72_4                      |     -|  0.00|       28|    112.000|         -|       28|      -|        no|          -|         -|    531 (~0%)|    98 (~0%)|    -|
+    |  o VITIS_LOOP_72_4                                         |     -|  2.92|       26|    104.000|         3|        1|     25|       yes|          -|         -|            -|           -|    -|
+    | + kernel_nlp_Pipeline_VITIS_LOOP_80_6                      |     -|  0.00|       28|    112.000|         -|       28|      -|        no|          -|         -|    531 (~0%)|    98 (~0%)|    -|
+    |  o VITIS_LOOP_80_6                                         |     -|  2.92|       26|    104.000|         3|        1|     25|       yes|          -|         -|            -|           -|    -|
+    | + kernel_nlp_Pipeline_VITIS_LOOP_88_8                      |     -|  0.00|       28|    112.000|         -|       28|      -|        no|          -|         -|    531 (~0%)|   104 (~0%)|    -|
+    |  o VITIS_LOOP_88_8                                         |     -|  2.92|       26|    104.000|         3|        1|     25|       yes|          -|         -|            -|           -|    -|
+    | + kernel_nlp_Pipeline_VITIS_LOOP_96_10                     |     -|  0.00|       28|    112.000|         -|       28|      -|        no|          -|         -|    531 (~0%)|   104 (~0%)|    -|
+    |  o VITIS_LOOP_96_10                                        |     -|  2.92|       26|    104.000|         3|        1|     25|       yes|          -|         -|            -|           -|    -|
+    | + kernel_nlp_Pipeline_VITIS_LOOP_121_12_VITIS_LOOP_122_13  |     -|  0.44|     2544|  1.018e+04|         -|     2544|      -|        no|          -|   1 (~0%)|  15876 (~0%)|  9395 (~0%)|    -|
+    |  o VITIS_LOOP_121_12_VITIS_LOOP_122_13                     |     -|  2.92|     2542|  1.017e+04|        45|        2|   1250|       yes|          -|         -|            -|           -|    -|
+    | + kernel_nlp_Pipeline_VITIS_LOOP_542_14_VITIS_LOOP_543_15  |     -|  0.55|     2544|  1.018e+04|         -|     2544|      -|        no|          -|   1 (~0%)|  15892 (~0%)|  9404 (~0%)|    -|
+    |  o VITIS_LOOP_542_14_VITIS_LOOP_543_15                     |     -|  2.92|     2542|  1.017e+04|        45|        2|   1250|       yes|          -|         -|            -|           -|    -|
+    | + kernel_nlp_Pipeline_VITIS_LOOP_964_16                    |     -|  0.00|       28|    112.000|         -|       28|      -|        no|          -|         -|    531 (~0%)|   113 (~0%)|    -|
+    |  o VITIS_LOOP_964_16                                       |     -|  2.92|       26|    104.000|         3|        1|     25|       yes|          -|         -|            -|           -|    -|
+    | + kernel_nlp_Pipeline_VITIS_LOOP_974_18                    |     -|  0.00|       28|    112.000|         -|       28|      -|        no|          -|         -|    531 (~0%)|   113 (~0%)|    -|
+    |  o VITIS_LOOP_974_18                                       |     -|  2.92|       26|    104.000|         3|        1|     25|       yes|          -|         -|            -|           -|    -|
+    +------------------------------------------------------------+------+------+---------+-----------+----------+---------+-------+----------+-----------+----------+-------------+------------+-----+
+
+
+================================================================
+== HW Interfaces
+================================================================
+* M_AXI
++-------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+-------------------+
+| Interface   | Data Width | Address Width | Latency | Offset | Register | Max Widen | Max Read     | Max Write    | Num Read    | Num Write   | Resource Estimate |
+|             | (SW->HW)   |               |         |        |          | Bitwidth  | Burst Length | Burst Length | Outstanding | Outstanding |                   |
++-------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+-------------------+
+| m_axi_gmem0 | 512 -> 512 | 64            | 64      | slave  | 0        | 512       | 16           | 16           | 16          | 16          | BRAM=30           |
+| m_axi_gmem1 | 512 -> 512 | 64            | 64      | slave  | 0        | 512       | 16           | 16           | 16          | 16          | BRAM=30           |
+| m_axi_gmem2 | 512 -> 512 | 64            | 64      | slave  | 0        | 512       | 16           | 16           | 16          | 16          | BRAM=30           |
+| m_axi_gmem3 | 512 -> 512 | 64            | 64      | slave  | 0        | 512       | 16           | 16           | 16          | 16          | BRAM=30           |
+| m_axi_gmem4 | 512 -> 512 | 64            | 64      | slave  | 0        | 512       | 16           | 16           | 16          | 16          | BRAM=30           |
++-------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+-------------------+
+
+* S_AXILITE Interfaces
++---------------+------------+---------------+--------+----------+
+| Interface     | Data Width | Address Width | Offset | Register |
++---------------+------------+---------------+--------+----------+
+| s_axi_control | 32         | 7             | 16     | 0        |
++---------------+------------+---------------+--------+----------+
+
+* S_AXILITE Registers
++---------------+----------+--------+-------+--------+----------------------------------+------------------------------------------------------------------------------------+
+| Interface     | Register | Offset | Width | Access | Description                      | Bit Fields                                                                         |
++---------------+----------+--------+-------+--------+----------------------------------+------------------------------------------------------------------------------------+
+| s_axi_control | CTRL     | 0x00   | 32    | RW     | Control signals                  | 0=AP_START 1=AP_DONE 2=AP_IDLE 3=AP_READY 4=AP_CONTINUE 7=AUTO_RESTART 9=INTERRUPT |
+| s_axi_control | GIER     | 0x04   | 32    | RW     | Global Interrupt Enable Register | 0=Enable                                                                           |
+| s_axi_control | IP_IER   | 0x08   | 32    | RW     | IP Interrupt Enable Register     | 0=CHAN0_INT_EN 1=CHAN1_INT_EN                                                      |
+| s_axi_control | IP_ISR   | 0x0c   | 32    | RW     | IP Interrupt Status Register     | 0=CHAN0_INT_ST 1=CHAN1_INT_ST                                                      |
+| s_axi_control | vv0_1    | 0x10   | 32    | W      | Data signal of vv0               |                                                                                    |
+| s_axi_control | vv0_2    | 0x14   | 32    | W      | Data signal of vv0               |                                                                                    |
+| s_axi_control | vv1_1    | 0x1c   | 32    | W      | Data signal of vv1               |                                                                                    |
+| s_axi_control | vv1_2    | 0x20   | 32    | W      | Data signal of vv1               |                                                                                    |
+| s_axi_control | vv2_1    | 0x28   | 32    | W      | Data signal of vv2               |                                                                                    |
+| s_axi_control | vv2_2    | 0x2c   | 32    | W      | Data signal of vv2               |                                                                                    |
+| s_axi_control | vv3_1    | 0x34   | 32    | W      | Data signal of vv3               |                                                                                    |
+| s_axi_control | vv3_2    | 0x38   | 32    | W      | Data signal of vv3               |                                                                                    |
+| s_axi_control | vv4_1    | 0x40   | 32    | W      | Data signal of vv4               |                                                                                    |
+| s_axi_control | vv4_2    | 0x44   | 32    | W      | Data signal of vv4               |                                                                                    |
++---------------+----------+--------+-------+--------+----------------------------------+------------------------------------------------------------------------------------+
+
+* TOP LEVEL CONTROL
++-----------+---------------+-----------+
+| Interface | Type          | Ports     |
++-----------+---------------+-----------+
+| ap_clk    | clock         | ap_clk    |
+| ap_rst_n  | reset         | ap_rst_n  |
+| interrupt | interrupt     | interrupt |
+| ap_ctrl   | ap_ctrl_chain |           |
++-----------+---------------+-----------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++----------+-----------+--------------------+
+| Argument | Direction | Datatype           |
++----------+-----------+--------------------+
+| vv0      | in        | vector<float, 16>* |
+| vv1      | in        | vector<float, 16>* |
+| vv2      | in        | vector<float, 16>* |
+| vv3      | inout     | vector<float, 16>* |
+| vv4      | inout     | vector<float, 16>* |
++----------+-----------+--------------------+
+
+* SW-to-HW Mapping
++----------+---------------+-----------+----------+---------------------------------+
+| Argument | HW Interface  | HW Type   | HW Usage | HW Info                         |
++----------+---------------+-----------+----------+---------------------------------+
+| vv0      | m_axi_gmem0   | interface |          |                                 |
+| vv0      | s_axi_control | register  | offset   | name=vv0_1 offset=0x10 range=32 |
+| vv0      | s_axi_control | register  | offset   | name=vv0_2 offset=0x14 range=32 |
+| vv1      | m_axi_gmem1   | interface |          |                                 |
+| vv1      | s_axi_control | register  | offset   | name=vv1_1 offset=0x1c range=32 |
+| vv1      | s_axi_control | register  | offset   | name=vv1_2 offset=0x20 range=32 |
+| vv2      | m_axi_gmem2   | interface |          |                                 |
+| vv2      | s_axi_control | register  | offset   | name=vv2_1 offset=0x28 range=32 |
+| vv2      | s_axi_control | register  | offset   | name=vv2_2 offset=0x2c range=32 |
+| vv3      | m_axi_gmem3   | interface |          |                                 |
+| vv3      | s_axi_control | register  | offset   | name=vv3_1 offset=0x34 range=32 |
+| vv3      | s_axi_control | register  | offset   | name=vv3_2 offset=0x38 range=32 |
+| vv4      | m_axi_gmem4   | interface |          |                                 |
+| vv4      | s_axi_control | register  | offset   | name=vv4_1 offset=0x40 range=32 |
+| vv4      | s_axi_control | register  | offset   | name=vv4_2 offset=0x44 range=32 |
++----------+---------------+-----------+----------+---------------------------------+
+
+
+================================================================
+== M_AXI Burst Information
+================================================================
+ Note: All burst requests might be further partitioned into multiple requests during RTL generation based on max_read_burst_length or max_write_burst_length settings.
+
+* Inferred Burst Summary
++--------------+-----------+--------+-------+-------------------+-------------------------------------------------------------+
+| HW Interface | Direction | Length | Width | Loop              | Loop Location                                               |
++--------------+-----------+--------+-------+-------------------+-------------------------------------------------------------+
+| m_axi_gmem0  | read      | 10000  | 512   | VITIS_LOOP_62_1   | /scratch/spouget/rtl_scalehls_mem_mvt/src/output.cpp:62:20  |
+| m_axi_gmem1  | read      | 25     | 512   | VITIS_LOOP_72_4   | /scratch/spouget/rtl_scalehls_mem_mvt/src/output.cpp:72:20  |
+| m_axi_gmem2  | read      | 25     | 512   | VITIS_LOOP_80_6   | /scratch/spouget/rtl_scalehls_mem_mvt/src/output.cpp:80:20  |
+| m_axi_gmem3  | read      | 25     | 512   | VITIS_LOOP_88_8   | /scratch/spouget/rtl_scalehls_mem_mvt/src/output.cpp:88:20  |
+| m_axi_gmem3  | write     | 25     | 512   | VITIS_LOOP_964_16 | /scratch/spouget/rtl_scalehls_mem_mvt/src/output.cpp:964:22 |
+| m_axi_gmem4  | read      | 25     | 512   | VITIS_LOOP_96_10  | /scratch/spouget/rtl_scalehls_mem_mvt/src/output.cpp:96:21  |
+| m_axi_gmem4  | write     | 25     | 512   | VITIS_LOOP_974_18 | /scratch/spouget/rtl_scalehls_mem_mvt/src/output.cpp:974:22 |
++--------------+-----------+--------+-------+-------------------+-------------------------------------------------------------+
+
+* All M_AXI Variable Accesses
++--------------+----------+-------------------------------------------------------------+-----------+--------------+--------+-------------------+-------------------------------------------------------------+------------+----------------------------------------------------------------------------------------------------------+
+| HW Interface | Variable | Access Location                                             | Direction | Burst Status | Length | Loop              | Loop Location                                               | Resolution | Problem                                                                                                  |
++--------------+----------+-------------------------------------------------------------+-----------+--------------+--------+-------------------+-------------------------------------------------------------+------------+----------------------------------------------------------------------------------------------------------+
+| m_axi_gmem0  | vv0      | /scratch/spouget/rtl_scalehls_mem_mvt/src/output.cpp:64:21  | read      | Widen Fail   |        | VITIS_LOOP_63_2   | /scratch/spouget/rtl_scalehls_mem_mvt/src/output.cpp:63:22  | 214-353    | Could not widen since type i512 size is greater than or equal to the max_widen_bitwidth threshold of 512 |
+| m_axi_gmem0  | vv0      | /scratch/spouget/rtl_scalehls_mem_mvt/src/output.cpp:64:21  | read      | Inferred     | 10000  | VITIS_LOOP_62_1   | /scratch/spouget/rtl_scalehls_mem_mvt/src/output.cpp:62:20  |            |                                                                                                          |
+| m_axi_gmem1  | vv1      | /scratch/spouget/rtl_scalehls_mem_mvt/src/output.cpp:73:17  | read      | Widen Fail   |        | VITIS_LOOP_72_4   | /scratch/spouget/rtl_scalehls_mem_mvt/src/output.cpp:72:20  | 214-353    | Could not widen since type i512 size is greater than or equal to the max_widen_bitwidth threshold of 512 |
+| m_axi_gmem1  | vv1      | /scratch/spouget/rtl_scalehls_mem_mvt/src/output.cpp:73:17  | read      | Inferred     | 25     | VITIS_LOOP_72_4   | /scratch/spouget/rtl_scalehls_mem_mvt/src/output.cpp:72:20  |            |                                                                                                          |
+| m_axi_gmem2  | vv2      | /scratch/spouget/rtl_scalehls_mem_mvt/src/output.cpp:81:17  | read      | Widen Fail   |        | VITIS_LOOP_80_6   | /scratch/spouget/rtl_scalehls_mem_mvt/src/output.cpp:80:20  | 214-353    | Could not widen since type i512 size is greater than or equal to the max_widen_bitwidth threshold of 512 |
+| m_axi_gmem2  | vv2      | /scratch/spouget/rtl_scalehls_mem_mvt/src/output.cpp:81:17  | read      | Inferred     | 25     | VITIS_LOOP_80_6   | /scratch/spouget/rtl_scalehls_mem_mvt/src/output.cpp:80:20  |            |                                                                                                          |
+| m_axi_gmem3  | vv3      | /scratch/spouget/rtl_scalehls_mem_mvt/src/output.cpp:89:17  | read      | Widen Fail   |        | VITIS_LOOP_88_8   | /scratch/spouget/rtl_scalehls_mem_mvt/src/output.cpp:88:20  | 214-353    | Could not widen since type i512 size is greater than or equal to the max_widen_bitwidth threshold of 512 |
+| m_axi_gmem3  | vv3      | /scratch/spouget/rtl_scalehls_mem_mvt/src/output.cpp:89:17  | read      | Inferred     | 25     | VITIS_LOOP_88_8   | /scratch/spouget/rtl_scalehls_mem_mvt/src/output.cpp:88:20  |            |                                                                                                          |
+| m_axi_gmem3  | vv3      | /scratch/spouget/rtl_scalehls_mem_mvt/src/output.cpp:971:15 | write     | Widen Fail   |        | VITIS_LOOP_964_16 | /scratch/spouget/rtl_scalehls_mem_mvt/src/output.cpp:964:22 | 214-353    | Could not widen since type i512 size is greater than or equal to the max_widen_bitwidth threshold of 512 |
+| m_axi_gmem3  | vv3      | /scratch/spouget/rtl_scalehls_mem_mvt/src/output.cpp:971:15 | write     | Inferred     | 25     | VITIS_LOOP_964_16 | /scratch/spouget/rtl_scalehls_mem_mvt/src/output.cpp:964:22 |            |                                                                                                          |
+| m_axi_gmem4  | vv4      | /scratch/spouget/rtl_scalehls_mem_mvt/src/output.cpp:97:17  | read      | Widen Fail   |        | VITIS_LOOP_96_10  | /scratch/spouget/rtl_scalehls_mem_mvt/src/output.cpp:96:21  | 214-353    | Could not widen since type i512 size is greater than or equal to the max_widen_bitwidth threshold of 512 |
+| m_axi_gmem4  | vv4      | /scratch/spouget/rtl_scalehls_mem_mvt/src/output.cpp:97:17  | read      | Inferred     | 25     | VITIS_LOOP_96_10  | /scratch/spouget/rtl_scalehls_mem_mvt/src/output.cpp:96:21  |            |                                                                                                          |
+| m_axi_gmem4  | vv4      | /scratch/spouget/rtl_scalehls_mem_mvt/src/output.cpp:980:15 | write     | Widen Fail   |        | VITIS_LOOP_974_18 | /scratch/spouget/rtl_scalehls_mem_mvt/src/output.cpp:974:22 | 214-353    | Could not widen since type i512 size is greater than or equal to the max_widen_bitwidth threshold of 512 |
+| m_axi_gmem4  | vv4      | /scratch/spouget/rtl_scalehls_mem_mvt/src/output.cpp:980:15 | write     | Inferred     | 25     | VITIS_LOOP_974_18 | /scratch/spouget/rtl_scalehls_mem_mvt/src/output.cpp:974:22 |            |                                                                                                          |
++--------------+----------+-------------------------------------------------------------+-----------+--------------+--------+-------------------+-------------------------------------------------------------+------------+----------------------------------------------------------------------------------------------------------+
+
+    * Resolution URL: docs.xilinx.com/access/sources/dita/topic?Doc_Version=2023.2%20English&url=ug1448-hls-guidance&resourceid=XXX-YYY.html (replace XXX-YYY with column value)
+
+================================================================
+== Bind Op Report
+================================================================
++------------------------------------------------------------+-----+--------+-------------+-----+-----------+---------+
+| Name                                                       | DSP | Pragma | Variable    | Op  | Impl      | Latency |
++------------------------------------------------------------+-----+--------+-------------+-----+-----------+---------+
+| + kernel_nlp                                               | 323 |        |             |     |           |         |
+|  + kernel_nlp_Pipeline_VITIS_LOOP_62_1_VITIS_LOOP_63_2     | 1   |        |             |     |           |         |
+|    add_ln62_1_fu_4069_p2                                   |     |        | add_ln62_1  | add | fabric    | 0       |
+|    add_ln62_fu_4078_p2                                     |     |        | add_ln62    | add | fabric    | 0       |
+|    mac_muladd_5ns_5ns_5ns_10_4_1_U1                        | 1   |        | empty       | mul | dsp_slice | 3       |
+|    mac_muladd_5ns_5ns_5ns_10_4_1_U1                        | 1   |        | empty_35    | add | dsp_slice | 3       |
+|    add_ln63_fu_4393_p2                                     |     |        | add_ln63    | add | fabric    | 0       |
+|    add_ln63_1_fu_4116_p2                                   |     |        | add_ln63_1  | add | fabric    | 0       |
+|  + kernel_nlp_Pipeline_VITIS_LOOP_72_4                     | 0   |        |             |     |           |         |
+|    add_ln72_1_fu_408_p2                                    |     |        | add_ln72_1  | add | fabric    | 0       |
+|    add_ln72_fu_676_p2                                      |     |        | add_ln72    | add | fabric    | 0       |
+|  + kernel_nlp_Pipeline_VITIS_LOOP_80_6                     | 0   |        |             |     |           |         |
+|    add_ln80_1_fu_408_p2                                    |     |        | add_ln80_1  | add | fabric    | 0       |
+|    add_ln80_fu_676_p2                                      |     |        | add_ln80    | add | fabric    | 0       |
+|  + kernel_nlp_Pipeline_VITIS_LOOP_88_8                     | 0   |        |             |     |           |         |
+|    add_ln88_1_fu_386_p2                                    |     |        | add_ln88_1  | add | fabric    | 0       |
+|    add_ln88_fu_664_p2                                      |     |        | add_ln88    | add | fabric    | 0       |
+|  + kernel_nlp_Pipeline_VITIS_LOOP_96_10                    | 0   |        |             |     |           |         |
+|    add_ln96_1_fu_386_p2                                    |     |        | add_ln96_1  | add | fabric    | 0       |
+|    add_ln96_fu_664_p2                                      |     |        | add_ln96    | add | fabric    | 0       |
+|  + kernel_nlp_Pipeline_VITIS_LOOP_121_12_VITIS_LOOP_122_13 | 1   |        |             |     |           |         |
+|    add_ln121_1_fu_4830_p2                                  |     |        | add_ln121_1 | add | fabric    | 0       |
+|    add_ln121_fu_4890_p2                                    |     |        | add_ln121   | add | fabric    | 0       |
+|    mac_muladd_5ns_5ns_5ns_10_4_1_U445                      | 1   |        | mul_ln124   | mul | dsp_slice | 3       |
+|    mac_muladd_5ns_5ns_5ns_10_4_1_U445                      | 1   |        | add_ln124   | add | dsp_slice | 3       |
+|    add_ln122_fu_4871_p2                                    |     |        | add_ln122   | add | fabric    | 0       |
+|  + kernel_nlp_Pipeline_VITIS_LOOP_542_14_VITIS_LOOP_543_15 | 1   |        |             |     |           |         |
+|    add_ln542_1_fu_4830_p2                                  |     |        | add_ln542_1 | add | fabric    | 0       |
+|    add_ln542_fu_4842_p2                                    |     |        | add_ln542   | add | fabric    | 0       |
+|    mac_muladd_5ns_5ns_5ns_10_4_1_U854                      | 1   |        | mul_ln545   | mul | dsp_slice | 3       |
+|    mac_muladd_5ns_5ns_5ns_10_4_1_U854                      | 1   |        | add_ln545   | add | dsp_slice | 3       |
+|    add_ln543_fu_4896_p2                                    |     |        | add_ln543   | add | fabric    | 0       |
+|  + kernel_nlp_Pipeline_VITIS_LOOP_964_16                   | 0   |        |             |     |           |         |
+|    add_ln964_1_fu_331_p2                                   |     |        | add_ln964_1 | add | fabric    | 0       |
+|    add_ln964_fu_380_p2                                     |     |        | add_ln964   | add | fabric    | 0       |
+|  + kernel_nlp_Pipeline_VITIS_LOOP_974_18                   | 0   |        |             |     |           |         |
+|    add_ln974_1_fu_331_p2                                   |     |        | add_ln974_1 | add | fabric    | 0       |
+|    add_ln974_fu_380_p2                                     |     |        | add_ln974   | add | fabric    | 0       |
++------------------------------------------------------------+-----+--------+-------------+-----+-----------+---------+
+
+
+================================================================
+== Storage Report
+================================================================
++-------------------+---------------+-----------+------+------+--------+----------+------+---------+------------------+
+| Name              | Usage         | Type      | BRAM | URAM | Pragma | Variable | Impl | Latency | Bitwidth, Depth, |
+|                   |               |           |      |      |        |          |      |         | Banks            |
++-------------------+---------------+-----------+------+------+--------+----------+------+---------+------------------+
+| + kernel_nlp      |               |           | 710  | 0    |        |          |      |         |                  |
+|   control_s_axi_U | interface     | s_axilite |      |      |        |          |      |         |                  |
+|   gmem0_m_axi_U   | interface     | m_axi     | 30   |      |        |          |      |         |                  |
+|   gmem1_m_axi_U   | interface     | m_axi     | 30   |      |        |          |      |         |                  |
+|   gmem2_m_axi_U   | interface     | m_axi     | 30   |      |        |          |      |         |                  |
+|   gmem3_m_axi_U   | interface     | m_axi     | 30   |      |        |          |      |         |                  |
+|   gmem4_m_axi_U   | interface     | m_axi     | 30   |      |        |          |      |         |                  |
+|   v0_U            | ram_t2p array |           | 2    |      | yes    | v0       | bram | 1       | 32, 625, 1       |
+|   v0_1_U          | ram_t2p array |           | 2    |      | yes    | v0_1     | bram | 1       | 32, 625, 1       |
+|   v0_2_U          | ram_t2p array |           | 2    |      | yes    | v0_2     | bram | 1       | 32, 625, 1       |
+|   v0_3_U          | ram_t2p array |           | 2    |      | yes    | v0_3     | bram | 1       | 32, 625, 1       |
+|   v0_4_U          | ram_t2p array |           | 2    |      | yes    | v0_4     | bram | 1       | 32, 625, 1       |
+|   v0_5_U          | ram_t2p array |           | 2    |      | yes    | v0_5     | bram | 1       | 32, 625, 1       |
+|   v0_6_U          | ram_t2p array |           | 2    |      | yes    | v0_6     | bram | 1       | 32, 625, 1       |
+|   v0_7_U          | ram_t2p array |           | 2    |      | yes    | v0_7     | bram | 1       | 32, 625, 1       |
+|   v0_8_U          | ram_t2p array |           | 2    |      | yes    | v0_8     | bram | 1       | 32, 625, 1       |
+|   v0_9_U          | ram_t2p array |           | 2    |      | yes    | v0_9     | bram | 1       | 32, 625, 1       |
+|   v0_10_U         | ram_t2p array |           | 2    |      | yes    | v0_10    | bram | 1       | 32, 625, 1       |
+|   v0_11_U         | ram_t2p array |           | 2    |      | yes    | v0_11    | bram | 1       | 32, 625, 1       |
+|   v0_12_U         | ram_t2p array |           | 2    |      | yes    | v0_12    | bram | 1       | 32, 625, 1       |
+|   v0_13_U         | ram_t2p array |           | 2    |      | yes    | v0_13    | bram | 1       | 32, 625, 1       |
+|   v0_14_U         | ram_t2p array |           | 2    |      | yes    | v0_14    | bram | 1       | 32, 625, 1       |
+|   v0_15_U         | ram_t2p array |           | 2    |      | yes    | v0_15    | bram | 1       | 32, 625, 1       |
+|   v0_16_U         | ram_t2p array |           | 2    |      | yes    | v0_16    | bram | 1       | 32, 625, 1       |
+|   v0_17_U         | ram_t2p array |           | 2    |      | yes    | v0_17    | bram | 1       | 32, 625, 1       |
+|   v0_18_U         | ram_t2p array |           | 2    |      | yes    | v0_18    | bram | 1       | 32, 625, 1       |
+|   v0_19_U         | ram_t2p array |           | 2    |      | yes    | v0_19    | bram | 1       | 32, 625, 1       |
+|   v0_20_U         | ram_t2p array |           | 2    |      | yes    | v0_20    | bram | 1       | 32, 625, 1       |
+|   v0_21_U         | ram_t2p array |           | 2    |      | yes    | v0_21    | bram | 1       | 32, 625, 1       |
+|   v0_22_U         | ram_t2p array |           | 2    |      | yes    | v0_22    | bram | 1       | 32, 625, 1       |
+|   v0_23_U         | ram_t2p array |           | 2    |      | yes    | v0_23    | bram | 1       | 32, 625, 1       |
+|   v0_24_U         | ram_t2p array |           | 2    |      | yes    | v0_24    | bram | 1       | 32, 625, 1       |
+|   v0_25_U         | ram_t2p array |           | 2    |      | yes    | v0_25    | bram | 1       | 32, 625, 1       |
+|   v0_26_U         | ram_t2p array |           | 2    |      | yes    | v0_26    | bram | 1       | 32, 625, 1       |
+|   v0_27_U         | ram_t2p array |           | 2    |      | yes    | v0_27    | bram | 1       | 32, 625, 1       |
+|   v0_28_U         | ram_t2p array |           | 2    |      | yes    | v0_28    | bram | 1       | 32, 625, 1       |
+|   v0_29_U         | ram_t2p array |           | 2    |      | yes    | v0_29    | bram | 1       | 32, 625, 1       |
+|   v0_30_U         | ram_t2p array |           | 2    |      | yes    | v0_30    | bram | 1       | 32, 625, 1       |
+|   v0_31_U         | ram_t2p array |           | 2    |      | yes    | v0_31    | bram | 1       | 32, 625, 1       |
+|   v0_32_U         | ram_t2p array |           | 2    |      | yes    | v0_32    | bram | 1       | 32, 625, 1       |
+|   v0_33_U         | ram_t2p array |           | 2    |      | yes    | v0_33    | bram | 1       | 32, 625, 1       |
+|   v0_34_U         | ram_t2p array |           | 2    |      | yes    | v0_34    | bram | 1       | 32, 625, 1       |
+|   v0_35_U         | ram_t2p array |           | 2    |      | yes    | v0_35    | bram | 1       | 32, 625, 1       |
+|   v0_36_U         | ram_t2p array |           | 2    |      | yes    | v0_36    | bram | 1       | 32, 625, 1       |
+|   v0_37_U         | ram_t2p array |           | 2    |      | yes    | v0_37    | bram | 1       | 32, 625, 1       |
+|   v0_38_U         | ram_t2p array |           | 2    |      | yes    | v0_38    | bram | 1       | 32, 625, 1       |
+|   v0_39_U         | ram_t2p array |           | 2    |      | yes    | v0_39    | bram | 1       | 32, 625, 1       |
+|   v0_40_U         | ram_t2p array |           | 2    |      | yes    | v0_40    | bram | 1       | 32, 625, 1       |
+|   v0_41_U         | ram_t2p array |           | 2    |      | yes    | v0_41    | bram | 1       | 32, 625, 1       |
+|   v0_42_U         | ram_t2p array |           | 2    |      | yes    | v0_42    | bram | 1       | 32, 625, 1       |
+|   v0_43_U         | ram_t2p array |           | 2    |      | yes    | v0_43    | bram | 1       | 32, 625, 1       |
+|   v0_44_U         | ram_t2p array |           | 2    |      | yes    | v0_44    | bram | 1       | 32, 625, 1       |
+|   v0_45_U         | ram_t2p array |           | 2    |      | yes    | v0_45    | bram | 1       | 32, 625, 1       |
+|   v0_46_U         | ram_t2p array |           | 2    |      | yes    | v0_46    | bram | 1       | 32, 625, 1       |
+|   v0_47_U         | ram_t2p array |           | 2    |      | yes    | v0_47    | bram | 1       | 32, 625, 1       |
+|   v0_48_U         | ram_t2p array |           | 2    |      | yes    | v0_48    | bram | 1       | 32, 625, 1       |
+|   v0_49_U         | ram_t2p array |           | 2    |      | yes    | v0_49    | bram | 1       | 32, 625, 1       |
+|   v0_50_U         | ram_t2p array |           | 2    |      | yes    | v0_50    | bram | 1       | 32, 625, 1       |
+|   v0_51_U         | ram_t2p array |           | 2    |      | yes    | v0_51    | bram | 1       | 32, 625, 1       |
+|   v0_52_U         | ram_t2p array |           | 2    |      | yes    | v0_52    | bram | 1       | 32, 625, 1       |
+|   v0_53_U         | ram_t2p array |           | 2    |      | yes    | v0_53    | bram | 1       | 32, 625, 1       |
+|   v0_54_U         | ram_t2p array |           | 2    |      | yes    | v0_54    | bram | 1       | 32, 625, 1       |
+|   v0_55_U         | ram_t2p array |           | 2    |      | yes    | v0_55    | bram | 1       | 32, 625, 1       |
+|   v0_56_U         | ram_t2p array |           | 2    |      | yes    | v0_56    | bram | 1       | 32, 625, 1       |
+|   v0_57_U         | ram_t2p array |           | 2    |      | yes    | v0_57    | bram | 1       | 32, 625, 1       |
+|   v0_58_U         | ram_t2p array |           | 2    |      | yes    | v0_58    | bram | 1       | 32, 625, 1       |
+|   v0_59_U         | ram_t2p array |           | 2    |      | yes    | v0_59    | bram | 1       | 32, 625, 1       |
+|   v0_60_U         | ram_t2p array |           | 2    |      | yes    | v0_60    | bram | 1       | 32, 625, 1       |
+|   v0_61_U         | ram_t2p array |           | 2    |      | yes    | v0_61    | bram | 1       | 32, 625, 1       |
+|   v0_62_U         | ram_t2p array |           | 2    |      | yes    | v0_62    | bram | 1       | 32, 625, 1       |
+|   v0_63_U         | ram_t2p array |           | 2    |      | yes    | v0_63    | bram | 1       | 32, 625, 1       |
+|   v0_64_U         | ram_t2p array |           | 2    |      | yes    | v0_64    | bram | 1       | 32, 625, 1       |
+|   v0_65_U         | ram_t2p array |           | 2    |      | yes    | v0_65    | bram | 1       | 32, 625, 1       |
+|   v0_66_U         | ram_t2p array |           | 2    |      | yes    | v0_66    | bram | 1       | 32, 625, 1       |
+|   v0_67_U         | ram_t2p array |           | 2    |      | yes    | v0_67    | bram | 1       | 32, 625, 1       |
+|   v0_68_U         | ram_t2p array |           | 2    |      | yes    | v0_68    | bram | 1       | 32, 625, 1       |
+|   v0_69_U         | ram_t2p array |           | 2    |      | yes    | v0_69    | bram | 1       | 32, 625, 1       |
+|   v0_70_U         | ram_t2p array |           | 2    |      | yes    | v0_70    | bram | 1       | 32, 625, 1       |
+|   v0_71_U         | ram_t2p array |           | 2    |      | yes    | v0_71    | bram | 1       | 32, 625, 1       |
+|   v0_72_U         | ram_t2p array |           | 2    |      | yes    | v0_72    | bram | 1       | 32, 625, 1       |
+|   v0_73_U         | ram_t2p array |           | 2    |      | yes    | v0_73    | bram | 1       | 32, 625, 1       |
+|   v0_74_U         | ram_t2p array |           | 2    |      | yes    | v0_74    | bram | 1       | 32, 625, 1       |
+|   v0_75_U         | ram_t2p array |           | 2    |      | yes    | v0_75    | bram | 1       | 32, 625, 1       |
+|   v0_76_U         | ram_t2p array |           | 2    |      | yes    | v0_76    | bram | 1       | 32, 625, 1       |
+|   v0_77_U         | ram_t2p array |           | 2    |      | yes    | v0_77    | bram | 1       | 32, 625, 1       |
+|   v0_78_U         | ram_t2p array |           | 2    |      | yes    | v0_78    | bram | 1       | 32, 625, 1       |
+|   v0_79_U         | ram_t2p array |           | 2    |      | yes    | v0_79    | bram | 1       | 32, 625, 1       |
+|   v0_80_U         | ram_t2p array |           | 2    |      | yes    | v0_80    | bram | 1       | 32, 625, 1       |
+|   v0_81_U         | ram_t2p array |           | 2    |      | yes    | v0_81    | bram | 1       | 32, 625, 1       |
+|   v0_82_U         | ram_t2p array |           | 2    |      | yes    | v0_82    | bram | 1       | 32, 625, 1       |
+|   v0_83_U         | ram_t2p array |           | 2    |      | yes    | v0_83    | bram | 1       | 32, 625, 1       |
+|   v0_84_U         | ram_t2p array |           | 2    |      | yes    | v0_84    | bram | 1       | 32, 625, 1       |
+|   v0_85_U         | ram_t2p array |           | 2    |      | yes    | v0_85    | bram | 1       | 32, 625, 1       |
+|   v0_86_U         | ram_t2p array |           | 2    |      | yes    | v0_86    | bram | 1       | 32, 625, 1       |
+|   v0_87_U         | ram_t2p array |           | 2    |      | yes    | v0_87    | bram | 1       | 32, 625, 1       |
+|   v0_88_U         | ram_t2p array |           | 2    |      | yes    | v0_88    | bram | 1       | 32, 625, 1       |
+|   v0_89_U         | ram_t2p array |           | 2    |      | yes    | v0_89    | bram | 1       | 32, 625, 1       |
+|   v0_90_U         | ram_t2p array |           | 2    |      | yes    | v0_90    | bram | 1       | 32, 625, 1       |
+|   v0_91_U         | ram_t2p array |           | 2    |      | yes    | v0_91    | bram | 1       | 32, 625, 1       |
+|   v0_92_U         | ram_t2p array |           | 2    |      | yes    | v0_92    | bram | 1       | 32, 625, 1       |
+|   v0_93_U         | ram_t2p array |           | 2    |      | yes    | v0_93    | bram | 1       | 32, 625, 1       |
+|   v0_94_U         | ram_t2p array |           | 2    |      | yes    | v0_94    | bram | 1       | 32, 625, 1       |
+|   v0_95_U         | ram_t2p array |           | 2    |      | yes    | v0_95    | bram | 1       | 32, 625, 1       |
+|   v0_96_U         | ram_t2p array |           | 2    |      | yes    | v0_96    | bram | 1       | 32, 625, 1       |
+|   v0_97_U         | ram_t2p array |           | 2    |      | yes    | v0_97    | bram | 1       | 32, 625, 1       |
+|   v0_98_U         | ram_t2p array |           | 2    |      | yes    | v0_98    | bram | 1       | 32, 625, 1       |
+|   v0_99_U         | ram_t2p array |           | 2    |      | yes    | v0_99    | bram | 1       | 32, 625, 1       |
+|   v0_100_U        | ram_t2p array |           | 2    |      | yes    | v0_100   | bram | 1       | 32, 625, 1       |
+|   v0_101_U        | ram_t2p array |           | 2    |      | yes    | v0_101   | bram | 1       | 32, 625, 1       |
+|   v0_102_U        | ram_t2p array |           | 2    |      | yes    | v0_102   | bram | 1       | 32, 625, 1       |
+|   v0_103_U        | ram_t2p array |           | 2    |      | yes    | v0_103   | bram | 1       | 32, 625, 1       |
+|   v0_104_U        | ram_t2p array |           | 2    |      | yes    | v0_104   | bram | 1       | 32, 625, 1       |
+|   v0_105_U        | ram_t2p array |           | 2    |      | yes    | v0_105   | bram | 1       | 32, 625, 1       |
+|   v0_106_U        | ram_t2p array |           | 2    |      | yes    | v0_106   | bram | 1       | 32, 625, 1       |
+|   v0_107_U        | ram_t2p array |           | 2    |      | yes    | v0_107   | bram | 1       | 32, 625, 1       |
+|   v0_108_U        | ram_t2p array |           | 2    |      | yes    | v0_108   | bram | 1       | 32, 625, 1       |
+|   v0_109_U        | ram_t2p array |           | 2    |      | yes    | v0_109   | bram | 1       | 32, 625, 1       |
+|   v0_110_U        | ram_t2p array |           | 2    |      | yes    | v0_110   | bram | 1       | 32, 625, 1       |
+|   v0_111_U        | ram_t2p array |           | 2    |      | yes    | v0_111   | bram | 1       | 32, 625, 1       |
+|   v0_112_U        | ram_t2p array |           | 2    |      | yes    | v0_112   | bram | 1       | 32, 625, 1       |
+|   v0_113_U        | ram_t2p array |           | 2    |      | yes    | v0_113   | bram | 1       | 32, 625, 1       |
+|   v0_114_U        | ram_t2p array |           | 2    |      | yes    | v0_114   | bram | 1       | 32, 625, 1       |
+|   v0_115_U        | ram_t2p array |           | 2    |      | yes    | v0_115   | bram | 1       | 32, 625, 1       |
+|   v0_116_U        | ram_t2p array |           | 2    |      | yes    | v0_116   | bram | 1       | 32, 625, 1       |
+|   v0_117_U        | ram_t2p array |           | 2    |      | yes    | v0_117   | bram | 1       | 32, 625, 1       |
+|   v0_118_U        | ram_t2p array |           | 2    |      | yes    | v0_118   | bram | 1       | 32, 625, 1       |
+|   v0_119_U        | ram_t2p array |           | 2    |      | yes    | v0_119   | bram | 1       | 32, 625, 1       |
+|   v0_120_U        | ram_t2p array |           | 2    |      | yes    | v0_120   | bram | 1       | 32, 625, 1       |
+|   v0_121_U        | ram_t2p array |           | 2    |      | yes    | v0_121   | bram | 1       | 32, 625, 1       |
+|   v0_122_U        | ram_t2p array |           | 2    |      | yes    | v0_122   | bram | 1       | 32, 625, 1       |
+|   v0_123_U        | ram_t2p array |           | 2    |      | yes    | v0_123   | bram | 1       | 32, 625, 1       |
+|   v0_124_U        | ram_t2p array |           | 2    |      | yes    | v0_124   | bram | 1       | 32, 625, 1       |
+|   v0_125_U        | ram_t2p array |           | 2    |      | yes    | v0_125   | bram | 1       | 32, 625, 1       |
+|   v0_126_U        | ram_t2p array |           | 2    |      | yes    | v0_126   | bram | 1       | 32, 625, 1       |
+|   v0_127_U        | ram_t2p array |           | 2    |      | yes    | v0_127   | bram | 1       | 32, 625, 1       |
+|   v0_128_U        | ram_t2p array |           | 2    |      | yes    | v0_128   | bram | 1       | 32, 625, 1       |
+|   v0_129_U        | ram_t2p array |           | 2    |      | yes    | v0_129   | bram | 1       | 32, 625, 1       |
+|   v0_130_U        | ram_t2p array |           | 2    |      | yes    | v0_130   | bram | 1       | 32, 625, 1       |
+|   v0_131_U        | ram_t2p array |           | 2    |      | yes    | v0_131   | bram | 1       | 32, 625, 1       |
+|   v0_132_U        | ram_t2p array |           | 2    |      | yes    | v0_132   | bram | 1       | 32, 625, 1       |
+|   v0_133_U        | ram_t2p array |           | 2    |      | yes    | v0_133   | bram | 1       | 32, 625, 1       |
+|   v0_134_U        | ram_t2p array |           | 2    |      | yes    | v0_134   | bram | 1       | 32, 625, 1       |
+|   v0_135_U        | ram_t2p array |           | 2    |      | yes    | v0_135   | bram | 1       | 32, 625, 1       |
+|   v0_136_U        | ram_t2p array |           | 2    |      | yes    | v0_136   | bram | 1       | 32, 625, 1       |
+|   v0_137_U        | ram_t2p array |           | 2    |      | yes    | v0_137   | bram | 1       | 32, 625, 1       |
+|   v0_138_U        | ram_t2p array |           | 2    |      | yes    | v0_138   | bram | 1       | 32, 625, 1       |
+|   v0_139_U        | ram_t2p array |           | 2    |      | yes    | v0_139   | bram | 1       | 32, 625, 1       |
+|   v0_140_U        | ram_t2p array |           | 2    |      | yes    | v0_140   | bram | 1       | 32, 625, 1       |
+|   v0_141_U        | ram_t2p array |           | 2    |      | yes    | v0_141   | bram | 1       | 32, 625, 1       |
+|   v0_142_U        | ram_t2p array |           | 2    |      | yes    | v0_142   | bram | 1       | 32, 625, 1       |
+|   v0_143_U        | ram_t2p array |           | 2    |      | yes    | v0_143   | bram | 1       | 32, 625, 1       |
+|   v0_144_U        | ram_t2p array |           | 2    |      | yes    | v0_144   | bram | 1       | 32, 625, 1       |
+|   v0_145_U        | ram_t2p array |           | 2    |      | yes    | v0_145   | bram | 1       | 32, 625, 1       |
+|   v0_146_U        | ram_t2p array |           | 2    |      | yes    | v0_146   | bram | 1       | 32, 625, 1       |
+|   v0_147_U        | ram_t2p array |           | 2    |      | yes    | v0_147   | bram | 1       | 32, 625, 1       |
+|   v0_148_U        | ram_t2p array |           | 2    |      | yes    | v0_148   | bram | 1       | 32, 625, 1       |
+|   v0_149_U        | ram_t2p array |           | 2    |      | yes    | v0_149   | bram | 1       | 32, 625, 1       |
+|   v0_150_U        | ram_t2p array |           | 2    |      | yes    | v0_150   | bram | 1       | 32, 625, 1       |
+|   v0_151_U        | ram_t2p array |           | 2    |      | yes    | v0_151   | bram | 1       | 32, 625, 1       |
+|   v0_152_U        | ram_t2p array |           | 2    |      | yes    | v0_152   | bram | 1       | 32, 625, 1       |
+|   v0_153_U        | ram_t2p array |           | 2    |      | yes    | v0_153   | bram | 1       | 32, 625, 1       |
+|   v0_154_U        | ram_t2p array |           | 2    |      | yes    | v0_154   | bram | 1       | 32, 625, 1       |
+|   v0_155_U        | ram_t2p array |           | 2    |      | yes    | v0_155   | bram | 1       | 32, 625, 1       |
+|   v0_156_U        | ram_t2p array |           | 2    |      | yes    | v0_156   | bram | 1       | 32, 625, 1       |
+|   v0_157_U        | ram_t2p array |           | 2    |      | yes    | v0_157   | bram | 1       | 32, 625, 1       |
+|   v0_158_U        | ram_t2p array |           | 2    |      | yes    | v0_158   | bram | 1       | 32, 625, 1       |
+|   v0_159_U        | ram_t2p array |           | 2    |      | yes    | v0_159   | bram | 1       | 32, 625, 1       |
+|   v0_160_U        | ram_t2p array |           | 2    |      | yes    | v0_160   | bram | 1       | 32, 625, 1       |
+|   v0_161_U        | ram_t2p array |           | 2    |      | yes    | v0_161   | bram | 1       | 32, 625, 1       |
+|   v0_162_U        | ram_t2p array |           | 2    |      | yes    | v0_162   | bram | 1       | 32, 625, 1       |
+|   v0_163_U        | ram_t2p array |           | 2    |      | yes    | v0_163   | bram | 1       | 32, 625, 1       |
+|   v0_164_U        | ram_t2p array |           | 2    |      | yes    | v0_164   | bram | 1       | 32, 625, 1       |
+|   v0_165_U        | ram_t2p array |           | 2    |      | yes    | v0_165   | bram | 1       | 32, 625, 1       |
+|   v0_166_U        | ram_t2p array |           | 2    |      | yes    | v0_166   | bram | 1       | 32, 625, 1       |
+|   v0_167_U        | ram_t2p array |           | 2    |      | yes    | v0_167   | bram | 1       | 32, 625, 1       |
+|   v0_168_U        | ram_t2p array |           | 2    |      | yes    | v0_168   | bram | 1       | 32, 625, 1       |
+|   v0_169_U        | ram_t2p array |           | 2    |      | yes    | v0_169   | bram | 1       | 32, 625, 1       |
+|   v0_170_U        | ram_t2p array |           | 2    |      | yes    | v0_170   | bram | 1       | 32, 625, 1       |
+|   v0_171_U        | ram_t2p array |           | 2    |      | yes    | v0_171   | bram | 1       | 32, 625, 1       |
+|   v0_172_U        | ram_t2p array |           | 2    |      | yes    | v0_172   | bram | 1       | 32, 625, 1       |
+|   v0_173_U        | ram_t2p array |           | 2    |      | yes    | v0_173   | bram | 1       | 32, 625, 1       |
+|   v0_174_U        | ram_t2p array |           | 2    |      | yes    | v0_174   | bram | 1       | 32, 625, 1       |
+|   v0_175_U        | ram_t2p array |           | 2    |      | yes    | v0_175   | bram | 1       | 32, 625, 1       |
+|   v0_176_U        | ram_t2p array |           | 2    |      | yes    | v0_176   | bram | 1       | 32, 625, 1       |
+|   v0_177_U        | ram_t2p array |           | 2    |      | yes    | v0_177   | bram | 1       | 32, 625, 1       |
+|   v0_178_U        | ram_t2p array |           | 2    |      | yes    | v0_178   | bram | 1       | 32, 625, 1       |
+|   v0_179_U        | ram_t2p array |           | 2    |      | yes    | v0_179   | bram | 1       | 32, 625, 1       |
+|   v0_180_U        | ram_t2p array |           | 2    |      | yes    | v0_180   | bram | 1       | 32, 625, 1       |
+|   v0_181_U        | ram_t2p array |           | 2    |      | yes    | v0_181   | bram | 1       | 32, 625, 1       |
+|   v0_182_U        | ram_t2p array |           | 2    |      | yes    | v0_182   | bram | 1       | 32, 625, 1       |
+|   v0_183_U        | ram_t2p array |           | 2    |      | yes    | v0_183   | bram | 1       | 32, 625, 1       |
+|   v0_184_U        | ram_t2p array |           | 2    |      | yes    | v0_184   | bram | 1       | 32, 625, 1       |
+|   v0_185_U        | ram_t2p array |           | 2    |      | yes    | v0_185   | bram | 1       | 32, 625, 1       |
+|   v0_186_U        | ram_t2p array |           | 2    |      | yes    | v0_186   | bram | 1       | 32, 625, 1       |
+|   v0_187_U        | ram_t2p array |           | 2    |      | yes    | v0_187   | bram | 1       | 32, 625, 1       |
+|   v0_188_U        | ram_t2p array |           | 2    |      | yes    | v0_188   | bram | 1       | 32, 625, 1       |
+|   v0_189_U        | ram_t2p array |           | 2    |      | yes    | v0_189   | bram | 1       | 32, 625, 1       |
+|   v0_190_U        | ram_t2p array |           | 2    |      | yes    | v0_190   | bram | 1       | 32, 625, 1       |
+|   v0_191_U        | ram_t2p array |           | 2    |      | yes    | v0_191   | bram | 1       | 32, 625, 1       |
+|   v0_192_U        | ram_t2p array |           | 2    |      | yes    | v0_192   | bram | 1       | 32, 625, 1       |
+|   v0_193_U        | ram_t2p array |           | 2    |      | yes    | v0_193   | bram | 1       | 32, 625, 1       |
+|   v0_194_U        | ram_t2p array |           | 2    |      | yes    | v0_194   | bram | 1       | 32, 625, 1       |
+|   v0_195_U        | ram_t2p array |           | 2    |      | yes    | v0_195   | bram | 1       | 32, 625, 1       |
+|   v0_196_U        | ram_t2p array |           | 2    |      | yes    | v0_196   | bram | 1       | 32, 625, 1       |
+|   v0_197_U        | ram_t2p array |           | 2    |      | yes    | v0_197   | bram | 1       | 32, 625, 1       |
+|   v0_198_U        | ram_t2p array |           | 2    |      | yes    | v0_198   | bram | 1       | 32, 625, 1       |
+|   v0_199_U        | ram_t2p array |           | 2    |      | yes    | v0_199   | bram | 1       | 32, 625, 1       |
+|   v0_200_U        | ram_t2p array |           | 2    |      | yes    | v0_200   | bram | 1       | 32, 625, 1       |
+|   v0_201_U        | ram_t2p array |           | 2    |      | yes    | v0_201   | bram | 1       | 32, 625, 1       |
+|   v0_202_U        | ram_t2p array |           | 2    |      | yes    | v0_202   | bram | 1       | 32, 625, 1       |
+|   v0_203_U        | ram_t2p array |           | 2    |      | yes    | v0_203   | bram | 1       | 32, 625, 1       |
+|   v0_204_U        | ram_t2p array |           | 2    |      | yes    | v0_204   | bram | 1       | 32, 625, 1       |
+|   v0_205_U        | ram_t2p array |           | 2    |      | yes    | v0_205   | bram | 1       | 32, 625, 1       |
+|   v0_206_U        | ram_t2p array |           | 2    |      | yes    | v0_206   | bram | 1       | 32, 625, 1       |
+|   v0_207_U        | ram_t2p array |           | 2    |      | yes    | v0_207   | bram | 1       | 32, 625, 1       |
+|   v0_208_U        | ram_t2p array |           | 2    |      | yes    | v0_208   | bram | 1       | 32, 625, 1       |
+|   v0_209_U        | ram_t2p array |           | 2    |      | yes    | v0_209   | bram | 1       | 32, 625, 1       |
+|   v0_210_U        | ram_t2p array |           | 2    |      | yes    | v0_210   | bram | 1       | 32, 625, 1       |
+|   v0_211_U        | ram_t2p array |           | 2    |      | yes    | v0_211   | bram | 1       | 32, 625, 1       |
+|   v0_212_U        | ram_t2p array |           | 2    |      | yes    | v0_212   | bram | 1       | 32, 625, 1       |
+|   v0_213_U        | ram_t2p array |           | 2    |      | yes    | v0_213   | bram | 1       | 32, 625, 1       |
+|   v0_214_U        | ram_t2p array |           | 2    |      | yes    | v0_214   | bram | 1       | 32, 625, 1       |
+|   v0_215_U        | ram_t2p array |           | 2    |      | yes    | v0_215   | bram | 1       | 32, 625, 1       |
+|   v0_216_U        | ram_t2p array |           | 2    |      | yes    | v0_216   | bram | 1       | 32, 625, 1       |
+|   v0_217_U        | ram_t2p array |           | 2    |      | yes    | v0_217   | bram | 1       | 32, 625, 1       |
+|   v0_218_U        | ram_t2p array |           | 2    |      | yes    | v0_218   | bram | 1       | 32, 625, 1       |
+|   v0_219_U        | ram_t2p array |           | 2    |      | yes    | v0_219   | bram | 1       | 32, 625, 1       |
+|   v0_220_U        | ram_t2p array |           | 2    |      | yes    | v0_220   | bram | 1       | 32, 625, 1       |
+|   v0_221_U        | ram_t2p array |           | 2    |      | yes    | v0_221   | bram | 1       | 32, 625, 1       |
+|   v0_222_U        | ram_t2p array |           | 2    |      | yes    | v0_222   | bram | 1       | 32, 625, 1       |
+|   v0_223_U        | ram_t2p array |           | 2    |      | yes    | v0_223   | bram | 1       | 32, 625, 1       |
+|   v0_224_U        | ram_t2p array |           | 2    |      | yes    | v0_224   | bram | 1       | 32, 625, 1       |
+|   v0_225_U        | ram_t2p array |           | 2    |      | yes    | v0_225   | bram | 1       | 32, 625, 1       |
+|   v0_226_U        | ram_t2p array |           | 2    |      | yes    | v0_226   | bram | 1       | 32, 625, 1       |
+|   v0_227_U        | ram_t2p array |           | 2    |      | yes    | v0_227   | bram | 1       | 32, 625, 1       |
+|   v0_228_U        | ram_t2p array |           | 2    |      | yes    | v0_228   | bram | 1       | 32, 625, 1       |
+|   v0_229_U        | ram_t2p array |           | 2    |      | yes    | v0_229   | bram | 1       | 32, 625, 1       |
+|   v0_230_U        | ram_t2p array |           | 2    |      | yes    | v0_230   | bram | 1       | 32, 625, 1       |
+|   v0_231_U        | ram_t2p array |           | 2    |      | yes    | v0_231   | bram | 1       | 32, 625, 1       |
+|   v0_232_U        | ram_t2p array |           | 2    |      | yes    | v0_232   | bram | 1       | 32, 625, 1       |
+|   v0_233_U        | ram_t2p array |           | 2    |      | yes    | v0_233   | bram | 1       | 32, 625, 1       |
+|   v0_234_U        | ram_t2p array |           | 2    |      | yes    | v0_234   | bram | 1       | 32, 625, 1       |
+|   v0_235_U        | ram_t2p array |           | 2    |      | yes    | v0_235   | bram | 1       | 32, 625, 1       |
+|   v0_236_U        | ram_t2p array |           | 2    |      | yes    | v0_236   | bram | 1       | 32, 625, 1       |
+|   v0_237_U        | ram_t2p array |           | 2    |      | yes    | v0_237   | bram | 1       | 32, 625, 1       |
+|   v0_238_U        | ram_t2p array |           | 2    |      | yes    | v0_238   | bram | 1       | 32, 625, 1       |
+|   v0_239_U        | ram_t2p array |           | 2    |      | yes    | v0_239   | bram | 1       | 32, 625, 1       |
+|   v0_240_U        | ram_t2p array |           | 2    |      | yes    | v0_240   | bram | 1       | 32, 625, 1       |
+|   v0_241_U        | ram_t2p array |           | 2    |      | yes    | v0_241   | bram | 1       | 32, 625, 1       |
+|   v0_242_U        | ram_t2p array |           | 2    |      | yes    | v0_242   | bram | 1       | 32, 625, 1       |
+|   v0_243_U        | ram_t2p array |           | 2    |      | yes    | v0_243   | bram | 1       | 32, 625, 1       |
+|   v0_244_U        | ram_t2p array |           | 2    |      | yes    | v0_244   | bram | 1       | 32, 625, 1       |
+|   v0_245_U        | ram_t2p array |           | 2    |      | yes    | v0_245   | bram | 1       | 32, 625, 1       |
+|   v0_246_U        | ram_t2p array |           | 2    |      | yes    | v0_246   | bram | 1       | 32, 625, 1       |
+|   v0_247_U        | ram_t2p array |           | 2    |      | yes    | v0_247   | bram | 1       | 32, 625, 1       |
+|   v0_248_U        | ram_t2p array |           | 2    |      | yes    | v0_248   | bram | 1       | 32, 625, 1       |
+|   v0_249_U        | ram_t2p array |           | 2    |      | yes    | v0_249   | bram | 1       | 32, 625, 1       |
+|   v0_250_U        | ram_t2p array |           | 2    |      | yes    | v0_250   | bram | 1       | 32, 625, 1       |
+|   v0_251_U        | ram_t2p array |           | 2    |      | yes    | v0_251   | bram | 1       | 32, 625, 1       |
+|   v0_252_U        | ram_t2p array |           | 2    |      | yes    | v0_252   | bram | 1       | 32, 625, 1       |
+|   v0_253_U        | ram_t2p array |           | 2    |      | yes    | v0_253   | bram | 1       | 32, 625, 1       |
+|   v0_254_U        | ram_t2p array |           | 2    |      | yes    | v0_254   | bram | 1       | 32, 625, 1       |
+|   v0_255_U        | ram_t2p array |           | 2    |      | yes    | v0_255   | bram | 1       | 32, 625, 1       |
+|   v1_U            | ram_t2p array |           | 1    |      | yes    | v1       | bram | 1       | 32, 25, 1        |
+|   v1_1_U          | ram_t2p array |           | 1    |      | yes    | v1_1     | bram | 1       | 32, 25, 1        |
+|   v1_2_U          | ram_t2p array |           | 1    |      | yes    | v1_2     | bram | 1       | 32, 25, 1        |
+|   v1_3_U          | ram_t2p array |           | 1    |      | yes    | v1_3     | bram | 1       | 32, 25, 1        |
+|   v1_4_U          | ram_t2p array |           | 1    |      | yes    | v1_4     | bram | 1       | 32, 25, 1        |
+|   v1_5_U          | ram_t2p array |           | 1    |      | yes    | v1_5     | bram | 1       | 32, 25, 1        |
+|   v1_6_U          | ram_t2p array |           | 1    |      | yes    | v1_6     | bram | 1       | 32, 25, 1        |
+|   v1_7_U          | ram_t2p array |           | 1    |      | yes    | v1_7     | bram | 1       | 32, 25, 1        |
+|   v1_8_U          | ram_t2p array |           | 1    |      | yes    | v1_8     | bram | 1       | 32, 25, 1        |
+|   v1_9_U          | ram_t2p array |           | 1    |      | yes    | v1_9     | bram | 1       | 32, 25, 1        |
+|   v1_10_U         | ram_t2p array |           | 1    |      | yes    | v1_10    | bram | 1       | 32, 25, 1        |
+|   v1_11_U         | ram_t2p array |           | 1    |      | yes    | v1_11    | bram | 1       | 32, 25, 1        |
+|   v1_12_U         | ram_t2p array |           | 1    |      | yes    | v1_12    | bram | 1       | 32, 25, 1        |
+|   v1_13_U         | ram_t2p array |           | 1    |      | yes    | v1_13    | bram | 1       | 32, 25, 1        |
+|   v1_14_U         | ram_t2p array |           | 1    |      | yes    | v1_14    | bram | 1       | 32, 25, 1        |
+|   v1_15_U         | ram_t2p array |           | 1    |      | yes    | v1_15    | bram | 1       | 32, 25, 1        |
+|   v2_U            | ram_t2p array |           | 1    |      | yes    | v2       | bram | 1       | 32, 25, 1        |
+|   v2_1_U          | ram_t2p array |           | 1    |      | yes    | v2_1     | bram | 1       | 32, 25, 1        |
+|   v2_2_U          | ram_t2p array |           | 1    |      | yes    | v2_2     | bram | 1       | 32, 25, 1        |
+|   v2_3_U          | ram_t2p array |           | 1    |      | yes    | v2_3     | bram | 1       | 32, 25, 1        |
+|   v2_4_U          | ram_t2p array |           | 1    |      | yes    | v2_4     | bram | 1       | 32, 25, 1        |
+|   v2_5_U          | ram_t2p array |           | 1    |      | yes    | v2_5     | bram | 1       | 32, 25, 1        |
+|   v2_6_U          | ram_t2p array |           | 1    |      | yes    | v2_6     | bram | 1       | 32, 25, 1        |
+|   v2_7_U          | ram_t2p array |           | 1    |      | yes    | v2_7     | bram | 1       | 32, 25, 1        |
+|   v2_8_U          | ram_t2p array |           | 1    |      | yes    | v2_8     | bram | 1       | 32, 25, 1        |
+|   v2_9_U          | ram_t2p array |           | 1    |      | yes    | v2_9     | bram | 1       | 32, 25, 1        |
+|   v2_10_U         | ram_t2p array |           | 1    |      | yes    | v2_10    | bram | 1       | 32, 25, 1        |
+|   v2_11_U         | ram_t2p array |           | 1    |      | yes    | v2_11    | bram | 1       | 32, 25, 1        |
+|   v2_12_U         | ram_t2p array |           | 1    |      | yes    | v2_12    | bram | 1       | 32, 25, 1        |
+|   v2_13_U         | ram_t2p array |           | 1    |      | yes    | v2_13    | bram | 1       | 32, 25, 1        |
+|   v2_14_U         | ram_t2p array |           | 1    |      | yes    | v2_14    | bram | 1       | 32, 25, 1        |
+|   v2_15_U         | ram_t2p array |           | 1    |      | yes    | v2_15    | bram | 1       | 32, 25, 1        |
+|   v3_U            | ram_t2p array |           | 1    |      | yes    | v3       | bram | 1       | 32, 50, 1        |
+|   v3_1_U          | ram_t2p array |           | 1    |      | yes    | v3_1     | bram | 1       | 32, 50, 1        |
+|   v3_2_U          | ram_t2p array |           | 1    |      | yes    | v3_2     | bram | 1       | 32, 50, 1        |
+|   v3_3_U          | ram_t2p array |           | 1    |      | yes    | v3_3     | bram | 1       | 32, 50, 1        |
+|   v3_4_U          | ram_t2p array |           | 1    |      | yes    | v3_4     | bram | 1       | 32, 50, 1        |
+|   v3_5_U          | ram_t2p array |           | 1    |      | yes    | v3_5     | bram | 1       | 32, 50, 1        |
+|   v3_6_U          | ram_t2p array |           | 1    |      | yes    | v3_6     | bram | 1       | 32, 50, 1        |
+|   v3_7_U          | ram_t2p array |           | 1    |      | yes    | v3_7     | bram | 1       | 32, 50, 1        |
+|   v4_U            | ram_t2p array |           | 1    |      | yes    | v4       | bram | 1       | 32, 50, 1        |
+|   v4_1_U          | ram_t2p array |           | 1    |      | yes    | v4_1     | bram | 1       | 32, 50, 1        |
+|   v4_2_U          | ram_t2p array |           | 1    |      | yes    | v4_2     | bram | 1       | 32, 50, 1        |
+|   v4_3_U          | ram_t2p array |           | 1    |      | yes    | v4_3     | bram | 1       | 32, 50, 1        |
+|   v4_4_U          | ram_t2p array |           | 1    |      | yes    | v4_4     | bram | 1       | 32, 50, 1        |
+|   v4_5_U          | ram_t2p array |           | 1    |      | yes    | v4_5     | bram | 1       | 32, 50, 1        |
+|   v4_6_U          | ram_t2p array |           | 1    |      | yes    | v4_6     | bram | 1       | 32, 50, 1        |
+|   v4_7_U          | ram_t2p array |           | 1    |      | yes    | v4_7     | bram | 1       | 32, 50, 1        |
++-------------------+---------------+-----------+------+------+--------+----------+------+---------+------------------+
+
+
+================================================================
+== Pragma Report
+================================================================
+* Pragmas with Warnings
++----------+-------------------------------+-----------------------------------------------+----------------------------------------------------------------------------+
+| Type     | Options                       | Location                                      | Messages                                                                   |
++----------+-------------------------------+-----------------------------------------------+----------------------------------------------------------------------------+
+| resource | variable=v0 core=ram_t2p_bram | ../../../src/output.cpp:107 in kernel_nlp, v0 | 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead |
+| resource | variable=v1 core=ram_t2p_bram | ../../../src/output.cpp:110 in kernel_nlp, v1 | 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead |
+| resource | variable=v2 core=ram_t2p_bram | ../../../src/output.cpp:113 in kernel_nlp, v2 | 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead |
+| resource | variable=v3 core=ram_t2p_bram | ../../../src/output.cpp:116 in kernel_nlp, v3 | 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead |
+| resource | variable=v4 core=ram_t2p_bram | ../../../src/output.cpp:119 in kernel_nlp, v4 | 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead |
++----------+-------------------------------+-----------------------------------------------+----------------------------------------------------------------------------+
+
+* Valid Pragma Syntax
++-----------------+------------------------------------------+-----------------------------------------------+
+| Type            | Options                                  | Location                                      |
++-----------------+------------------------------------------+-----------------------------------------------+
+| aggregate       | variable = vv0                           | ../../../src/output.cpp:38 in kernel_nlp      |
+| interface       | m_axi port=vv0 offset=slave bundle=gmem0 | ../../../src/output.cpp:40 in kernel_nlp, vv0 |
+| interface       | m_axi port=vv1 offset=slave bundle=gmem1 | ../../../src/output.cpp:41 in kernel_nlp, vv1 |
+| interface       | m_axi port=vv2 offset=slave bundle=gmem2 | ../../../src/output.cpp:42 in kernel_nlp, vv2 |
+| interface       | m_axi port=vv3 offset=slave bundle=gmem3 | ../../../src/output.cpp:43 in kernel_nlp, vv3 |
+| interface       | m_axi port=vv4 offset=slave bundle=gmem4 | ../../../src/output.cpp:44 in kernel_nlp, vv4 |
+| aggregate       | variable = vv4                           | ../../../src/output.cpp:46 in kernel_nlp      |
+| interface       | s_axilite port = vv0 bundle = control    | ../../../src/output.cpp:47 in kernel_nlp      |
+| interface       | s_axilite port = vv1 bundle = control    | ../../../src/output.cpp:48 in kernel_nlp      |
+| interface       | s_axilite port = vv2 bundle = control    | ../../../src/output.cpp:49 in kernel_nlp      |
+| interface       | s_axilite port = vv3 bundle = control    | ../../../src/output.cpp:50 in kernel_nlp      |
+| interface       | s_axilite port = vv4 bundle = control    | ../../../src/output.cpp:51 in kernel_nlp      |
+| interface       | s_axilite port = return bundle = control | ../../../src/output.cpp:54 in kernel_nlp      |
+| array_partition | variable=v0 cyclic factor=16 dim=1       | ../../../src/output.cpp:105 in kernel_nlp, v0 |
+| array_partition | variable=v0 cyclic factor=16 dim=2       | ../../../src/output.cpp:106 in kernel_nlp, v0 |
+| array_partition | variable=v1 cyclic factor=16 dim=1       | ../../../src/output.cpp:109 in kernel_nlp, v1 |
+| array_partition | variable=v2 cyclic factor=16 dim=1       | ../../../src/output.cpp:112 in kernel_nlp, v2 |
+| array_partition | variable=v3 cyclic factor=8 dim=1        | ../../../src/output.cpp:115 in kernel_nlp, v3 |
+| array_partition | variable=v4 cyclic factor=8 dim=1        | ../../../src/output.cpp:118 in kernel_nlp, v4 |
+| pipeline        | II=2                                     | ../../../src/output.cpp:123 in kernel_nlp     |
+| pipeline        | II=2                                     | ../../../src/output.cpp:544 in kernel_nlp     |
++-----------------+------------------------------------------+-----------------------------------------------+
+
+
