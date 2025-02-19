@@ -23,3 +23,13 @@ You can find the results of **AutoDSE** and **Sisyphus** at the following link:
 |                  | 3mm    | 0.34  | 134.07 | 4379 | 600   | 684  | 840  | 207  |
 |                  | Atax   | 0.20  | 3.10   | 1823 | 634.5 | 405  | 539  | 137  |
 |                  | Bicg   | 0.14  | 4.34   | 1226 | 241   | 291  | 380  | 177  |
+
+
+## Running the Bitstream
+
+To run the bitstream, use the following commands:
+
+```sh
+cd ./<kernel>/src/bin
+./test.real.out workload-hw.xclbin
+```
