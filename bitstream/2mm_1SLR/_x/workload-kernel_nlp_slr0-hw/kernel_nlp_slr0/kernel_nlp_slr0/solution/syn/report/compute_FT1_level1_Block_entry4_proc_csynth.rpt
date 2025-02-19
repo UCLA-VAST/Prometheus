@@ -1,0 +1,139 @@
+
+
+================================================================
+== Vitis HLS Report for 'compute_FT1_level1_Block_entry4_proc'
+================================================================
+* Date:           Wed Dec 18 11:38:09 2024
+
+* Version:        2023.2 (Build 4023990 on Oct 11 2023)
+* Project:        kernel_nlp_slr0
+* Solution:       solution (Vitis Kernel Flow Target)
+* Product family: virtexuplusHBM
+* Target device:  xcu55c-fsvh2892-2L-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  4.55 ns|  0.706 ns|     1.23 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |        0|        0|      0 ns|      0 ns|    0|    0|       no|
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++---------------------+---------+------+---------+---------+-----+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
++---------------------+---------+------+---------+---------+-----+
+|DSP                  |        -|     -|        -|        -|    -|
+|Expression           |        -|     -|        0|       16|    -|
+|FIFO                 |        -|     -|        -|        -|    -|
+|Instance             |        -|     -|        -|        -|    -|
+|Memory               |        -|     -|        -|        -|    -|
+|Multiplexer          |        -|     -|        -|       36|    -|
+|Register             |        -|     -|       22|        -|    -|
++---------------------+---------+------+---------+---------+-----+
+|Total                |        0|     0|       22|       52|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available SLR        |     1344|  3008|   869120|   434560|  320|
++---------------------+---------+------+---------+---------+-----+
+|Utilization SLR (%)  |        0|     0|       ~0|       ~0|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available            |     4032|  9024|  2607360|  1303680|  960|
++---------------------+---------+------+---------+---------+-----+
+|Utilization (%)      |        0|     0|       ~0|       ~0|    0|
++---------------------+---------+------+---------+---------+-----+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +--------------------+----------+----+---+----+------------+------------+
+    |    Variable Name   | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +--------------------+----------+----+---+----+------------+------------+
+    |add_ln386_fu_18_p2  |         +|   0|  0|  14|           7|           1|
+    |ap_block_state1     |        or|   0|  0|   2|           1|           1|
+    +--------------------+----------+----+---+----+------------+------------+
+    |Total               |          |   0|  0|  16|           8|           2|
+    +--------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +-------------+----+-----------+-----+-----------+
+    |     Name    | LUT| Input Size| Bits| Total Bits|
+    +-------------+----+-----------+-----+-----------+
+    |ap_done      |   9|          2|    1|          2|
+    |ap_return_0  |   9|          2|    6|         12|
+    |ap_return_1  |   9|          2|    7|         14|
+    |ap_return_2  |   9|          2|    7|         14|
+    +-------------+----+-----------+-----+-----------+
+    |Total        |  36|          8|   21|         42|
+    +-------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +------------------+---+----+-----+-----------+
+    |       Name       | FF| LUT| Bits| Const Bits|
+    +------------------+---+----+-----+-----------+
+    |ap_CS_fsm         |  1|   0|    1|          0|
+    |ap_done_reg       |  1|   0|    1|          0|
+    |ap_return_0_preg  |  6|   0|    7|          1|
+    |ap_return_1_preg  |  7|   0|    7|          0|
+    |ap_return_2_preg  |  7|   0|    7|          0|
+    +------------------+---+----+-----+-----------+
+    |Total             | 22|   0|   23|          1|
+    +------------------+---+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-------------+-----+-----+------------+--------------------------------------+--------------+
+|  RTL Ports  | Dir | Bits|  Protocol  |             Source Object            |    C Type    |
++-------------+-----+-----+------------+--------------------------------------+--------------+
+|ap_clk       |   in|    1|  ap_ctrl_hs|  compute_FT1_level1_Block_entry4_proc|  return value|
+|ap_rst       |   in|    1|  ap_ctrl_hs|  compute_FT1_level1_Block_entry4_proc|  return value|
+|ap_start     |   in|    1|  ap_ctrl_hs|  compute_FT1_level1_Block_entry4_proc|  return value|
+|ap_done      |  out|    1|  ap_ctrl_hs|  compute_FT1_level1_Block_entry4_proc|  return value|
+|ap_continue  |   in|    1|  ap_ctrl_hs|  compute_FT1_level1_Block_entry4_proc|  return value|
+|ap_idle      |  out|    1|  ap_ctrl_hs|  compute_FT1_level1_Block_entry4_proc|  return value|
+|ap_ready     |  out|    1|  ap_ctrl_hs|  compute_FT1_level1_Block_entry4_proc|  return value|
+|ap_return_0  |  out|    7|  ap_ctrl_hs|  compute_FT1_level1_Block_entry4_proc|  return value|
+|ap_return_1  |  out|    7|  ap_ctrl_hs|  compute_FT1_level1_Block_entry4_proc|  return value|
+|ap_return_2  |  out|    7|  ap_ctrl_hs|  compute_FT1_level1_Block_entry4_proc|  return value|
+|i0           |   in|    6|     ap_none|                                    i0|        scalar|
++-------------+-----+-----+------------+--------------------------------------+--------------+
+

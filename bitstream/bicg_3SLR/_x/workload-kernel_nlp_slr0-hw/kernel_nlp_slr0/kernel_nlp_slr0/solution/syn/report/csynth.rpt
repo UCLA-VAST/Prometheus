@@ -1,0 +1,300 @@
+
+
+================================================================
+== Synthesis Summary Report of 'kernel_nlp_slr0'
+================================================================
++ General Information: 
+    * Date:           Sat Jan  4 04:36:24 2025
+    * Version:        2023.2 (Build 4023990 on Oct 11 2023)
+    * Project:        kernel_nlp_slr0
+    * Solution:       solution (Vitis Kernel Flow Target)
+    * Product family: virtexuplusHBM
+    * Target device:  xcu55c-fsvh2892-2L-e
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +-----------------------+------+------+---------+-----------+----------+---------+-------+----------+----------+----+-------------+------------+-----+
+    |        Modules        | Issue|      | Latency |  Latency  | Iteration|         |  Trip |          |          |    |             |            |     |
+    |        & Loops        | Type | Slack| (cycles)|    (ns)   |  Latency | Interval| Count | Pipelined|   BRAM   | DSP|      FF     |     LUT    | URAM|
+    +-----------------------+------+------+---------+-----------+----------+---------+-------+----------+----------+----+-------------+------------+-----+
+    |+ kernel_nlp_slr0*     |     -|  0.00|    10475|  4.761e+04|         -|    10476|      -|  dataflow|  154 (3%)|   -|  23859 (~0%)|  16256 (1%)|    -|
+    | + load_vr_for_task1   |     -|  0.00|      101|    459.045|         -|      101|      -|        no|         -|   -|    796 (~0%)|   141 (~0%)|    -|
+    |  o VITIS_LOOP_21_1    |     -|  3.32|       99|    449.955|        75|        1|     26|       yes|         -|   -|            -|           -|    -|
+    | + load_vA_for_task1   |     -|  0.00|    10475|  4.761e+04|         -|    10475|      -|        no|         -|   -|    805 (~0%)|   159 (~0%)|    -|
+    |  o VITIS_LOOP_56_1    |     -|  3.32|    10473|  4.760e+04|        75|        1|  10400|       yes|         -|   -|            -|           -|    -|
+    | + load_vA_for_task3   |     -|  0.00|    10325|  4.693e+04|         -|    10325|      -|        no|         -|   -|    805 (~0%)|   159 (~0%)|    -|
+    |  o VITIS_LOOP_91_1    |     -|  3.32|    10323|  4.692e+04|        75|        1|  10250|       yes|         -|   -|            -|           -|    -|
+    | + load_vp_for_task3   |     -|  0.00|      100|    454.500|         -|      100|      -|        no|         -|   -|    796 (~0%)|   141 (~0%)|    -|
+    |  o VITIS_LOOP_126_1   |     -|  3.32|       98|    445.410|        75|        1|     25|       yes|         -|   -|            -|           -|    -|
+    | + store_vs_for_task1  |     -|  0.00|       96|    436.320|         -|       96|      -|        no|         -|   -|   1301 (~0%)|   156 (~0%)|    -|
+    |  o VITIS_LOOP_160_1   |     -|  3.32|       94|    427.230|        71|        1|     25|       yes|         -|   -|            -|           -|    -|
+    | + store_vq_for_task3  |     -|  0.00|      276|  1.254e+03|         -|      276|      -|        no|         -|   -|    408 (~0%)|   165 (~0%)|    -|
+    |  o VITIS_LOOP_211_1   |     -|  3.32|      274|  1.245e+03|        71|        1|    205|       yes|         -|   -|            -|           -|    -|
+    +-----------------------+------+------+---------+-----------+----------+---------+-------+----------+----------+----+-------------+------------+-----+
+
+
+================================================================
+== HW Interfaces
+================================================================
+* M_AXI
++---------------------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+-------------------+
+| Interface                 | Data Width | Address Width | Latency | Offset | Register | Max Widen | Max Read     | Max Write    | Num Read    | Num Write   | Resource Estimate |
+|                           | (SW->HW)   |               |         |        |          | Bitwidth  | Burst Length | Burst Length | Outstanding | Outstanding |                   |
++---------------------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+-------------------+
+| m_axi_kernel_vA_for_task1 | 512 -> 512 | 64            | 64      | slave  | 0        | 512       | 16           | 16           | 16          | 16          | BRAM=30           |
+| m_axi_kernel_vA_for_task3 | 512 -> 512 | 64            | 64      | slave  | 0        | 512       | 16           | 16           | 16          | 16          | BRAM=30           |
+| m_axi_kernel_vp_for_task3 | 512 -> 512 | 64            | 64      | slave  | 0        | 512       | 16           | 16           | 16          | 16          | BRAM=30           |
+| m_axi_kernel_vq_for_task3 | 64 -> 64   | 64            | 64      | slave  | 0        | 512       | 16           | 16           | 16          | 16          | BRAM=4            |
+| m_axi_kernel_vr_for_task1 | 512 -> 512 | 64            | 64      | slave  | 0        | 512       | 16           | 16           | 16          | 16          | BRAM=30           |
+| m_axi_kernel_vs_for_task1 | 512 -> 512 | 64            | 64      | slave  | 0        | 512       | 16           | 16           | 16          | 16          | BRAM=30           |
++---------------------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+-------------------+
+
+* S_AXILITE Interfaces
++---------------+------------+---------------+--------+----------+
+| Interface     | Data Width | Address Width | Offset | Register |
++---------------+------------+---------------+--------+----------+
+| s_axi_control | 32         | 7             | 16     | 0        |
++---------------+------------+---------------+--------+----------+
+
+* S_AXILITE Registers
++---------------+----------------+--------+-------+--------+----------------------------------+------------------------------------------------------------------------------------+
+| Interface     | Register       | Offset | Width | Access | Description                      | Bit Fields                                                                         |
++---------------+----------------+--------+-------+--------+----------------------------------+------------------------------------------------------------------------------------+
+| s_axi_control | CTRL           | 0x00   | 32    | RW     | Control signals                  | 0=AP_START 1=AP_DONE 2=AP_IDLE 3=AP_READY 4=AP_CONTINUE 7=AUTO_RESTART 9=INTERRUPT |
+| s_axi_control | GIER           | 0x04   | 32    | RW     | Global Interrupt Enable Register | 0=Enable                                                                           |
+| s_axi_control | IP_IER         | 0x08   | 32    | RW     | IP Interrupt Enable Register     | 0=CHAN0_INT_EN 1=CHAN1_INT_EN                                                      |
+| s_axi_control | IP_ISR         | 0x0c   | 32    | RW     | IP Interrupt Status Register     | 0=CHAN0_INT_ST 1=CHAN1_INT_ST                                                      |
+| s_axi_control | vs_for_task1_1 | 0x10   | 32    | W      | Data signal of vs_for_task1      |                                                                                    |
+| s_axi_control | vs_for_task1_2 | 0x14   | 32    | W      | Data signal of vs_for_task1      |                                                                                    |
+| s_axi_control | vr_for_task1_1 | 0x1c   | 32    | W      | Data signal of vr_for_task1      |                                                                                    |
+| s_axi_control | vr_for_task1_2 | 0x20   | 32    | W      | Data signal of vr_for_task1      |                                                                                    |
+| s_axi_control | vA_for_task1_1 | 0x28   | 32    | W      | Data signal of vA_for_task1      |                                                                                    |
+| s_axi_control | vA_for_task1_2 | 0x2c   | 32    | W      | Data signal of vA_for_task1      |                                                                                    |
+| s_axi_control | vA_for_task3_1 | 0x34   | 32    | W      | Data signal of vA_for_task3      |                                                                                    |
+| s_axi_control | vA_for_task3_2 | 0x38   | 32    | W      | Data signal of vA_for_task3      |                                                                                    |
+| s_axi_control | vq_for_task3_1 | 0x40   | 32    | W      | Data signal of vq_for_task3      |                                                                                    |
+| s_axi_control | vq_for_task3_2 | 0x44   | 32    | W      | Data signal of vq_for_task3      |                                                                                    |
+| s_axi_control | vp_for_task3_1 | 0x4c   | 32    | W      | Data signal of vp_for_task3      |                                                                                    |
+| s_axi_control | vp_for_task3_2 | 0x50   | 32    | W      | Data signal of vp_for_task3      |                                                                                    |
++---------------+----------------+--------+-------+--------+----------------------------------+------------------------------------------------------------------------------------+
+
+* AXIS
++----------------------------+-----------+---------------+-------+-------+-------+--------+-------+--------+
+| Interface                  | Direction | Register Mode | TDATA | TKEEP | TLAST | TREADY | TSTRB | TVALID |
++----------------------------+-----------+---------------+-------+-------+-------+--------+-------+--------+
+| fifo_A_from_off_chip_to_S1 | out       | both          | 512   | 64    | 1     | 1      | 64    | 1      |
+| fifo_A_from_off_chip_to_S3 | out       | both          | 512   | 64    | 1     | 1      | 64    | 1      |
+| fifo_p_from_off_chip_to_S3 | out       | both          | 512   | 64    | 1     | 1      | 64    | 1      |
+| fifo_q_to_off_chip         | in        | both          | 64    | 8     | 1     | 1      | 8     | 1      |
+| fifo_r_from_off_chip_to_S1 | out       | both          | 512   | 64    | 1     | 1      | 64    | 1      |
+| fifo_s_to_off_chip         | in        | both          | 512   | 64    | 1     | 1      | 64    | 1      |
++----------------------------+-----------+---------------+-------+-------+-------+--------+-------+--------+
+
+* TOP LEVEL CONTROL
++-----------+---------------+-----------+
+| Interface | Type          | Ports     |
++-----------+---------------+-----------+
+| ap_clk    | clock         | ap_clk    |
+| ap_rst_n  | reset         | ap_rst_n  |
+| interrupt | interrupt     | interrupt |
+| ap_ctrl   | ap_ctrl_chain |           |
++-----------+---------------+-----------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++----------------------------+-----------+----------------------------------------------------------+
+| Argument                   | Direction | Datatype                                                 |
++----------------------------+-----------+----------------------------------------------------------+
+| vs_for_task1               | out       | vector<float, 16>*                                       |
+| vr_for_task1               | in        | vector<float, 16>*                                       |
+| vA_for_task1               | in        | vector<float, 16>*                                       |
+| vA_for_task3               | in        | vector<float, 16>*                                       |
+| vq_for_task3               | out       | vector<float, 2>*                                        |
+| vp_for_task3               | in        | vector<float, 16>*                                       |
+| fifo_r_from_off_chip_to_S1 | out       | stream<hls::axis<ap_uint<512>, 0, 0, 0, '8', false>, 0>& |
+| fifo_A_from_off_chip_to_S1 | out       | stream<hls::axis<ap_uint<512>, 0, 0, 0, '8', false>, 0>& |
+| fifo_A_from_off_chip_to_S3 | out       | stream<hls::axis<ap_uint<512>, 0, 0, 0, '8', false>, 0>& |
+| fifo_p_from_off_chip_to_S3 | out       | stream<hls::axis<ap_uint<512>, 0, 0, 0, '8', false>, 0>& |
+| fifo_s_to_off_chip         | in        | stream<hls::axis<ap_uint<512>, 0, 0, 0, '8', false>, 0>& |
+| fifo_q_to_off_chip         | in        | stream<hls::axis<ap_uint<64>, 0, 0, 0, '8', false>, 0>&  |
++----------------------------+-----------+----------------------------------------------------------+
+
+* SW-to-HW Mapping
++----------------------------+----------------------------+-----------+----------+------------------------------------------+
+| Argument                   | HW Interface               | HW Type   | HW Usage | HW Info                                  |
++----------------------------+----------------------------+-----------+----------+------------------------------------------+
+| vs_for_task1               | m_axi_kernel_vs_for_task1  | interface |          |                                          |
+| vs_for_task1               | s_axi_control              | register  | offset   | name=vs_for_task1_1 offset=0x10 range=32 |
+| vs_for_task1               | s_axi_control              | register  | offset   | name=vs_for_task1_2 offset=0x14 range=32 |
+| vr_for_task1               | m_axi_kernel_vr_for_task1  | interface |          |                                          |
+| vr_for_task1               | s_axi_control              | register  | offset   | name=vr_for_task1_1 offset=0x1c range=32 |
+| vr_for_task1               | s_axi_control              | register  | offset   | name=vr_for_task1_2 offset=0x20 range=32 |
+| vA_for_task1               | m_axi_kernel_vA_for_task1  | interface |          |                                          |
+| vA_for_task1               | s_axi_control              | register  | offset   | name=vA_for_task1_1 offset=0x28 range=32 |
+| vA_for_task1               | s_axi_control              | register  | offset   | name=vA_for_task1_2 offset=0x2c range=32 |
+| vA_for_task3               | m_axi_kernel_vA_for_task3  | interface |          |                                          |
+| vA_for_task3               | s_axi_control              | register  | offset   | name=vA_for_task3_1 offset=0x34 range=32 |
+| vA_for_task3               | s_axi_control              | register  | offset   | name=vA_for_task3_2 offset=0x38 range=32 |
+| vq_for_task3               | m_axi_kernel_vq_for_task3  | interface |          |                                          |
+| vq_for_task3               | s_axi_control              | register  | offset   | name=vq_for_task3_1 offset=0x40 range=32 |
+| vq_for_task3               | s_axi_control              | register  | offset   | name=vq_for_task3_2 offset=0x44 range=32 |
+| vp_for_task3               | m_axi_kernel_vp_for_task3  | interface |          |                                          |
+| vp_for_task3               | s_axi_control              | register  | offset   | name=vp_for_task3_1 offset=0x4c range=32 |
+| vp_for_task3               | s_axi_control              | register  | offset   | name=vp_for_task3_2 offset=0x50 range=32 |
+| fifo_r_from_off_chip_to_S1 | fifo_r_from_off_chip_to_S1 | interface |          |                                          |
+| fifo_A_from_off_chip_to_S1 | fifo_A_from_off_chip_to_S1 | interface |          |                                          |
+| fifo_A_from_off_chip_to_S3 | fifo_A_from_off_chip_to_S3 | interface |          |                                          |
+| fifo_p_from_off_chip_to_S3 | fifo_p_from_off_chip_to_S3 | interface |          |                                          |
+| fifo_s_to_off_chip         | fifo_s_to_off_chip         | interface |          |                                          |
+| fifo_q_to_off_chip         | fifo_q_to_off_chip         | interface |          |                                          |
++----------------------------+----------------------------+-----------+----------+------------------------------------------+
+
+
+================================================================
+== M_AXI Burst Information
+================================================================
+ Note: All burst requests might be further partitioned into multiple requests during RTL generation based on max_read_burst_length or max_write_burst_length settings.
+
+* Inferred Burst Summary
++---------------------------+-----------+--------+-------+------------------+------------------------------------------------------------------+
+| HW Interface              | Direction | Length | Width | Loop             | Loop Location                                                    |
++---------------------------+-----------+--------+-------+------------------+------------------------------------------------------------------+
+| m_axi_kernel_vA_for_task1 | read      | 10400  | 512   | VITIS_LOOP_56_1  | /scratch/spouget/bicg_MEDIUM_eval_bit_242892/src/slr0.cpp:56:19  |
+| m_axi_kernel_vA_for_task3 | read      | 10250  | 512   | VITIS_LOOP_91_1  | /scratch/spouget/bicg_MEDIUM_eval_bit_242892/src/slr0.cpp:91:19  |
+| m_axi_kernel_vp_for_task3 | read      | 25     | 512   | VITIS_LOOP_126_1 | /scratch/spouget/bicg_MEDIUM_eval_bit_242892/src/slr0.cpp:126:20 |
+| m_axi_kernel_vq_for_task3 | write     | 205    | 64    | VITIS_LOOP_211_1 | /scratch/spouget/bicg_MEDIUM_eval_bit_242892/src/slr0.cpp:211:20 |
+| m_axi_kernel_vr_for_task1 | read      | 26     | 512   | VITIS_LOOP_21_1  | /scratch/spouget/bicg_MEDIUM_eval_bit_242892/src/slr0.cpp:21:19  |
+| m_axi_kernel_vs_for_task1 | write     | 25     | 512   | VITIS_LOOP_160_1 | /scratch/spouget/bicg_MEDIUM_eval_bit_242892/src/slr0.cpp:160:20 |
++---------------------------+-----------+--------+-------+------------------+------------------------------------------------------------------+
+
+* All M_AXI Variable Accesses
++---------------------------+----------+------------------------------------------------------------------+-----------+--------------+--------+------------------+------------------------------------------------------------------+------------+----------------------------------------------------------------------------------------------------------+
+| HW Interface              | Variable | Access Location                                                  | Direction | Burst Status | Length | Loop             | Loop Location                                                    | Resolution | Problem                                                                                                  |
++---------------------------+----------+------------------------------------------------------------------+-----------+--------------+--------+------------------+------------------------------------------------------------------+------------+----------------------------------------------------------------------------------------------------------+
+| m_axi_kernel_vA_for_task1 | vA       | /scratch/spouget/bicg_MEDIUM_eval_bit_242892/src/slr0.cpp:23:19  | read      | Inferred     | 10400  | VITIS_LOOP_56_1  | /scratch/spouget/bicg_MEDIUM_eval_bit_242892/src/slr0.cpp:56:19  |            |                                                                                                          |
+| m_axi_kernel_vA_for_task1 | vA       | /scratch/spouget/bicg_MEDIUM_eval_bit_242892/src/slr0.cpp:58:19  | read      | Widen Fail   |        | VITIS_LOOP_56_1  | /scratch/spouget/bicg_MEDIUM_eval_bit_242892/src/slr0.cpp:56:19  | 214-353    | Could not widen since type i512 size is greater than or equal to the max_widen_bitwidth threshold of 512 |
+| m_axi_kernel_vA_for_task3 | vA       | /scratch/spouget/bicg_MEDIUM_eval_bit_242892/src/slr0.cpp:23:19  | read      | Inferred     | 10250  | VITIS_LOOP_91_1  | /scratch/spouget/bicg_MEDIUM_eval_bit_242892/src/slr0.cpp:91:19  |            |                                                                                                          |
+| m_axi_kernel_vA_for_task3 | vA       | /scratch/spouget/bicg_MEDIUM_eval_bit_242892/src/slr0.cpp:58:19  | read      | Widen Fail   |        | VITIS_LOOP_91_1  | /scratch/spouget/bicg_MEDIUM_eval_bit_242892/src/slr0.cpp:91:19  | 214-353    | Could not widen since type i512 size is greater than or equal to the max_widen_bitwidth threshold of 512 |
+| m_axi_kernel_vp_for_task3 | vp       | /scratch/spouget/bicg_MEDIUM_eval_bit_242892/src/slr0.cpp:23:19  | read      | Inferred     | 25     | VITIS_LOOP_126_1 | /scratch/spouget/bicg_MEDIUM_eval_bit_242892/src/slr0.cpp:126:20 |            |                                                                                                          |
+| m_axi_kernel_vp_for_task3 | vp       | /scratch/spouget/bicg_MEDIUM_eval_bit_242892/src/slr0.cpp:128:19 | read      | Widen Fail   |        | VITIS_LOOP_126_1 | /scratch/spouget/bicg_MEDIUM_eval_bit_242892/src/slr0.cpp:126:20 | 214-353    | Could not widen since type i512 size is greater than or equal to the max_widen_bitwidth threshold of 512 |
+| m_axi_kernel_vq_for_task3 | vq       | /scratch/spouget/bicg_MEDIUM_eval_bit_242892/src/slr0.cpp:220:11 | write     | Widen Fail   |        | VITIS_LOOP_211_1 | /scratch/spouget/bicg_MEDIUM_eval_bit_242892/src/slr0.cpp:211:20 | 214-307    | Could not widen since type i64 size is greater than or equal to alignment 1(bytes)                       |
+| m_axi_kernel_vq_for_task3 | vq       | /scratch/spouget/bicg_MEDIUM_eval_bit_242892/src/slr0.cpp:220:11 | write     | Inferred     | 205    | VITIS_LOOP_211_1 | /scratch/spouget/bicg_MEDIUM_eval_bit_242892/src/slr0.cpp:211:20 |            |                                                                                                          |
+| m_axi_kernel_vr_for_task1 | vr       | /scratch/spouget/bicg_MEDIUM_eval_bit_242892/src/slr0.cpp:23:19  | read      | Widen Fail   |        | VITIS_LOOP_21_1  | /scratch/spouget/bicg_MEDIUM_eval_bit_242892/src/slr0.cpp:21:19  | 214-353    | Could not widen since type i512 size is greater than or equal to the max_widen_bitwidth threshold of 512 |
+| m_axi_kernel_vr_for_task1 | vr       | /scratch/spouget/bicg_MEDIUM_eval_bit_242892/src/slr0.cpp:23:19  | read      | Inferred     | 26     | VITIS_LOOP_21_1  | /scratch/spouget/bicg_MEDIUM_eval_bit_242892/src/slr0.cpp:21:19  |            |                                                                                                          |
+| m_axi_kernel_vs_for_task1 | vs       | /scratch/spouget/bicg_MEDIUM_eval_bit_242892/src/slr0.cpp:197:11 | write     | Widen Fail   |        | VITIS_LOOP_160_1 | /scratch/spouget/bicg_MEDIUM_eval_bit_242892/src/slr0.cpp:160:20 | 214-353    | Could not widen since type i512 size is greater than or equal to the max_widen_bitwidth threshold of 512 |
+| m_axi_kernel_vs_for_task1 | vs       | /scratch/spouget/bicg_MEDIUM_eval_bit_242892/src/slr0.cpp:197:11 | write     | Inferred     | 25     | VITIS_LOOP_160_1 | /scratch/spouget/bicg_MEDIUM_eval_bit_242892/src/slr0.cpp:160:20 |            |                                                                                                          |
++---------------------------+----------+------------------------------------------------------------------+-----------+--------------+--------+------------------+------------------------------------------------------------------+------------+----------------------------------------------------------------------------------------------------------+
+
+    * Resolution URL: docs.xilinx.com/access/sources/dita/topic?Doc_Version=2023.2%20English&url=ug1448-hls-guidance&resourceid=XXX-YYY.html (replace XXX-YYY with column value)
+
+================================================================
+== Bind Op Report
+================================================================
++------------------------+-----+--------+-----------+-----+--------+---------+
+| Name                   | DSP | Pragma | Variable  | Op  | Impl   | Latency |
++------------------------+-----+--------+-----------+-----+--------+---------+
+| + kernel_nlp_slr0      | 0   |        |           |     |        |         |
+|  + load_vr_for_task1   | 0   |        |           |     |        |         |
+|    add_ln21_fu_149_p2  |     |        | add_ln21  | add | fabric | 0       |
+|  + load_vA_for_task1   | 0   |        |           |     |        |         |
+|    add_ln56_fu_149_p2  |     |        | add_ln56  | add | fabric | 0       |
+|  + load_vA_for_task3   | 0   |        |           |     |        |         |
+|    add_ln91_fu_149_p2  |     |        | add_ln91  | add | fabric | 0       |
+|  + load_vp_for_task3   | 0   |        |           |     |        |         |
+|    add_ln126_fu_149_p2 |     |        | add_ln126 | add | fabric | 0       |
+|  + store_vs_for_task1  | 0   |        |           |     |        |         |
+|    add_ln160_fu_146_p2 |     |        | add_ln160 | add | fabric | 0       |
+|  + store_vq_for_task3  | 0   |        |           |     |        |         |
+|    add_ln211_fu_146_p2 |     |        | add_ln211 | add | fabric | 0       |
++------------------------+-----+--------+-----------+-----+--------+---------+
+
+
+================================================================
+== Storage Report
+================================================================
++-------------------------------+-----------+-----------+------+------+--------+----------+------+---------+------------------+
+| Name                          | Usage     | Type      | BRAM | URAM | Pragma | Variable | Impl | Latency | Bitwidth, Depth, |
+|                               |           |           |      |      |        |          |      |         | Banks            |
++-------------------------------+-----------+-----------+------+------+--------+----------+------+---------+------------------+
+| + kernel_nlp_slr0             |           |           | 154  | 0    |        |          |      |         |                  |
+|   control_s_axi_U             | interface | s_axilite |      |      |        |          |      |         |                  |
+|   kernel_vA_for_task1_m_axi_U | interface | m_axi     | 30   |      |        |          |      |         |                  |
+|   kernel_vA_for_task3_m_axi_U | interface | m_axi     | 30   |      |        |          |      |         |                  |
+|   kernel_vp_for_task3_m_axi_U | interface | m_axi     | 30   |      |        |          |      |         |                  |
+|   kernel_vq_for_task3_m_axi_U | interface | m_axi     | 4    |      |        |          |      |         |                  |
+|   kernel_vr_for_task1_m_axi_U | interface | m_axi     | 30   |      |        |          |      |         |                  |
+|   kernel_vs_for_task1_m_axi_U | interface | m_axi     | 30   |      |        |          |      |         |                  |
++-------------------------------+-----------+-----------+------+------+--------+----------+------+---------+------------------+
+
+
+================================================================
+== Pragma Report
+================================================================
+* Ignored Pragmas
++-----------+----------+----------------------------------------------+-------------------------------------------------+
+| Type      | Options  | Location                                     | Messages                                        |
++-----------+----------+----------------------------------------------+-------------------------------------------------+
+| data_pack | VARIABLE | ../../../src/slr0.cpp:258 in kernel_nlp_slr0 | the pragma is not supported and will be ignored |
+| data_pack | VARIABLE | ../../../src/slr0.cpp:259 in kernel_nlp_slr0 | the pragma is not supported and will be ignored |
+| data_pack | VARIABLE | ../../../src/slr0.cpp:260 in kernel_nlp_slr0 | the pragma is not supported and will be ignored |
+| data_pack | VARIABLE | ../../../src/slr0.cpp:261 in kernel_nlp_slr0 | the pragma is not supported and will be ignored |
+| data_pack | VARIABLE | ../../../src/slr0.cpp:262 in kernel_nlp_slr0 | the pragma is not supported and will be ignored |
+| data_pack | VARIABLE | ../../../src/slr0.cpp:263 in kernel_nlp_slr0 | the pragma is not supported and will be ignored |
++-----------+----------+----------------------------------------------+-------------------------------------------------+
+
+* Valid Pragma Syntax
++-----------+-----------------------------------------------------------------------+-------------------------------------------------+
+| Type      | Options                                                               | Location                                        |
++-----------+-----------------------------------------------------------------------+-------------------------------------------------+
+| inline    | off                                                                   | ../../../src/slr0.cpp:11 in load_vr_for_task1   |
+| pipeline  | II = 1                                                                | ../../../src/slr0.cpp:13 in load_vr_for_task1   |
+| inline    | off                                                                   | ../../../src/slr0.cpp:20 in load_vr_for_task1   |
+| pipeline  | II = 1                                                                | ../../../src/slr0.cpp:22 in load_vr_for_task1   |
+| inline    | off                                                                   | ../../../src/slr0.cpp:46 in load_va_for_task1   |
+| pipeline  | II = 1                                                                | ../../../src/slr0.cpp:48 in load_va_for_task1   |
+| inline    | off                                                                   | ../../../src/slr0.cpp:55 in load_va_for_task1   |
+| pipeline  | II = 1                                                                | ../../../src/slr0.cpp:57 in load_va_for_task1   |
+| inline    | off                                                                   | ../../../src/slr0.cpp:81 in load_va_for_task3   |
+| pipeline  | II = 1                                                                | ../../../src/slr0.cpp:83 in load_va_for_task3   |
+| inline    | off                                                                   | ../../../src/slr0.cpp:90 in load_va_for_task3   |
+| pipeline  | II = 1                                                                | ../../../src/slr0.cpp:92 in load_va_for_task3   |
+| inline    | off                                                                   | ../../../src/slr0.cpp:116 in load_vp_for_task3  |
+| pipeline  | II = 1                                                                | ../../../src/slr0.cpp:118 in load_vp_for_task3  |
+| inline    | off                                                                   | ../../../src/slr0.cpp:125 in load_vp_for_task3  |
+| pipeline  | II = 1                                                                | ../../../src/slr0.cpp:127 in load_vp_for_task3  |
+| inline    | off                                                                   | ../../../src/slr0.cpp:151 in store_vs_for_task1 |
+| pipeline  | II = 1                                                                | ../../../src/slr0.cpp:153 in store_vs_for_task1 |
+| inline    | off                                                                   | ../../../src/slr0.cpp:159 in store_vs_for_task1 |
+| pipeline  | II = 1                                                                | ../../../src/slr0.cpp:161 in store_vs_for_task1 |
+| inline    | off                                                                   | ../../../src/slr0.cpp:202 in store_vq_for_task3 |
+| pipeline  | II = 1                                                                | ../../../src/slr0.cpp:204 in store_vq_for_task3 |
+| inline    | off                                                                   | ../../../src/slr0.cpp:210 in store_vq_for_task3 |
+| pipeline  | II = 1                                                                | ../../../src/slr0.cpp:212 in store_vq_for_task3 |
+| interface | axis port = fifo_r_from_off_chip_to_S1                                | ../../../src/slr0.cpp:234 in kernel_nlp_slr0    |
+| interface | axis port = fifo_A_from_off_chip_to_S1                                | ../../../src/slr0.cpp:235 in kernel_nlp_slr0    |
+| interface | axis port = fifo_A_from_off_chip_to_S3                                | ../../../src/slr0.cpp:236 in kernel_nlp_slr0    |
+| interface | axis port = fifo_p_from_off_chip_to_S3                                | ../../../src/slr0.cpp:237 in kernel_nlp_slr0    |
+| interface | axis port = fifo_s_to_off_chip                                        | ../../../src/slr0.cpp:238 in kernel_nlp_slr0    |
+| interface | axis port = fifo_q_to_off_chip                                        | ../../../src/slr0.cpp:239 in kernel_nlp_slr0    |
+| interface | m_axi port = vs_for_task1 offset = slave bundle = kernel_vs_for_task1 | ../../../src/slr0.cpp:240 in kernel_nlp_slr0    |
+| interface | m_axi port = vr_for_task1 offset = slave bundle = kernel_vr_for_task1 | ../../../src/slr0.cpp:242 in kernel_nlp_slr0    |
+| interface | m_axi port = vA_for_task1 offset = slave bundle = kernel_vA_for_task1 | ../../../src/slr0.cpp:244 in kernel_nlp_slr0    |
+| interface | m_axi port = vA_for_task3 offset = slave bundle = kernel_vA_for_task3 | ../../../src/slr0.cpp:246 in kernel_nlp_slr0    |
+| interface | m_axi port = vq_for_task3 offset = slave bundle = kernel_vq_for_task3 | ../../../src/slr0.cpp:248 in kernel_nlp_slr0    |
+| interface | m_axi port = vp_for_task3 offset = slave bundle = kernel_vp_for_task3 | ../../../src/slr0.cpp:250 in kernel_nlp_slr0    |
+| interface | s_axilite port = vs_for_task1 bundle = control                        | ../../../src/slr0.cpp:252 in kernel_nlp_slr0    |
+| interface | s_axilite port = vr_for_task1 bundle = control                        | ../../../src/slr0.cpp:253 in kernel_nlp_slr0    |
+| interface | s_axilite port = vA_for_task1 bundle = control                        | ../../../src/slr0.cpp:254 in kernel_nlp_slr0    |
+| interface | s_axilite port = vA_for_task3 bundle = control                        | ../../../src/slr0.cpp:255 in kernel_nlp_slr0    |
+| interface | s_axilite port = vq_for_task3 bundle = control                        | ../../../src/slr0.cpp:256 in kernel_nlp_slr0    |
+| interface | s_axilite port = vp_for_task3 bundle = control                        | ../../../src/slr0.cpp:257 in kernel_nlp_slr0    |
+| interface | s_axilite port = return bundle = control                              | ../../../src/slr0.cpp:264 in kernel_nlp_slr0    |
+| dataflow  |                                                                       | ../../../src/slr0.cpp:265 in kernel_nlp_slr0    |
++-----------+-----------------------------------------------------------------------+-------------------------------------------------+
+
+

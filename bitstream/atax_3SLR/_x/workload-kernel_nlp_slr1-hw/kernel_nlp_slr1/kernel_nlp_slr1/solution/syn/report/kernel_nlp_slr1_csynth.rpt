@@ -1,0 +1,157 @@
+
+
+================================================================
+== Vitis HLS Report for 'kernel_nlp_slr1'
+================================================================
+* Date:           Wed Jan  8 11:56:49 2025
+
+* Version:        2023.2 (Build 4023990 on Oct 11 2023)
+* Project:        kernel_nlp_slr1
+* Solution:       solution (Vitis Kernel Flow Target)
+* Product family: virtexuplusHBM
+* Target device:  xcu55c-fsvh2892-2L-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  4.55 ns|  3.165 ns|     1.23 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+-----------+-----------+------+-------+---------+
+    |  Latency (cycles) |   Latency (absolute)  |   Interval   | Pipeline|
+    |   min   |   max   |    min    |    max    |  min |  max  |   Type  |
+    +---------+---------+-----------+-----------+------+-------+---------+
+    |     4926|    10802|  22.389 us|  49.095 us|  4927|  10803|       no|
+    +---------+---------+-----------+-----------+------+-------+---------+
+
+    + Detail: 
+        * Instance: 
+        +----------------------+------------+---------+---------+-----------+-----------+------+-------+---------+
+        |                      |            |  Latency (cycles) |   Latency (absolute)  |   Interval   | Pipeline|
+        |       Instance       |   Module   |   min   |   max   |    min    |    max    |  min |  max  |   Type  |
+        +----------------------+------------+---------+---------+-----------+-----------+------+-------+---------+
+        |grp_FT1_level0_fu_58  |FT1_level0  |     4923|    10799|  22.375 us|  49.081 us|  4923|  10799|       no|
+        +----------------------+------------+---------+---------+-----------+-----------+------+-------+---------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++---------------------+---------+------+---------+---------+-----+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
++---------------------+---------+------+---------+---------+-----+
+|DSP                  |        -|     -|        -|        -|    -|
+|Expression           |        -|     -|        0|        2|    -|
+|FIFO                 |        -|     -|        -|        -|    -|
+|Instance             |        0|   205|    38983|    44377|    0|
+|Memory               |        -|     -|        -|        -|    -|
+|Multiplexer          |        -|     -|        -|       44|    -|
+|Register             |        -|     -|        8|        -|    -|
++---------------------+---------+------+---------+---------+-----+
+|Total                |        0|   205|    38991|    44423|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available SLR        |     1344|  3008|   869120|   434560|  320|
++---------------------+---------+------+---------+---------+-----+
+|Utilization SLR (%)  |        0|     6|        4|       10|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available            |     4032|  9024|  2607360|  1303680|  960|
++---------------------+---------+------+---------+---------+-----+
+|Utilization (%)      |        0|     2|        1|        3|    0|
++---------------------+---------+------+---------+---------+-----+
+
++ Detail: 
+    * Instance: 
+    +----------------------+------------+---------+-----+-------+-------+-----+
+    |       Instance       |   Module   | BRAM_18K| DSP |   FF  |  LUT  | URAM|
+    +----------------------+------------+---------+-----+-------+-------+-----+
+    |grp_FT1_level0_fu_58  |FT1_level0  |        0|  205|  38983|  44377|    0|
+    +----------------------+------------+---------+-----+-------+-------+-----+
+    |Total                 |            |        0|  205|  38983|  44377|    0|
+    +----------------------+------------+---------+-----+-------+-------+-----+
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +------------------------------------------------+----------+----+---+----+------------+------------+
+    |                  Variable Name                 | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +------------------------------------------------+----------+----+---+----+------------+------------+
+    |grp_FT1_level0_fu_58_fifo_y_to_off_chip_TREADY  |       and|   0|  0|   2|           1|           1|
+    +------------------------------------------------+----------+----+---+----+------------+------------+
+    |Total                                           |          |   0|  0|   2|           1|           1|
+    +------------------------------------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +--------------------------------------------------+----+-----------+-----+-----------+
+    |                       Name                       | LUT| Input Size| Bits| Total Bits|
+    +--------------------------------------------------+----+-----------+-----+-----------+
+    |ap_NS_fsm                                         |  26|          5|    1|          5|
+    |fifo_A_from_off_chip_to_S3_TREADY_int_regslice    |   9|          2|    1|          2|
+    |fifo_tmp_from_task1_to_task3_TREADY_int_regslice  |   9|          2|    1|          2|
+    +--------------------------------------------------+----+-----------+-----+-----------+
+    |Total                                             |  44|          9|    3|          9|
+    +--------------------------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-----------------------------------+---+----+-----+-----------+
+    |                Name               | FF| LUT| Bits| Const Bits|
+    +-----------------------------------+---+----+-----+-----------+
+    |ap_CS_fsm                          |  4|   0|    4|          0|
+    |ap_rst_n_inv                       |  1|   0|    1|          0|
+    |ap_rst_reg_1                       |  1|   0|    1|          0|
+    |ap_rst_reg_2                       |  1|   0|    1|          0|
+    |grp_FT1_level0_fu_58_ap_start_reg  |  1|   0|    1|          0|
+    +-----------------------------------+---+----+-----+-----------+
+    |Total                              |  8|   0|    8|          0|
+    +-----------------------------------+---+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-------------------------------------+-----+-----+--------------+---------------------------------------+--------------+
+|              RTL Ports              | Dir | Bits|   Protocol   |             Source Object             |    C Type    |
++-------------------------------------+-----+-----+--------------+---------------------------------------+--------------+
+|ap_clk                               |   in|    1|  ap_ctrl_none|                        kernel_nlp_slr1|  return value|
+|ap_rst_n                             |   in|    1|  ap_ctrl_none|                        kernel_nlp_slr1|  return value|
+|fifo_tmp_from_task1_to_task3_TDATA   |   in|  256|          axis|  fifo_tmp_from_task1_to_task3_V_data_V|       pointer|
+|fifo_tmp_from_task1_to_task3_TVALID  |   in|    1|          axis|  fifo_tmp_from_task1_to_task3_V_last_V|       pointer|
+|fifo_tmp_from_task1_to_task3_TREADY  |  out|    1|          axis|  fifo_tmp_from_task1_to_task3_V_last_V|       pointer|
+|fifo_tmp_from_task1_to_task3_TLAST   |   in|    1|          axis|  fifo_tmp_from_task1_to_task3_V_last_V|       pointer|
+|fifo_tmp_from_task1_to_task3_TKEEP   |   in|   32|          axis|  fifo_tmp_from_task1_to_task3_V_keep_V|       pointer|
+|fifo_tmp_from_task1_to_task3_TSTRB   |   in|   32|          axis|  fifo_tmp_from_task1_to_task3_V_strb_V|       pointer|
+|fifo_A_from_off_chip_to_S3_TDATA     |   in|  512|          axis|    fifo_A_from_off_chip_to_S3_V_data_V|       pointer|
+|fifo_A_from_off_chip_to_S3_TVALID    |   in|    1|          axis|    fifo_A_from_off_chip_to_S3_V_last_V|       pointer|
+|fifo_A_from_off_chip_to_S3_TREADY    |  out|    1|          axis|    fifo_A_from_off_chip_to_S3_V_last_V|       pointer|
+|fifo_A_from_off_chip_to_S3_TLAST     |   in|    1|          axis|    fifo_A_from_off_chip_to_S3_V_last_V|       pointer|
+|fifo_A_from_off_chip_to_S3_TKEEP     |   in|   64|          axis|    fifo_A_from_off_chip_to_S3_V_keep_V|       pointer|
+|fifo_A_from_off_chip_to_S3_TSTRB     |   in|   64|          axis|    fifo_A_from_off_chip_to_S3_V_strb_V|       pointer|
+|fifo_y_to_off_chip_TDATA             |  out|  512|          axis|            fifo_y_to_off_chip_V_data_V|       pointer|
+|fifo_y_to_off_chip_TVALID            |  out|    1|          axis|            fifo_y_to_off_chip_V_last_V|       pointer|
+|fifo_y_to_off_chip_TREADY            |   in|    1|          axis|            fifo_y_to_off_chip_V_last_V|       pointer|
+|fifo_y_to_off_chip_TLAST             |  out|    1|          axis|            fifo_y_to_off_chip_V_last_V|       pointer|
+|fifo_y_to_off_chip_TKEEP             |  out|   64|          axis|            fifo_y_to_off_chip_V_keep_V|       pointer|
+|fifo_y_to_off_chip_TSTRB             |  out|   64|          axis|            fifo_y_to_off_chip_V_strb_V|       pointer|
++-------------------------------------+-----+-----+--------------+---------------------------------------+--------------+
+

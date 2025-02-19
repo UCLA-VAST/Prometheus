@@ -1,0 +1,59 @@
+<design_size title="Design Size Report">
+    <item name="Total Instructions per Compilation Phase">
+        <table>
+            <keys size="4">Phase, Step, Instructions, Description</keys>
+            <column name="Compile/Link">,   7287, After all functions are compiled and linked into a single design</column>
+            <column name="">, , </column>
+            <column name="Unroll/Inline">, , After user unroll and inline pragmas are applied</column>
+            <column name="">(1) unroll,  10744, user unroll pragmas are applied</column>
+            <column name="">(2) simplification,   5396, simplification of applied user unroll pragmas</column>
+            <column name="">(3) inline,   5348, user inline pragmas are applied</column>
+            <column name="">(4) simplification,   5348, simplification of applied user inline pragmas</column>
+            <column name="">, , </column>
+            <column name="Array/Struct">, , After user array partition and struct aggregate/disaggregate pragmas are applied</column>
+            <column name="">(1) array partition, 572345 *, user array partition pragmas are applied</column>
+            <column name="">(2) simplification,  13174, simplification of applied user array partition &amp; struct aggregate/disaggregate pragmas</column>
+            <column name="">(3) aggregate/disaggregate ,  13174, user struct aggregate/disaggregate pragmas are applied</column>
+            <column name="">(4) array reshape,  13174, apply array reshape pragmas</column>
+            <column name="">(5) access patterns,  13092, array access pattern optmizations</column>
+            <column name="">, , </column>
+            <column name="Performance">, , After transformations are applied to meet performance pragma targets</column>
+            <column name="">(1) loop simplification,  13050, loop and instruction simplification</column>
+            <column name="">(2) parallelization,  13040, loops are unrolled or pipelined to meet performance targets</column>
+            <column name="">(3) array partition,  12978, arrays are partitioned to meet performance targets</column>
+            <column name="">(4) simplification,  12978, simplification of design after performance transformations</column>
+            <column name="">, , </column>
+            <column name="HW Transforms">, , After hardware transfomations</column>
+            <column name="">(1) lowering,  12953, initial conversion to HW specific instructions</column>
+            <column name="">(2) optimizations,  12994, high level synthesis optimizations</column>
+        </table>
+    </item>
+    <item name="Instructions per Function for each Compilation Phase">
+        <hiertable>
+            <header size="7" col0="Function" col1="Location" col2="Compile/Link" col3="Unroll/Inline" col4="Array/Struct" col5="Performance" col6="HW Transforms"/>
+            <rows>
+                <row id="0" col0="kernel_nlp_slr2" col1="slr2.cpp:304" col2="7287" col3="5348" col4="13092" col5="12978" col6="12994">
+                    <row id="7" col0="FT0_level0" col1="slr2.cpp:22" col2="7278" col3="5342" col4="13074" col5="12960" col6="12971">
+                        <row id="5" col0="read_r_FT0" col1="slr2.cpp:114" col2="909" col3="159" col4="208" col5="200" col6="201"/>
+                        <row id="4" col0="read_A_FT0" col1="slr2.cpp:184" col2="969" col3="147" col4="1677" col5="1669" col6="1670"/>
+                        <row id="1" col0="compute_FT0_level0" col1="slr2.cpp:9" col2="4252" col2_disp="4,252 (2 calls)" col3="4940" col3_disp="4,940 (2 calls)" col4="7908" col4_disp="7,908 (2 calls)" col5="7794" col5_disp="7,794 (2 calls)" col6="7804" col6_disp="7,804 (2 calls)">
+                            <row id="4" col0="read_A_FT0" col1="slr2.cpp:184" col2="1938" col2_disp="1,938 (2 calls)" col3="294" col3_disp=" 294 (2 calls)" col4="3360" col4_disp="3,360 (2 calls)" col5="3342" col5_disp="3,342 (2 calls)" col6="3346" col6_disp="3,346 (2 calls)"/>
+                            <row id="6" col0="task0_intra" col1="slr2.cpp:64" col2="30" col2_disp="  30 (2 calls)" col3="64" col3_disp="  64 (2 calls)" col4="34" col4_disp="   34 (2 calls)" col5="34" col5_disp="   34 (2 calls)" col6="36" col6_disp="   36 (2 calls)"/>
+                            <row id="2" col0="task1_intra" col1="slr2.cpp:73" col2="96" col2_disp="  96 (2 calls)" col3="4426" col3_disp="4,426 (2 calls)" col4="4364" col4_disp="4,364 (2 calls)" col5="4332" col5_disp="4,332 (2 calls)" col6="4342" col6_disp="4,342 (2 calls)"/>
+                            <row id="3" col0="write_s_FT0" col1="slr2.cpp:258" col2="2158" col2_disp="2,158 (2 calls)" col3="126" col3_disp=" 126 (2 calls)" col4="136" col4_disp="  136 (2 calls)" col5="72" col5_disp="   72 (2 calls)" col6="62" col6_disp="   62 (2 calls)"/>
+                        </row>
+                        <row id="3" col0="write_s_FT0" col1="slr2.cpp:258" col2="1079" col3="63" col4="65" col5="33" col6="28"/>
+                    </row>
+                </row>
+            </rows>
+            <notes/>
+        </hiertable>
+    </item>
+    <item name="Design Size Message Settings">
+        <table>
+            <keys size="3">Message Setting, Value, Description</keys>
+            <column name="config_compile -design_size_maximum_warning">100000, Show a warning when total design instructions exceeds this value</column>
+        </table>
+    </item>
+</design_size>
+

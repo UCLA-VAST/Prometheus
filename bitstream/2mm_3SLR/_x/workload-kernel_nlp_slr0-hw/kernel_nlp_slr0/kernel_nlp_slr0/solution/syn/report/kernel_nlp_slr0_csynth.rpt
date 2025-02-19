@@ -1,0 +1,471 @@
+
+
+================================================================
+== Vitis HLS Report for 'kernel_nlp_slr0'
+================================================================
+* Date:           Thu Jan  2 03:28:42 2025
+
+* Version:        2023.2 (Build 4023990 on Oct 11 2023)
+* Project:        kernel_nlp_slr0
+* Solution:       solution (Vitis Kernel Flow Target)
+* Product family: virtexuplusHBM
+* Target device:  xcu55c-fsvh2892-2L-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  4.55 ns|  3.318 ns|     1.23 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-------+-------+----------+
+    |  Latency (cycles) |  Latency (absolute) |    Interval   | Pipeline |
+    |   min   |   max   |    min   |    max   |  min  |  max  |   Type   |
+    +---------+---------+----------+----------+-------+-------+----------+
+    |    42158|    42158|  0.192 ms|  0.192 ms|  42096|  42096|  dataflow|
+    +---------+---------+----------+----------+-------+-------+----------+
+
+    + Detail: 
+        * Instance: 
+        +-------------------------+----------------------+---------+---------+-----------+-----------+-------+-------+---------+
+        |                         |                      |  Latency (cycles) |   Latency (absolute)  |    Interval   | Pipeline|
+        |         Instance        |        Module        |   min   |   max   |    min    |    max    |  min  |  max  |   Type  |
+        +-------------------------+----------------------+---------+---------+-----------+-----------+-------+-------+---------+
+        |entry_proc5_U0           |entry_proc5           |        0|        0|       0 ns|       0 ns|      0|      0|       no|
+        |Block_entry1_proc1_U0    |Block_entry1_proc1    |        2|        2|   9.090 ns|   9.090 ns|      2|      2|       no|
+        |load_vC_for_task3_U0     |load_vC_for_task3     |     2763|     2763|  12.558 us|  12.558 us|   2763|   2763|       no|
+        |load_vA_for_task1_U0     |load_vA_for_task1     |     2594|     2594|  11.790 us|  11.790 us|   2594|   2594|       no|
+        |load_vB_for_task1_U0     |load_vB_for_task1     |     2594|     2594|  11.790 us|  11.790 us|   2594|   2594|       no|
+        |load_vD_for_task2_U0     |load_vD_for_task2     |     9975|     9975|  45.336 us|  45.336 us|   9975|   9975|       no|
+        |FT0_level0_U0            |FT0_level0            |    42095|    42095|   0.191 ms|   0.191 ms|  42095|  42095|       no|
+        |store_vD_for_task2_U0    |store_vD_for_task2    |     9971|     9971|  45.318 us|  45.318 us|   9971|   9971|       no|
+        |store_vtmp_for_task1_U0  |store_vtmp_for_task1  |     4392|     4392|  19.962 us|  19.962 us|   4392|   4392|       no|
+        +-------------------------+----------------------+---------+---------+-----------+-----------+-------+-------+---------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++---------------------+---------+------+---------+---------+-----+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
++---------------------+---------+------+---------+---------+-----+
+|DSP                  |        -|     -|        -|        -|    -|
+|Expression           |        -|     -|        0|       38|    -|
+|FIFO                 |       38|     -|     2665|     1482|    -|
+|Instance             |      258|  1059|   210523|   180515|    0|
+|Memory               |        -|     -|        -|        -|    -|
+|Multiplexer          |        -|     -|        -|       63|    -|
+|Register             |        -|     -|       10|        -|    -|
++---------------------+---------+------+---------+---------+-----+
+|Total                |      296|  1059|   213198|   182098|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available SLR        |     1344|  3008|   869120|   434560|  320|
++---------------------+---------+------+---------+---------+-----+
+|Utilization SLR (%)  |       22|    35|       24|       41|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available            |     4032|  9024|  2607360|  1303680|  960|
++---------------------+---------+------+---------+---------+-----+
+|Utilization (%)      |        7|    11|        8|       13|    0|
++---------------------+---------+------+---------+---------+-----+
+
++ Detail: 
+    * Instance: 
+    +-------------------------------+-----------------------------+---------+------+--------+--------+-----+
+    |            Instance           |            Module           | BRAM_18K|  DSP |   FF   |   LUT  | URAM|
+    +-------------------------------+-----------------------------+---------+------+--------+--------+-----+
+    |Block_entry1_proc1_U0          |Block_entry1_proc1           |        0|     0|       4|      56|    0|
+    |FT0_level0_U0                  |FT0_level0                   |      144|  1059|  192440|  167787|    0|
+    |control_s_axi_U                |control_s_axi                |        0|     0|     462|     808|    0|
+    |entry_proc5_U0                 |entry_proc5                  |        0|     0|       3|      38|    0|
+    |kernel_vA_for_task1_m_axi_U    |kernel_vA_for_task1_m_axi    |       30|     0|    3521|    2695|    0|
+    |kernel_vB_for_task1_m_axi_U    |kernel_vB_for_task1_m_axi    |       30|     0|    3521|    2695|    0|
+    |kernel_vC_for_task3_m_axi_U    |kernel_vC_for_task3_m_axi    |       30|     0|    3521|    2695|    0|
+    |kernel_vD_for_task2_m_axi_U    |kernel_vD_for_task2_m_axi    |        8|     0|    1181|    1117|    0|
+    |kernel_vtmp_for_task1_m_axi_U  |kernel_vtmp_for_task1_m_axi  |       16|     0|    1963|    1644|    0|
+    |load_vA_for_task1_U0           |load_vA_for_task1            |        0|     0|     801|     149|    0|
+    |load_vB_for_task1_U0           |load_vB_for_task1            |        0|     0|     801|     149|    0|
+    |load_vC_for_task3_U0           |load_vC_for_task3            |        0|     0|     803|     153|    0|
+    |load_vD_for_task2_U0           |load_vD_for_task2            |        0|     0|     421|     157|    0|
+    |store_vD_for_task2_U0          |store_vD_for_task2           |        0|     0|     542|     183|    0|
+    |store_vtmp_for_task1_U0        |store_vtmp_for_task1         |        0|     0|     539|     189|    0|
+    +-------------------------------+-----------------------------+---------+------+--------+--------+-----+
+    |Total                          |                             |      258|  1059|  210523|  180515|    0|
+    +-------------------------------+-----------------------------+---------+------+--------+--------+-----+
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    +------------------------------+---------+------+----+-----+------+-----+---------+
+    |             Name             | BRAM_18K|  FF  | LUT| URAM| Depth| Bits| Size:D*B|
+    +------------------------------+---------+------+----+-----+------+-----+---------+
+    |alpha_c_U                     |        0|     5|   0|    -|     3|   32|       96|
+    |fifo_A_from_off_chip_to_S1_U  |       15|  1056|   0|    -|  1024|  512|   524288|
+    |fifo_B_from_off_chip_to_S1_U  |       15|  1056|   0|    -|  1024|  512|   524288|
+    |fifo_tmp_to_off_chip_U        |        8|   543|   0|    -|  1024|  256|   262144|
+    |vtmp_for_task1_c_U            |        0|     5|   0|    -|     4|   64|      256|
+    +------------------------------+---------+------+----+-----+------+-----+---------+
+    |Total                         |       38|  2665|   0|    0|  3079| 1376|  1311072|
+    +------------------------------+---------+------+----+-----+------+-----+---------+
+
+    * Expression: 
+    +----------------------------------------+----------+----+---+----+------------+------------+
+    |              Variable Name             | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +----------------------------------------+----------+----+---+----+------------+------------+
+    |Block_entry1_proc1_U0_ap_start          |       and|   0|  0|   2|           1|           1|
+    |ap_idle                                 |       and|   0|  0|   2|           1|           1|
+    |ap_sync_continue                        |       and|   0|  0|   2|           1|           1|
+    |ap_sync_done                            |       and|   0|  0|   2|           1|           1|
+    |ap_sync_ready                           |       and|   0|  0|   2|           1|           1|
+    |entry_proc5_U0_ap_start                 |       and|   0|  0|   2|           1|           1|
+    |entry_proc5_U0_start_full_n             |       and|   0|  0|   2|           1|           1|
+    |load_vA_for_task1_U0_ap_start           |       and|   0|  0|   2|           1|           1|
+    |load_vB_for_task1_U0_ap_start           |       and|   0|  0|   2|           1|           1|
+    |load_vC_for_task3_U0_ap_start           |       and|   0|  0|   2|           1|           1|
+    |load_vD_for_task2_U0_ap_start           |       and|   0|  0|   2|           1|           1|
+    |store_vD_for_task2_U0_ap_start          |       and|   0|  0|   2|           1|           1|
+    |ap_sync_Block_entry1_proc1_U0_ap_ready  |        or|   0|  0|   2|           1|           1|
+    |ap_sync_entry_proc5_U0_ap_ready         |        or|   0|  0|   2|           1|           1|
+    |ap_sync_load_vA_for_task1_U0_ap_ready   |        or|   0|  0|   2|           1|           1|
+    |ap_sync_load_vB_for_task1_U0_ap_ready   |        or|   0|  0|   2|           1|           1|
+    |ap_sync_load_vC_for_task3_U0_ap_ready   |        or|   0|  0|   2|           1|           1|
+    |ap_sync_load_vD_for_task2_U0_ap_ready   |        or|   0|  0|   2|           1|           1|
+    |ap_sync_store_vD_for_task2_U0_ap_ready  |        or|   0|  0|   2|           1|           1|
+    +----------------------------------------+----------+----+---+----+------------+------------+
+    |Total                                   |          |   0|  0|  38|          19|          19|
+    +----------------------------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +--------------------------------------------+----+-----------+-----+-----------+
+    |                    Name                    | LUT| Input Size| Bits| Total Bits|
+    +--------------------------------------------+----+-----------+-----+-----------+
+    |ap_sync_reg_Block_entry1_proc1_U0_ap_ready  |   9|          2|    1|          2|
+    |ap_sync_reg_entry_proc5_U0_ap_ready         |   9|          2|    1|          2|
+    |ap_sync_reg_load_vA_for_task1_U0_ap_ready   |   9|          2|    1|          2|
+    |ap_sync_reg_load_vB_for_task1_U0_ap_ready   |   9|          2|    1|          2|
+    |ap_sync_reg_load_vC_for_task3_U0_ap_ready   |   9|          2|    1|          2|
+    |ap_sync_reg_load_vD_for_task2_U0_ap_ready   |   9|          2|    1|          2|
+    |ap_sync_reg_store_vD_for_task2_U0_ap_ready  |   9|          2|    1|          2|
+    +--------------------------------------------+----+-----------+-----+-----------+
+    |Total                                       |  63|         14|    7|         14|
+    +--------------------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +--------------------------------------------+---+----+-----+-----------+
+    |                    Name                    | FF| LUT| Bits| Const Bits|
+    +--------------------------------------------+---+----+-----+-----------+
+    |ap_rst_n_inv                                |  1|   0|    1|          0|
+    |ap_rst_reg_1                                |  1|   0|    1|          0|
+    |ap_rst_reg_2                                |  1|   0|    1|          0|
+    |ap_sync_reg_Block_entry1_proc1_U0_ap_ready  |  1|   0|    1|          0|
+    |ap_sync_reg_entry_proc5_U0_ap_ready         |  1|   0|    1|          0|
+    |ap_sync_reg_load_vA_for_task1_U0_ap_ready   |  1|   0|    1|          0|
+    |ap_sync_reg_load_vB_for_task1_U0_ap_ready   |  1|   0|    1|          0|
+    |ap_sync_reg_load_vC_for_task3_U0_ap_ready   |  1|   0|    1|          0|
+    |ap_sync_reg_load_vD_for_task2_U0_ap_ready   |  1|   0|    1|          0|
+    |ap_sync_reg_store_vD_for_task2_U0_ap_ready  |  1|   0|    1|          0|
+    +--------------------------------------------+---+----+-----+-----------+
+    |Total                                       | 10|   0|   10|          0|
+    +--------------------------------------------+---+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++--------------------------------------+-----+-----+---------------+---------------------------------------+--------------+
+|               RTL Ports              | Dir | Bits|    Protocol   |             Source Object             |    C Type    |
++--------------------------------------+-----+-----+---------------+---------------------------------------+--------------+
+|s_axi_control_AWVALID                 |   in|    1|          s_axi|                                control|        scalar|
+|s_axi_control_AWREADY                 |  out|    1|          s_axi|                                control|        scalar|
+|s_axi_control_AWADDR                  |   in|    7|          s_axi|                                control|        scalar|
+|s_axi_control_WVALID                  |   in|    1|          s_axi|                                control|        scalar|
+|s_axi_control_WREADY                  |  out|    1|          s_axi|                                control|        scalar|
+|s_axi_control_WDATA                   |   in|   32|          s_axi|                                control|        scalar|
+|s_axi_control_WSTRB                   |   in|    4|          s_axi|                                control|        scalar|
+|s_axi_control_ARVALID                 |   in|    1|          s_axi|                                control|        scalar|
+|s_axi_control_ARREADY                 |  out|    1|          s_axi|                                control|        scalar|
+|s_axi_control_ARADDR                  |   in|    7|          s_axi|                                control|        scalar|
+|s_axi_control_RVALID                  |  out|    1|          s_axi|                                control|        scalar|
+|s_axi_control_RREADY                  |   in|    1|          s_axi|                                control|        scalar|
+|s_axi_control_RDATA                   |  out|   32|          s_axi|                                control|        scalar|
+|s_axi_control_RRESP                   |  out|    2|          s_axi|                                control|        scalar|
+|s_axi_control_BVALID                  |  out|    1|          s_axi|                                control|        scalar|
+|s_axi_control_BREADY                  |   in|    1|          s_axi|                                control|        scalar|
+|s_axi_control_BRESP                   |  out|    2|          s_axi|                                control|        scalar|
+|ap_clk                                |   in|    1|  ap_ctrl_chain|                        kernel_nlp_slr0|  return value|
+|ap_rst_n                              |   in|    1|  ap_ctrl_chain|                        kernel_nlp_slr0|  return value|
+|interrupt                             |  out|    1|  ap_ctrl_chain|                        kernel_nlp_slr0|  return value|
+|m_axi_kernel_vA_for_task1_AWVALID     |  out|    1|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_AWREADY     |   in|    1|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_AWADDR      |  out|   64|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_AWID        |  out|    1|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_AWLEN       |  out|    8|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_AWSIZE      |  out|    3|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_AWBURST     |  out|    2|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_AWLOCK      |  out|    2|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_AWCACHE     |  out|    4|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_AWPROT      |  out|    3|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_AWQOS       |  out|    4|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_AWREGION    |  out|    4|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_AWUSER      |  out|    1|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_WVALID      |  out|    1|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_WREADY      |   in|    1|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_WDATA       |  out|  512|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_WSTRB       |  out|   64|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_WLAST       |  out|    1|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_WID         |  out|    1|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_WUSER       |  out|    1|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_ARVALID     |  out|    1|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_ARREADY     |   in|    1|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_ARADDR      |  out|   64|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_ARID        |  out|    1|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_ARLEN       |  out|    8|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_ARSIZE      |  out|    3|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_ARBURST     |  out|    2|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_ARLOCK      |  out|    2|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_ARCACHE     |  out|    4|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_ARPROT      |  out|    3|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_ARQOS       |  out|    4|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_ARREGION    |  out|    4|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_ARUSER      |  out|    1|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_RVALID      |   in|    1|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_RREADY      |  out|    1|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_RDATA       |   in|  512|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_RLAST       |   in|    1|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_RID         |   in|    1|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_RUSER       |   in|    1|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_RRESP       |   in|    2|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_BVALID      |   in|    1|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_BREADY      |  out|    1|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_BRESP       |   in|    2|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_BID         |   in|    1|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vA_for_task1_BUSER       |   in|    1|          m_axi|                    kernel_vA_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_AWVALID     |  out|    1|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_AWREADY     |   in|    1|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_AWADDR      |  out|   64|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_AWID        |  out|    1|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_AWLEN       |  out|    8|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_AWSIZE      |  out|    3|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_AWBURST     |  out|    2|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_AWLOCK      |  out|    2|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_AWCACHE     |  out|    4|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_AWPROT      |  out|    3|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_AWQOS       |  out|    4|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_AWREGION    |  out|    4|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_AWUSER      |  out|    1|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_WVALID      |  out|    1|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_WREADY      |   in|    1|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_WDATA       |  out|  512|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_WSTRB       |  out|   64|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_WLAST       |  out|    1|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_WID         |  out|    1|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_WUSER       |  out|    1|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_ARVALID     |  out|    1|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_ARREADY     |   in|    1|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_ARADDR      |  out|   64|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_ARID        |  out|    1|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_ARLEN       |  out|    8|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_ARSIZE      |  out|    3|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_ARBURST     |  out|    2|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_ARLOCK      |  out|    2|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_ARCACHE     |  out|    4|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_ARPROT      |  out|    3|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_ARQOS       |  out|    4|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_ARREGION    |  out|    4|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_ARUSER      |  out|    1|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_RVALID      |   in|    1|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_RREADY      |  out|    1|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_RDATA       |   in|  512|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_RLAST       |   in|    1|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_RID         |   in|    1|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_RUSER       |   in|    1|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_RRESP       |   in|    2|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_BVALID      |   in|    1|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_BREADY      |  out|    1|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_BRESP       |   in|    2|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_BID         |   in|    1|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vB_for_task1_BUSER       |   in|    1|          m_axi|                    kernel_vB_for_task1|       pointer|
+|m_axi_kernel_vC_for_task3_AWVALID     |  out|    1|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_AWREADY     |   in|    1|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_AWADDR      |  out|   64|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_AWID        |  out|    1|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_AWLEN       |  out|    8|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_AWSIZE      |  out|    3|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_AWBURST     |  out|    2|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_AWLOCK      |  out|    2|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_AWCACHE     |  out|    4|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_AWPROT      |  out|    3|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_AWQOS       |  out|    4|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_AWREGION    |  out|    4|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_AWUSER      |  out|    1|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_WVALID      |  out|    1|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_WREADY      |   in|    1|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_WDATA       |  out|  512|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_WSTRB       |  out|   64|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_WLAST       |  out|    1|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_WID         |  out|    1|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_WUSER       |  out|    1|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_ARVALID     |  out|    1|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_ARREADY     |   in|    1|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_ARADDR      |  out|   64|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_ARID        |  out|    1|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_ARLEN       |  out|    8|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_ARSIZE      |  out|    3|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_ARBURST     |  out|    2|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_ARLOCK      |  out|    2|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_ARCACHE     |  out|    4|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_ARPROT      |  out|    3|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_ARQOS       |  out|    4|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_ARREGION    |  out|    4|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_ARUSER      |  out|    1|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_RVALID      |   in|    1|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_RREADY      |  out|    1|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_RDATA       |   in|  512|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_RLAST       |   in|    1|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_RID         |   in|    1|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_RUSER       |   in|    1|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_RRESP       |   in|    2|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_BVALID      |   in|    1|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_BREADY      |  out|    1|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_BRESP       |   in|    2|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_BID         |   in|    1|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vC_for_task3_BUSER       |   in|    1|          m_axi|                    kernel_vC_for_task3|       pointer|
+|m_axi_kernel_vD_for_task2_AWVALID     |  out|    1|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_AWREADY     |   in|    1|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_AWADDR      |  out|   64|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_AWID        |  out|    1|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_AWLEN       |  out|    8|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_AWSIZE      |  out|    3|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_AWBURST     |  out|    2|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_AWLOCK      |  out|    2|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_AWCACHE     |  out|    4|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_AWPROT      |  out|    3|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_AWQOS       |  out|    4|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_AWREGION    |  out|    4|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_AWUSER      |  out|    1|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_WVALID      |  out|    1|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_WREADY      |   in|    1|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_WDATA       |  out|  128|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_WSTRB       |  out|   16|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_WLAST       |  out|    1|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_WID         |  out|    1|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_WUSER       |  out|    1|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_ARVALID     |  out|    1|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_ARREADY     |   in|    1|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_ARADDR      |  out|   64|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_ARID        |  out|    1|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_ARLEN       |  out|    8|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_ARSIZE      |  out|    3|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_ARBURST     |  out|    2|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_ARLOCK      |  out|    2|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_ARCACHE     |  out|    4|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_ARPROT      |  out|    3|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_ARQOS       |  out|    4|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_ARREGION    |  out|    4|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_ARUSER      |  out|    1|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_RVALID      |   in|    1|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_RREADY      |  out|    1|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_RDATA       |   in|  128|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_RLAST       |   in|    1|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_RID         |   in|    1|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_RUSER       |   in|    1|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_RRESP       |   in|    2|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_BVALID      |   in|    1|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_BREADY      |  out|    1|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_BRESP       |   in|    2|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_BID         |   in|    1|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vD_for_task2_BUSER       |   in|    1|          m_axi|                    kernel_vD_for_task2|       pointer|
+|m_axi_kernel_vtmp_for_task1_AWVALID   |  out|    1|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_AWREADY   |   in|    1|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_AWADDR    |  out|   64|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_AWID      |  out|    1|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_AWLEN     |  out|    8|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_AWSIZE    |  out|    3|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_AWBURST   |  out|    2|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_AWLOCK    |  out|    2|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_AWCACHE   |  out|    4|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_AWPROT    |  out|    3|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_AWQOS     |  out|    4|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_AWREGION  |  out|    4|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_AWUSER    |  out|    1|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_WVALID    |  out|    1|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_WREADY    |   in|    1|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_WDATA     |  out|  256|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_WSTRB     |  out|   32|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_WLAST     |  out|    1|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_WID       |  out|    1|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_WUSER     |  out|    1|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_ARVALID   |  out|    1|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_ARREADY   |   in|    1|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_ARADDR    |  out|   64|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_ARID      |  out|    1|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_ARLEN     |  out|    8|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_ARSIZE    |  out|    3|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_ARBURST   |  out|    2|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_ARLOCK    |  out|    2|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_ARCACHE   |  out|    4|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_ARPROT    |  out|    3|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_ARQOS     |  out|    4|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_ARREGION  |  out|    4|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_ARUSER    |  out|    1|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_RVALID    |   in|    1|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_RREADY    |  out|    1|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_RDATA     |   in|  256|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_RLAST     |   in|    1|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_RID       |   in|    1|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_RUSER     |   in|    1|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_RRESP     |   in|    2|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_BVALID    |   in|    1|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_BREADY    |  out|    1|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_BRESP     |   in|    2|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_BID       |   in|    1|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|m_axi_kernel_vtmp_for_task1_BUSER     |   in|    1|          m_axi|                  kernel_vtmp_for_task1|       pointer|
+|fifo_cte_1_TDATA                      |  out|   32|           axis|                    fifo_cte_1_V_data_V|       pointer|
+|fifo_cte_1_TKEEP                      |  out|    4|           axis|                    fifo_cte_1_V_keep_V|       pointer|
+|fifo_cte_1_TSTRB                      |  out|    4|           axis|                    fifo_cte_1_V_strb_V|       pointer|
+|fifo_cte_1_TLAST                      |  out|    1|           axis|                    fifo_cte_1_V_last_V|       pointer|
+|fifo_cte_1_TVALID                     |  out|    1|           axis|                    fifo_cte_1_V_last_V|       pointer|
+|fifo_cte_1_TREADY                     |   in|    1|           axis|                    fifo_cte_1_V_last_V|       pointer|
+|fifo_C_from_off_chip_to_S3_TDATA      |  out|  512|           axis|    fifo_C_from_off_chip_to_S3_V_data_V|       pointer|
+|fifo_C_from_off_chip_to_S3_TKEEP      |  out|   64|           axis|    fifo_C_from_off_chip_to_S3_V_keep_V|       pointer|
+|fifo_C_from_off_chip_to_S3_TSTRB      |  out|   64|           axis|    fifo_C_from_off_chip_to_S3_V_strb_V|       pointer|
+|fifo_C_from_off_chip_to_S3_TLAST      |  out|    1|           axis|    fifo_C_from_off_chip_to_S3_V_last_V|       pointer|
+|fifo_C_from_off_chip_to_S3_TVALID     |  out|    1|           axis|    fifo_C_from_off_chip_to_S3_V_last_V|       pointer|
+|fifo_C_from_off_chip_to_S3_TREADY     |   in|    1|           axis|    fifo_C_from_off_chip_to_S3_V_last_V|       pointer|
+|fifo_D_from_off_chip_to_S2_TDATA      |  out|  128|           axis|    fifo_D_from_off_chip_to_S2_V_data_V|       pointer|
+|fifo_D_from_off_chip_to_S2_TKEEP      |  out|   16|           axis|    fifo_D_from_off_chip_to_S2_V_keep_V|       pointer|
+|fifo_D_from_off_chip_to_S2_TSTRB      |  out|   16|           axis|    fifo_D_from_off_chip_to_S2_V_strb_V|       pointer|
+|fifo_D_from_off_chip_to_S2_TLAST      |  out|    1|           axis|    fifo_D_from_off_chip_to_S2_V_last_V|       pointer|
+|fifo_D_from_off_chip_to_S2_TVALID     |  out|    1|           axis|    fifo_D_from_off_chip_to_S2_V_last_V|       pointer|
+|fifo_D_from_off_chip_to_S2_TREADY     |   in|    1|           axis|    fifo_D_from_off_chip_to_S2_V_last_V|       pointer|
+|fifo_D_to_off_chip_TDATA              |   in|  128|           axis|            fifo_D_to_off_chip_V_data_V|       pointer|
+|fifo_D_to_off_chip_TKEEP              |   in|   16|           axis|            fifo_D_to_off_chip_V_keep_V|       pointer|
+|fifo_D_to_off_chip_TSTRB              |   in|   16|           axis|            fifo_D_to_off_chip_V_strb_V|       pointer|
+|fifo_D_to_off_chip_TLAST              |   in|    1|           axis|            fifo_D_to_off_chip_V_last_V|       pointer|
+|fifo_D_to_off_chip_TVALID             |   in|    1|           axis|            fifo_D_to_off_chip_V_last_V|       pointer|
+|fifo_D_to_off_chip_TREADY             |  out|    1|           axis|            fifo_D_to_off_chip_V_last_V|       pointer|
+|fifo_tmp_from_task1_to_task3_TDATA    |  out|  256|           axis|  fifo_tmp_from_task1_to_task3_V_data_V|       pointer|
+|fifo_tmp_from_task1_to_task3_TKEEP    |  out|   32|           axis|  fifo_tmp_from_task1_to_task3_V_keep_V|       pointer|
+|fifo_tmp_from_task1_to_task3_TSTRB    |  out|   32|           axis|  fifo_tmp_from_task1_to_task3_V_strb_V|       pointer|
+|fifo_tmp_from_task1_to_task3_TLAST    |  out|    1|           axis|  fifo_tmp_from_task1_to_task3_V_last_V|       pointer|
+|fifo_tmp_from_task1_to_task3_TVALID   |  out|    1|           axis|  fifo_tmp_from_task1_to_task3_V_last_V|       pointer|
+|fifo_tmp_from_task1_to_task3_TREADY   |   in|    1|           axis|  fifo_tmp_from_task1_to_task3_V_last_V|       pointer|
++--------------------------------------+-----+-----+---------------+---------------------------------------+--------------+
+

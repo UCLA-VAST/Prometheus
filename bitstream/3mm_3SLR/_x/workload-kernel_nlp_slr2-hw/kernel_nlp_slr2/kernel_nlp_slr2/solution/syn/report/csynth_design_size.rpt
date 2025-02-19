@@ -1,0 +1,58 @@
+================================================================
+== Design Size Report
+================================================================
+
+* Total Instructions per Compilation Phase
++---------------+-----------------------------+--------------+----------------------------------------------------------------------------------------+
+| Phase         | Step                        | Instructions | Description                                                                            |
++---------------+-----------------------------+--------------+----------------------------------------------------------------------------------------+
+| Compile/Link  |                             | 18,305       | After all functions are compiled and linked into a single design                       |
+|               |                             |              |                                                                                        |
+| Unroll/Inline |                             |              | After user unroll and inline pragmas are applied                                       |
+|               | (1) unroll                  | 51,236       | user unroll pragmas are applied                                                        |
+|               | (2) simplification          | 21,023       | simplification of applied user unroll pragmas                                          |
+|               | (3) inline                  | 22,541       | user inline pragmas are applied                                                        |
+|               | (4) simplification          | 22,539       | simplification of applied user inline pragmas                                          |
+|               |                             |              |                                                                                        |
+| Array/Struct  |                             |              | After user array partition and struct aggregate/disaggregate pragmas are applied       |
+|               | (1) array partition         | 88,016       | user array partition pragmas are applied                                               |
+|               | (2) simplification          | 33,289       | simplification of applied user array partition & struct aggregate/disaggregate pragmas |
+|               | (3) aggregate/disaggregate  | 33,289       | user struct aggregate/disaggregate pragmas are applied                                 |
+|               | (4) array reshape           | 33,265       | apply array reshape pragmas                                                            |
+|               | (5) access patterns         | 33,936       | array access pattern optmizations                                                      |
+|               |                             |              |                                                                                        |
+| Performance   |                             |              | After transformations are applied to meet performance pragma targets                   |
+|               | (1) loop simplification     | 30,032       | loop and instruction simplification                                                    |
+|               | (2) parallelization         | 29,049       | loops are unrolled or pipelined to meet performance targets                            |
+|               | (3) array partition         | 28,897       | arrays are partitioned to meet performance targets                                     |
+|               | (4) simplification          | 28,897       | simplification of design after performance transformations                             |
+|               |                             |              |                                                                                        |
+| HW Transforms |                             |              | After hardware transfomations                                                          |
+|               | (1) lowering                | 28,837       | initial conversion to HW specific instructions                                         |
+|               | (2) optimizations           | 29,002       | high level synthesis optimizations                                                     |
++---------------+-----------------------------+--------------+----------------------------------------------------------------------------------------+
+
+* Instructions per Function for each Compilation Phase
++-------------------------+--------------+------------------+------------------+------------------+------------------+------------------+
+| Function                | Location     | Compile/Link     | Unroll/Inline    | Array/Struct     | Performance      | HW Transforms    |
++-------------------------+--------------+------------------+------------------+------------------+------------------+------------------+
+| + kernel_nlp_slr2       | slr2.cpp:398 | 18,305           | 22,539           | 33,936           | 28,897           | 29,002           |
+|  + FT0_level0           | slr2.cpp:9   | 18,295           | 22,532           | 33,913           | 28,874           | 28,973           |
+|     read_B_FT0          | slr2.cpp:153 |   966            |   164            | 2,045            | 2,037            | 2,041            |
+|     read_A_FT0          | slr2.cpp:241 | 3,099 (3 calls)  |   597 (3 calls)  | 1,905 (3 calls)  | 1,878 (3 calls)  | 1,893 (3 calls)  |
+|   + FT0_level1          | slr2.cpp:52  | 14,174 (2 calls) | 21,742 (2 calls) | 29,442 (2 calls) | 24,438 (2 calls) | 24,514 (2 calls) |
+|    + compute_FT0_level1 | slr2.cpp:39  | 9,536 (4 calls)  | 21,332 (4 calls) | 24,612 (4 calls) | 18,716 (4 calls) | 18,772 (4 calls) |
+|       task0_intra       | slr2.cpp:89  |   112 (4 calls)  | 3,844 (4 calls)  | 1,924 (4 calls)  | 1,924 (4 calls)  | 1,928 (4 calls)  |
+|       task1_intra       | slr2.cpp:104 |   260 (4 calls)  | 16,704 (4 calls) | 16,888 (4 calls) | 14,968 (4 calls) | 14,988 (4 calls) |
+|       write_E_FT0       | slr2.cpp:350 | 9,104 (8 calls)  |   728 (8 calls)  | 5,776 (8 calls)  | 1,800 (8 calls)  | 1,824 (8 calls)  |
+|      write_E_FT0        | slr2.cpp:350 | 4,552 (4 calls)  |   364 (4 calls)  | 2,880 (4 calls)  |   892 (4 calls)  |   904 (4 calls)  |
++-------------------------+--------------+------------------+------------------+------------------+------------------+------------------+
+
+* Design Size Message Settings
++---------------------------------------------+--------+------------------------------------------------------------------+
+| Message Setting                             | Value  | Description                                                      |
++---------------------------------------------+--------+------------------------------------------------------------------+
+| config_compile -design_size_maximum_warning | 100000 | Show a warning when total design instructions exceeds this value |
++---------------------------------------------+--------+------------------------------------------------------------------+
+
+

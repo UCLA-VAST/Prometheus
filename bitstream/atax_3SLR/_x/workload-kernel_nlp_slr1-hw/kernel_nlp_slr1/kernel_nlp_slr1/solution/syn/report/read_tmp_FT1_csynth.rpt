@@ -1,0 +1,177 @@
+
+
+================================================================
+== Vitis HLS Report for 'read_tmp_FT1'
+================================================================
+* Date:           Wed Jan  8 11:56:47 2025
+
+* Version:        2023.2 (Build 4023990 on Oct 11 2023)
+* Project:        kernel_nlp_slr1
+* Solution:       solution (Vitis Kernel Flow Target)
+* Product family: virtexuplusHBM
+* Target device:  xcu55c-fsvh2892-2L-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  4.55 ns|  2.792 ns|     1.23 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |       52|       52|  0.236 us|  0.236 us|   52|   52|       no|
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +--------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |                    |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |      Loop Name     |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +--------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |- VITIS_LOOP_125_1  |       50|       50|         1|          1|          1|    50|       yes|
+        +--------------------+---------+---------+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++---------------------+---------+------+---------+---------+-----+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
++---------------------+---------+------+---------+---------+-----+
+|DSP                  |        -|     -|        -|        -|    -|
+|Expression           |        -|     -|        0|       41|    -|
+|FIFO                 |        -|     -|        -|        -|    -|
+|Instance             |        -|     -|        -|        -|    -|
+|Memory               |        -|     -|        -|        -|    -|
+|Multiplexer          |        -|     -|        -|       36|    -|
+|Register             |        -|     -|        8|        -|    -|
++---------------------+---------+------+---------+---------+-----+
+|Total                |        0|     0|        8|       77|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available SLR        |     1344|  3008|   869120|   434560|  320|
++---------------------+---------+------+---------+---------+-----+
+|Utilization SLR (%)  |        0|     0|       ~0|       ~0|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available            |     4032|  9024|  2607360|  1303680|  960|
++---------------------+---------+------+---------+---------+-----+
+|Utilization (%)      |        0|     0|       ~0|       ~0|    0|
++---------------------+---------+------+---------+---------+-----+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +----------------------------------+----------+----+---+----+------------+------------+
+    |           Variable Name          | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +----------------------------------+----------+----+---+----+------------+------------+
+    |add_ln125_fu_230_p2               |         +|   0|  0|  13|           6|           1|
+    |icmp_ln125_fu_224_p2              |      icmp|   0|  0|  13|           6|           5|
+    |icmp_ln131_fu_252_p2              |      icmp|   0|  0|  13|           6|           5|
+    |ap_block_state1_pp0_stage0_iter0  |        or|   0|  0|   2|           1|           1|
+    +----------------------------------+----------+----+---+----+------------+------------+
+    |Total                             |          |   0|  0|  41|          19|          12|
+    +----------------------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +------------------------------------------+----+-----------+-----+-----------+
+    |                   Name                   | LUT| Input Size| Bits| Total Bits|
+    +------------------------------------------+----+-----------+-----+-----------+
+    |ap_done_int                               |   9|          2|    1|          2|
+    |ap_sig_allocacmp_d0_0_1                   |   9|          2|    6|         12|
+    |d0_0_fu_96                                |   9|          2|    6|         12|
+    |fifo_tmp_from_task1_to_task3_TDATA_blk_n  |   9|          2|    1|          2|
+    +------------------------------------------+----+-----------+-----+-----------+
+    |Total                                     |  36|          8|   14|         28|
+    +------------------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-------------+---+----+-----+-----------+
+    |     Name    | FF| LUT| Bits| Const Bits|
+    +-------------+---+----+-----+-----------+
+    |ap_CS_fsm    |  1|   0|    1|          0|
+    |ap_done_reg  |  1|   0|    1|          0|
+    |d0_0_fu_96   |  6|   0|    6|          0|
+    +-------------+---+----+-----+-----------+
+    |Total        |  8|   0|    8|          0|
+    +-------------+---+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-------------------------------------+-----+-----+------------+---------------------------------------+--------------+
+|              RTL Ports              | Dir | Bits|  Protocol  |             Source Object             |    C Type    |
++-------------------------------------+-----+-----+------------+---------------------------------------+--------------+
+|ap_clk                               |   in|    1|  ap_ctrl_hs|                           read_tmp_FT1|  return value|
+|ap_rst                               |   in|    1|  ap_ctrl_hs|                           read_tmp_FT1|  return value|
+|ap_start                             |   in|    1|  ap_ctrl_hs|                           read_tmp_FT1|  return value|
+|ap_done                              |  out|    1|  ap_ctrl_hs|                           read_tmp_FT1|  return value|
+|ap_idle                              |  out|    1|  ap_ctrl_hs|                           read_tmp_FT1|  return value|
+|ap_ready                             |  out|    1|  ap_ctrl_hs|                           read_tmp_FT1|  return value|
+|fifo_tmp_from_task1_to_task3_TVALID  |   in|    1|        axis|  fifo_tmp_from_task1_to_task3_V_data_V|       pointer|
+|fifo_tmp_from_task1_to_task3_TDATA   |   in|  256|        axis|  fifo_tmp_from_task1_to_task3_V_data_V|       pointer|
+|tmp_0_address0                       |  out|    6|   ap_memory|                                  tmp_0|         array|
+|tmp_0_ce0                            |  out|    1|   ap_memory|                                  tmp_0|         array|
+|tmp_0_we0                            |  out|    1|   ap_memory|                                  tmp_0|         array|
+|tmp_0_d0                             |  out|   32|   ap_memory|                                  tmp_0|         array|
+|tmp_1_address0                       |  out|    6|   ap_memory|                                  tmp_1|         array|
+|tmp_1_ce0                            |  out|    1|   ap_memory|                                  tmp_1|         array|
+|tmp_1_we0                            |  out|    1|   ap_memory|                                  tmp_1|         array|
+|tmp_1_d0                             |  out|   32|   ap_memory|                                  tmp_1|         array|
+|tmp_2_address0                       |  out|    6|   ap_memory|                                  tmp_2|         array|
+|tmp_2_ce0                            |  out|    1|   ap_memory|                                  tmp_2|         array|
+|tmp_2_we0                            |  out|    1|   ap_memory|                                  tmp_2|         array|
+|tmp_2_d0                             |  out|   32|   ap_memory|                                  tmp_2|         array|
+|tmp_3_address0                       |  out|    6|   ap_memory|                                  tmp_3|         array|
+|tmp_3_ce0                            |  out|    1|   ap_memory|                                  tmp_3|         array|
+|tmp_3_we0                            |  out|    1|   ap_memory|                                  tmp_3|         array|
+|tmp_3_d0                             |  out|   32|   ap_memory|                                  tmp_3|         array|
+|tmp_4_address0                       |  out|    6|   ap_memory|                                  tmp_4|         array|
+|tmp_4_ce0                            |  out|    1|   ap_memory|                                  tmp_4|         array|
+|tmp_4_we0                            |  out|    1|   ap_memory|                                  tmp_4|         array|
+|tmp_4_d0                             |  out|   32|   ap_memory|                                  tmp_4|         array|
+|tmp_5_address0                       |  out|    6|   ap_memory|                                  tmp_5|         array|
+|tmp_5_ce0                            |  out|    1|   ap_memory|                                  tmp_5|         array|
+|tmp_5_we0                            |  out|    1|   ap_memory|                                  tmp_5|         array|
+|tmp_5_d0                             |  out|   32|   ap_memory|                                  tmp_5|         array|
+|tmp_6_address0                       |  out|    6|   ap_memory|                                  tmp_6|         array|
+|tmp_6_ce0                            |  out|    1|   ap_memory|                                  tmp_6|         array|
+|tmp_6_we0                            |  out|    1|   ap_memory|                                  tmp_6|         array|
+|tmp_6_d0                             |  out|   32|   ap_memory|                                  tmp_6|         array|
+|tmp_7_address0                       |  out|    6|   ap_memory|                                  tmp_7|         array|
+|tmp_7_ce0                            |  out|    1|   ap_memory|                                  tmp_7|         array|
+|tmp_7_we0                            |  out|    1|   ap_memory|                                  tmp_7|         array|
+|tmp_7_d0                             |  out|   32|   ap_memory|                                  tmp_7|         array|
+|fifo_tmp_from_task1_to_task3_TREADY  |  out|    1|        axis|  fifo_tmp_from_task1_to_task3_V_last_V|       pointer|
+|fifo_tmp_from_task1_to_task3_TLAST   |   in|    1|        axis|  fifo_tmp_from_task1_to_task3_V_last_V|       pointer|
+|fifo_tmp_from_task1_to_task3_TKEEP   |   in|   32|        axis|  fifo_tmp_from_task1_to_task3_V_keep_V|       pointer|
+|fifo_tmp_from_task1_to_task3_TSTRB   |   in|   32|        axis|  fifo_tmp_from_task1_to_task3_V_strb_V|       pointer|
++-------------------------------------+-----+-----+------------+---------------------------------------+--------------+
+
