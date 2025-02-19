@@ -1,6 +1,6 @@
 # Prometheus Artifact
 
-[![DOI](https://zenodo.org/badge/903321472.svg)]()
+[![DOI](https://zenodo.org/badge/935130604.svg)](https://doi.org/10.5281/zenodo.14895170)
 
 This repository contains the artifact for the **Prometheus** project, which includes all the results from the evaluation.
 
