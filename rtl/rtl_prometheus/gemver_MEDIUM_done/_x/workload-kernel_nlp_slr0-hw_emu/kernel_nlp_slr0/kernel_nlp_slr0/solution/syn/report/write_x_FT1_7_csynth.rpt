@@ -1,0 +1,231 @@
+
+
+================================================================
+== Vitis HLS Report for 'write_x_FT1_7'
+================================================================
+* Date:           Thu Dec  5 15:42:45 2024
+
+* Version:        2023.2 (Build 4023990 on Oct 11 2023)
+* Project:        kernel_nlp_slr0
+* Solution:       solution (Vitis Kernel Flow Target)
+* Product family: virtexuplusHBM
+* Target device:  xcu55c-fsvh2892-2L-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  4.55 ns|  2.701 ns|     1.23 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |        0|        0|      0 ns|      0 ns|    0|    0|       no|
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++---------------------+---------+------+---------+---------+-----+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
++---------------------+---------+------+---------+---------+-----+
+|DSP                  |        -|     -|        -|        -|    -|
+|Expression           |        -|     -|        0|        2|    -|
+|FIFO                 |        -|     -|        -|        -|    -|
+|Instance             |        -|     -|        -|        -|    -|
+|Memory               |        -|     -|        -|        -|    -|
+|Multiplexer          |        -|     -|        -|      162|    -|
+|Register             |        -|     -|        2|        -|    -|
++---------------------+---------+------+---------+---------+-----+
+|Total                |        0|     0|        2|      164|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available SLR        |     1344|  3008|   869120|   434560|  320|
++---------------------+---------+------+---------+---------+-----+
+|Utilization SLR (%)  |        0|     0|       ~0|       ~0|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available            |     4032|  9024|  2607360|  1303680|  960|
++---------------------+---------+------+---------+---------+-----+
+|Utilization (%)      |        0|     0|       ~0|       ~0|    0|
++---------------------+---------+------+---------+---------+-----+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +-----------------+----------+----+---+----+------------+------------+
+    |  Variable Name  | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +-----------------+----------+----+---+----+------------+------------+
+    |ap_block_state1  |        or|   0|  0|   2|           1|           1|
+    +-----------------+----------+----+---+----+------------+------------+
+    |Total            |          |   0|  0|   2|           1|           1|
+    +-----------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +--------------------------+----+-----------+-----+-----------+
+    |           Name           | LUT| Input Size| Bits| Total Bits|
+    +--------------------------+----+-----------+-----+-----------+
+    |ap_done                   |   9|          2|    1|          2|
+    |fifo_x_to_off_chip_blk_n  |   9|          2|    1|          2|
+    |x_2_0_val3_blk_n          |   9|          2|    1|          2|
+    |x_2_10_val23_blk_n        |   9|          2|    1|          2|
+    |x_2_11_val25_blk_n        |   9|          2|    1|          2|
+    |x_2_12_val27_blk_n        |   9|          2|    1|          2|
+    |x_2_13_val29_blk_n        |   9|          2|    1|          2|
+    |x_2_14_val31_blk_n        |   9|          2|    1|          2|
+    |x_2_15_val33_blk_n        |   9|          2|    1|          2|
+    |x_2_1_val5_blk_n          |   9|          2|    1|          2|
+    |x_2_2_val7_blk_n          |   9|          2|    1|          2|
+    |x_2_3_val9_blk_n          |   9|          2|    1|          2|
+    |x_2_4_val11_blk_n         |   9|          2|    1|          2|
+    |x_2_5_val13_blk_n         |   9|          2|    1|          2|
+    |x_2_6_val15_blk_n         |   9|          2|    1|          2|
+    |x_2_7_val17_blk_n         |   9|          2|    1|          2|
+    |x_2_8_val19_blk_n         |   9|          2|    1|          2|
+    |x_2_9_val21_blk_n         |   9|          2|    1|          2|
+    +--------------------------+----+-----------+-----+-----------+
+    |Total                     | 162|         36|   18|         36|
+    +--------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-------------+---+----+-----+-----------+
+    |     Name    | FF| LUT| Bits| Const Bits|
+    +-------------+---+----+-----+-----------+
+    |ap_CS_fsm    |  1|   0|    1|          0|
+    |ap_done_reg  |  1|   0|    1|          0|
+    +-------------+---+----+-----+-----------+
+    |Total        |  2|   0|    2|          0|
+    +-------------+---+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-----------------------------------+-----+-----+------------+--------------------+--------------+
+|             RTL Ports             | Dir | Bits|  Protocol  |    Source Object   |    C Type    |
++-----------------------------------+-----+-----+------------+--------------------+--------------+
+|ap_clk                             |   in|    1|  ap_ctrl_hs|       write_x_FT1.7|  return value|
+|ap_rst                             |   in|    1|  ap_ctrl_hs|       write_x_FT1.7|  return value|
+|ap_start                           |   in|    1|  ap_ctrl_hs|       write_x_FT1.7|  return value|
+|ap_done                            |  out|    1|  ap_ctrl_hs|       write_x_FT1.7|  return value|
+|ap_continue                        |   in|    1|  ap_ctrl_hs|       write_x_FT1.7|  return value|
+|ap_idle                            |  out|    1|  ap_ctrl_hs|       write_x_FT1.7|  return value|
+|ap_ready                           |  out|    1|  ap_ctrl_hs|       write_x_FT1.7|  return value|
+|x_2_0_val3_dout                    |   in|   32|     ap_fifo|          x_2_0_val3|       pointer|
+|x_2_0_val3_num_data_valid          |   in|    3|     ap_fifo|          x_2_0_val3|       pointer|
+|x_2_0_val3_fifo_cap                |   in|    3|     ap_fifo|          x_2_0_val3|       pointer|
+|x_2_0_val3_empty_n                 |   in|    1|     ap_fifo|          x_2_0_val3|       pointer|
+|x_2_0_val3_read                    |  out|    1|     ap_fifo|          x_2_0_val3|       pointer|
+|x_2_1_val5_dout                    |   in|   32|     ap_fifo|          x_2_1_val5|       pointer|
+|x_2_1_val5_num_data_valid          |   in|    3|     ap_fifo|          x_2_1_val5|       pointer|
+|x_2_1_val5_fifo_cap                |   in|    3|     ap_fifo|          x_2_1_val5|       pointer|
+|x_2_1_val5_empty_n                 |   in|    1|     ap_fifo|          x_2_1_val5|       pointer|
+|x_2_1_val5_read                    |  out|    1|     ap_fifo|          x_2_1_val5|       pointer|
+|x_2_2_val7_dout                    |   in|   32|     ap_fifo|          x_2_2_val7|       pointer|
+|x_2_2_val7_num_data_valid          |   in|    3|     ap_fifo|          x_2_2_val7|       pointer|
+|x_2_2_val7_fifo_cap                |   in|    3|     ap_fifo|          x_2_2_val7|       pointer|
+|x_2_2_val7_empty_n                 |   in|    1|     ap_fifo|          x_2_2_val7|       pointer|
+|x_2_2_val7_read                    |  out|    1|     ap_fifo|          x_2_2_val7|       pointer|
+|x_2_3_val9_dout                    |   in|   32|     ap_fifo|          x_2_3_val9|       pointer|
+|x_2_3_val9_num_data_valid          |   in|    3|     ap_fifo|          x_2_3_val9|       pointer|
+|x_2_3_val9_fifo_cap                |   in|    3|     ap_fifo|          x_2_3_val9|       pointer|
+|x_2_3_val9_empty_n                 |   in|    1|     ap_fifo|          x_2_3_val9|       pointer|
+|x_2_3_val9_read                    |  out|    1|     ap_fifo|          x_2_3_val9|       pointer|
+|x_2_4_val11_dout                   |   in|   32|     ap_fifo|         x_2_4_val11|       pointer|
+|x_2_4_val11_num_data_valid         |   in|    3|     ap_fifo|         x_2_4_val11|       pointer|
+|x_2_4_val11_fifo_cap               |   in|    3|     ap_fifo|         x_2_4_val11|       pointer|
+|x_2_4_val11_empty_n                |   in|    1|     ap_fifo|         x_2_4_val11|       pointer|
+|x_2_4_val11_read                   |  out|    1|     ap_fifo|         x_2_4_val11|       pointer|
+|x_2_5_val13_dout                   |   in|   32|     ap_fifo|         x_2_5_val13|       pointer|
+|x_2_5_val13_num_data_valid         |   in|    3|     ap_fifo|         x_2_5_val13|       pointer|
+|x_2_5_val13_fifo_cap               |   in|    3|     ap_fifo|         x_2_5_val13|       pointer|
+|x_2_5_val13_empty_n                |   in|    1|     ap_fifo|         x_2_5_val13|       pointer|
+|x_2_5_val13_read                   |  out|    1|     ap_fifo|         x_2_5_val13|       pointer|
+|x_2_6_val15_dout                   |   in|   32|     ap_fifo|         x_2_6_val15|       pointer|
+|x_2_6_val15_num_data_valid         |   in|    3|     ap_fifo|         x_2_6_val15|       pointer|
+|x_2_6_val15_fifo_cap               |   in|    3|     ap_fifo|         x_2_6_val15|       pointer|
+|x_2_6_val15_empty_n                |   in|    1|     ap_fifo|         x_2_6_val15|       pointer|
+|x_2_6_val15_read                   |  out|    1|     ap_fifo|         x_2_6_val15|       pointer|
+|x_2_7_val17_dout                   |   in|   32|     ap_fifo|         x_2_7_val17|       pointer|
+|x_2_7_val17_num_data_valid         |   in|    3|     ap_fifo|         x_2_7_val17|       pointer|
+|x_2_7_val17_fifo_cap               |   in|    3|     ap_fifo|         x_2_7_val17|       pointer|
+|x_2_7_val17_empty_n                |   in|    1|     ap_fifo|         x_2_7_val17|       pointer|
+|x_2_7_val17_read                   |  out|    1|     ap_fifo|         x_2_7_val17|       pointer|
+|x_2_8_val19_dout                   |   in|   32|     ap_fifo|         x_2_8_val19|       pointer|
+|x_2_8_val19_num_data_valid         |   in|    3|     ap_fifo|         x_2_8_val19|       pointer|
+|x_2_8_val19_fifo_cap               |   in|    3|     ap_fifo|         x_2_8_val19|       pointer|
+|x_2_8_val19_empty_n                |   in|    1|     ap_fifo|         x_2_8_val19|       pointer|
+|x_2_8_val19_read                   |  out|    1|     ap_fifo|         x_2_8_val19|       pointer|
+|x_2_9_val21_dout                   |   in|   32|     ap_fifo|         x_2_9_val21|       pointer|
+|x_2_9_val21_num_data_valid         |   in|    3|     ap_fifo|         x_2_9_val21|       pointer|
+|x_2_9_val21_fifo_cap               |   in|    3|     ap_fifo|         x_2_9_val21|       pointer|
+|x_2_9_val21_empty_n                |   in|    1|     ap_fifo|         x_2_9_val21|       pointer|
+|x_2_9_val21_read                   |  out|    1|     ap_fifo|         x_2_9_val21|       pointer|
+|x_2_10_val23_dout                  |   in|   32|     ap_fifo|        x_2_10_val23|       pointer|
+|x_2_10_val23_num_data_valid        |   in|    3|     ap_fifo|        x_2_10_val23|       pointer|
+|x_2_10_val23_fifo_cap              |   in|    3|     ap_fifo|        x_2_10_val23|       pointer|
+|x_2_10_val23_empty_n               |   in|    1|     ap_fifo|        x_2_10_val23|       pointer|
+|x_2_10_val23_read                  |  out|    1|     ap_fifo|        x_2_10_val23|       pointer|
+|x_2_11_val25_dout                  |   in|   32|     ap_fifo|        x_2_11_val25|       pointer|
+|x_2_11_val25_num_data_valid        |   in|    3|     ap_fifo|        x_2_11_val25|       pointer|
+|x_2_11_val25_fifo_cap              |   in|    3|     ap_fifo|        x_2_11_val25|       pointer|
+|x_2_11_val25_empty_n               |   in|    1|     ap_fifo|        x_2_11_val25|       pointer|
+|x_2_11_val25_read                  |  out|    1|     ap_fifo|        x_2_11_val25|       pointer|
+|x_2_12_val27_dout                  |   in|   32|     ap_fifo|        x_2_12_val27|       pointer|
+|x_2_12_val27_num_data_valid        |   in|    3|     ap_fifo|        x_2_12_val27|       pointer|
+|x_2_12_val27_fifo_cap              |   in|    3|     ap_fifo|        x_2_12_val27|       pointer|
+|x_2_12_val27_empty_n               |   in|    1|     ap_fifo|        x_2_12_val27|       pointer|
+|x_2_12_val27_read                  |  out|    1|     ap_fifo|        x_2_12_val27|       pointer|
+|x_2_13_val29_dout                  |   in|   32|     ap_fifo|        x_2_13_val29|       pointer|
+|x_2_13_val29_num_data_valid        |   in|    3|     ap_fifo|        x_2_13_val29|       pointer|
+|x_2_13_val29_fifo_cap              |   in|    3|     ap_fifo|        x_2_13_val29|       pointer|
+|x_2_13_val29_empty_n               |   in|    1|     ap_fifo|        x_2_13_val29|       pointer|
+|x_2_13_val29_read                  |  out|    1|     ap_fifo|        x_2_13_val29|       pointer|
+|x_2_14_val31_dout                  |   in|   32|     ap_fifo|        x_2_14_val31|       pointer|
+|x_2_14_val31_num_data_valid        |   in|    3|     ap_fifo|        x_2_14_val31|       pointer|
+|x_2_14_val31_fifo_cap              |   in|    3|     ap_fifo|        x_2_14_val31|       pointer|
+|x_2_14_val31_empty_n               |   in|    1|     ap_fifo|        x_2_14_val31|       pointer|
+|x_2_14_val31_read                  |  out|    1|     ap_fifo|        x_2_14_val31|       pointer|
+|x_2_15_val33_dout                  |   in|   32|     ap_fifo|        x_2_15_val33|       pointer|
+|x_2_15_val33_num_data_valid        |   in|    3|     ap_fifo|        x_2_15_val33|       pointer|
+|x_2_15_val33_fifo_cap              |   in|    3|     ap_fifo|        x_2_15_val33|       pointer|
+|x_2_15_val33_empty_n               |   in|    1|     ap_fifo|        x_2_15_val33|       pointer|
+|x_2_15_val33_read                  |  out|    1|     ap_fifo|        x_2_15_val33|       pointer|
+|fifo_x_to_off_chip_din             |  out|  512|     ap_fifo|  fifo_x_to_off_chip|       pointer|
+|fifo_x_to_off_chip_num_data_valid  |   in|   11|     ap_fifo|  fifo_x_to_off_chip|       pointer|
+|fifo_x_to_off_chip_fifo_cap        |   in|   11|     ap_fifo|  fifo_x_to_off_chip|       pointer|
+|fifo_x_to_off_chip_full_n          |   in|    1|     ap_fifo|  fifo_x_to_off_chip|       pointer|
+|fifo_x_to_off_chip_write           |  out|    1|     ap_fifo|  fifo_x_to_off_chip|       pointer|
+|p_read                             |   in|    6|     ap_none|              p_read|        scalar|
++-----------------------------------+-----+-----+------------+--------------------+--------------+
+

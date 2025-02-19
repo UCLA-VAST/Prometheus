@@ -1,0 +1,220 @@
+
+
+================================================================
+== Vitis HLS Report for 'load_vx2_for_task1'
+================================================================
+* Date:           Thu Dec  5 15:23:38 2024
+
+* Version:        2023.2 (Build 4023990 on Oct 11 2023)
+* Project:        kernel_nlp_slr0
+* Solution:       solution (Vitis Kernel Flow Target)
+* Product family: virtexuplusHBM
+* Target device:  xcu55c-fsvh2892-2L-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  4.55 ns|  3.318 ns|     1.23 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |      100|      100|  0.455 us|  0.455 us|  100|  100|       no|
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        +--------------------------------------------------------+----------------------------------------------+---------+---------+----------+----------+-----+-----+---------+
+        |                                                        |                                              |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+        |                        Instance                        |                    Module                    |   min   |   max   |    min   |    max   | min | max |   Type  |
+        +--------------------------------------------------------+----------------------------------------------+---------+---------+----------+----------+-----+-----+---------+
+        |grp_load_vx2_for_task1_Pipeline_VITIS_LOOP_140_1_fu_75  |load_vx2_for_task1_Pipeline_VITIS_LOOP_140_1  |       28|       28|  0.127 us|  0.127 us|   28|   28|       no|
+        +--------------------------------------------------------+----------------------------------------------+---------+---------+----------+----------+-----+-----+---------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++---------------------+---------+------+---------+---------+-----+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
++---------------------+---------+------+---------+---------+-----+
+|DSP                  |        -|     -|        -|        -|    -|
+|Expression           |        -|     -|        0|        2|    -|
+|FIFO                 |        -|     -|        -|        -|    -|
+|Instance             |        -|     -|      522|       82|    -|
+|Memory               |        -|     -|        -|        -|    -|
+|Multiplexer          |        -|     -|        -|      515|    -|
+|Register             |        -|     -|      134|        -|    -|
++---------------------+---------+------+---------+---------+-----+
+|Total                |        0|     0|      656|      599|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available SLR        |     1344|  3008|   869120|   434560|  320|
++---------------------+---------+------+---------+---------+-----+
+|Utilization SLR (%)  |        0|     0|       ~0|       ~0|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available            |     4032|  9024|  2607360|  1303680|  960|
++---------------------+---------+------+---------+---------+-----+
+|Utilization (%)      |        0|     0|       ~0|       ~0|    0|
++---------------------+---------+------+---------+---------+-----+
+
++ Detail: 
+    * Instance: 
+    +--------------------------------------------------------+----------------------------------------------+---------+----+-----+----+-----+
+    |                        Instance                        |                    Module                    | BRAM_18K| DSP|  FF | LUT| URAM|
+    +--------------------------------------------------------+----------------------------------------------+---------+----+-----+----+-----+
+    |grp_load_vx2_for_task1_Pipeline_VITIS_LOOP_140_1_fu_75  |load_vx2_for_task1_Pipeline_VITIS_LOOP_140_1  |        0|   0|  522|  82|    0|
+    +--------------------------------------------------------+----------------------------------------------+---------+----+-----+----+-----+
+    |Total                                                   |                                              |        0|   0|  522|  82|    0|
+    +--------------------------------------------------------+----------------------------------------------+---------+----+-----+----+-----+
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +-----------------+----------+----+---+----+------------+------------+
+    |  Variable Name  | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +-----------------+----------+----+---+----+------------+------------+
+    |ap_block_state1  |        or|   0|  0|   2|           1|           1|
+    +-----------------+----------+----+---+----+------------+------------+
+    |Total            |          |   0|  0|   2|           1|           1|
+    +-----------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +-------------------------------------+-----+-----------+-----+-----------+
+    |                 Name                | LUT | Input Size| Bits| Total Bits|
+    +-------------------------------------+-----+-----------+-----+-----------+
+    |ap_NS_fsm                            |  338|         74|    1|         74|
+    |ap_done                              |    9|          2|    1|          2|
+    |fifo_x2_from_off_chip_to_S1_write    |    9|          2|    1|          2|
+    |kernel_vx2_for_task1_blk_n_AR        |    9|          2|    1|          2|
+    |m_axi_kernel_vx2_for_task1_ARADDR    |   14|          3|   64|        192|
+    |m_axi_kernel_vx2_for_task1_ARBURST   |    9|          2|    2|          4|
+    |m_axi_kernel_vx2_for_task1_ARCACHE   |    9|          2|    4|          8|
+    |m_axi_kernel_vx2_for_task1_ARID      |    9|          2|    1|          2|
+    |m_axi_kernel_vx2_for_task1_ARLEN     |   14|          3|   32|         96|
+    |m_axi_kernel_vx2_for_task1_ARLOCK    |    9|          2|    2|          4|
+    |m_axi_kernel_vx2_for_task1_ARPROT    |    9|          2|    3|          6|
+    |m_axi_kernel_vx2_for_task1_ARQOS     |    9|          2|    4|          8|
+    |m_axi_kernel_vx2_for_task1_ARREGION  |    9|          2|    4|          8|
+    |m_axi_kernel_vx2_for_task1_ARSIZE    |    9|          2|    3|          6|
+    |m_axi_kernel_vx2_for_task1_ARUSER    |    9|          2|    1|          2|
+    |m_axi_kernel_vx2_for_task1_ARVALID   |   14|          3|    1|          3|
+    |m_axi_kernel_vx2_for_task1_RREADY    |    9|          2|    1|          2|
+    |real_start                           |    9|          2|    1|          2|
+    |vx2_for_task1_c_blk_n                |    9|          2|    1|          2|
+    +-------------------------------------+-----+-----------+-----+-----------+
+    |Total                                |  515|        113|  128|        425|
+    +-------------------------------------+-----+-----------+-----+-----------+
+
+    * Register: 
+    +---------------------------------------------------------------------+----+----+-----+-----------+
+    |                                 Name                                | FF | LUT| Bits| Const Bits|
+    +---------------------------------------------------------------------+----+----+-----+-----------+
+    |ap_CS_fsm                                                            |  73|   0|   73|          0|
+    |ap_done_reg                                                          |   1|   0|    1|          0|
+    |grp_load_vx2_for_task1_Pipeline_VITIS_LOOP_140_1_fu_75_ap_start_reg  |   1|   0|    1|          0|
+    |start_once_reg                                                       |   1|   0|    1|          0|
+    |trunc_ln_reg_105                                                     |  58|   0|   58|          0|
+    +---------------------------------------------------------------------+----+----+-----+-----------+
+    |Total                                                                | 134|   0|  134|          0|
+    +---------------------------------------------------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++--------------------------------------------+-----+-----+------------+-----------------------------+--------------+
+|                  RTL Ports                 | Dir | Bits|  Protocol  |        Source Object        |    C Type    |
++--------------------------------------------+-----+-----+------------+-----------------------------+--------------+
+|ap_clk                                      |   in|    1|  ap_ctrl_hs|           load_vx2_for_task1|  return value|
+|ap_rst                                      |   in|    1|  ap_ctrl_hs|           load_vx2_for_task1|  return value|
+|ap_start                                    |   in|    1|  ap_ctrl_hs|           load_vx2_for_task1|  return value|
+|start_full_n                                |   in|    1|  ap_ctrl_hs|           load_vx2_for_task1|  return value|
+|ap_done                                     |  out|    1|  ap_ctrl_hs|           load_vx2_for_task1|  return value|
+|ap_continue                                 |   in|    1|  ap_ctrl_hs|           load_vx2_for_task1|  return value|
+|ap_idle                                     |  out|    1|  ap_ctrl_hs|           load_vx2_for_task1|  return value|
+|ap_ready                                    |  out|    1|  ap_ctrl_hs|           load_vx2_for_task1|  return value|
+|start_out                                   |  out|    1|  ap_ctrl_hs|           load_vx2_for_task1|  return value|
+|start_write                                 |  out|    1|  ap_ctrl_hs|           load_vx2_for_task1|  return value|
+|fifo_x2_from_off_chip_to_S1_din             |  out|  512|     ap_fifo|  fifo_x2_from_off_chip_to_S1|       pointer|
+|fifo_x2_from_off_chip_to_S1_num_data_valid  |   in|   11|     ap_fifo|  fifo_x2_from_off_chip_to_S1|       pointer|
+|fifo_x2_from_off_chip_to_S1_fifo_cap        |   in|   11|     ap_fifo|  fifo_x2_from_off_chip_to_S1|       pointer|
+|fifo_x2_from_off_chip_to_S1_full_n          |   in|    1|     ap_fifo|  fifo_x2_from_off_chip_to_S1|       pointer|
+|fifo_x2_from_off_chip_to_S1_write           |  out|    1|     ap_fifo|  fifo_x2_from_off_chip_to_S1|       pointer|
+|m_axi_kernel_vx2_for_task1_AWVALID          |  out|    1|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_AWREADY          |   in|    1|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_AWADDR           |  out|   64|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_AWID             |  out|    1|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_AWLEN            |  out|   32|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_AWSIZE           |  out|    3|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_AWBURST          |  out|    2|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_AWLOCK           |  out|    2|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_AWCACHE          |  out|    4|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_AWPROT           |  out|    3|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_AWQOS            |  out|    4|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_AWREGION         |  out|    4|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_AWUSER           |  out|    1|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_WVALID           |  out|    1|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_WREADY           |   in|    1|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_WDATA            |  out|  512|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_WSTRB            |  out|   64|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_WLAST            |  out|    1|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_WID              |  out|    1|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_WUSER            |  out|    1|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_ARVALID          |  out|    1|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_ARREADY          |   in|    1|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_ARADDR           |  out|   64|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_ARID             |  out|    1|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_ARLEN            |  out|   32|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_ARSIZE           |  out|    3|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_ARBURST          |  out|    2|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_ARLOCK           |  out|    2|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_ARCACHE          |  out|    4|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_ARPROT           |  out|    3|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_ARQOS            |  out|    4|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_ARREGION         |  out|    4|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_ARUSER           |  out|    1|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_RVALID           |   in|    1|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_RREADY           |  out|    1|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_RDATA            |   in|  512|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_RLAST            |   in|    1|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_RID              |   in|    1|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_RFIFONUM         |   in|    9|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_RUSER            |   in|    1|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_RRESP            |   in|    2|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_BVALID           |   in|    1|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_BREADY           |  out|    1|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_BRESP            |   in|    2|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_BID              |   in|    1|       m_axi|         kernel_vx2_for_task1|       pointer|
+|m_axi_kernel_vx2_for_task1_BUSER            |   in|    1|       m_axi|         kernel_vx2_for_task1|       pointer|
+|vx2                                         |   in|   64|     ap_none|                          vx2|        scalar|
+|vx2_for_task1_c_din                         |  out|   64|     ap_fifo|              vx2_for_task1_c|       pointer|
+|vx2_for_task1_c_num_data_valid              |   in|    3|     ap_fifo|              vx2_for_task1_c|       pointer|
+|vx2_for_task1_c_fifo_cap                    |   in|    3|     ap_fifo|              vx2_for_task1_c|       pointer|
+|vx2_for_task1_c_full_n                      |   in|    1|     ap_fifo|              vx2_for_task1_c|       pointer|
+|vx2_for_task1_c_write                       |  out|    1|     ap_fifo|              vx2_for_task1_c|       pointer|
++--------------------------------------------+-----+-----+------------+-----------------------------+--------------+
+

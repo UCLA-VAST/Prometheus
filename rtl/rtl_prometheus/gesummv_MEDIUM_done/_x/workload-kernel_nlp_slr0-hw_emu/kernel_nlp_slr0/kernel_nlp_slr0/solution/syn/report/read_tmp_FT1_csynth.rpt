@@ -1,0 +1,157 @@
+
+
+================================================================
+== Vitis HLS Report for 'read_tmp_FT1'
+================================================================
+* Date:           Thu Dec  5 15:17:33 2024
+
+* Version:        2023.2 (Build 4023990 on Oct 11 2023)
+* Project:        kernel_nlp_slr0
+* Solution:       solution (Vitis Kernel Flow Target)
+* Product family: virtexuplusHBM
+* Target device:  xcu55c-fsvh2892-2L-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  4.55 ns|  1.346 ns|     1.23 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+-----------+-----------+-----+-----+---------+
+    |  Latency (cycles) |   Latency (absolute)  |  Interval | Pipeline|
+    |   min   |   max   |    min    |    max    | min | max |   Type  |
+    +---------+---------+-----------+-----------+-----+-----+---------+
+    |        7|        7|  31.815 ns|  31.815 ns|    7|    7|       no|
+    +---------+---------+-----------+-----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +--------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |                    |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |      Loop Name     |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +--------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |- VITIS_LOOP_683_1  |        5|        5|         2|          1|          1|     5|       yes|
+        +--------------------+---------+---------+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++---------------------+---------+------+---------+---------+-----+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
++---------------------+---------+------+---------+---------+-----+
+|DSP                  |        -|     -|        -|        -|    -|
+|Expression           |        -|     -|        0|       24|    -|
+|FIFO                 |        -|     -|        -|        -|    -|
+|Instance             |        -|     -|        -|        -|    -|
+|Memory               |        -|     -|        -|        -|    -|
+|Multiplexer          |        -|     -|        -|       45|    -|
+|Register             |        -|     -|        9|        -|    -|
++---------------------+---------+------+---------+---------+-----+
+|Total                |        0|     0|        9|       69|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available SLR        |     1344|  3008|   869120|   434560|  320|
++---------------------+---------+------+---------+---------+-----+
+|Utilization SLR (%)  |        0|     0|       ~0|       ~0|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available            |     4032|  9024|  2607360|  1303680|  960|
++---------------------+---------+------+---------+---------+-----+
+|Utilization (%)      |        0|     0|       ~0|       ~0|    0|
++---------------------+---------+------+---------+---------+-----+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +---------------------------+----------+----+---+----+------------+------------+
+    |       Variable Name       | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +---------------------------+----------+----+---+----+------------+------------+
+    |add_ln683_fu_107_p2        |         +|   0|  0|  10|           3|           1|
+    |ap_block_pp0_stage0_01001  |       and|   0|  0|   2|           1|           1|
+    |icmp_ln683_fu_101_p2       |      icmp|   0|  0|  10|           3|           3|
+    |ap_enable_pp0              |       xor|   0|  0|   2|           1|           2|
+    +---------------------------+----------+----+---+----+------------+------------+
+    |Total                      |          |   0|  0|  24|           8|           7|
+    +---------------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +------------------------------------+----+-----------+-----+-----------+
+    |                Name                | LUT| Input Size| Bits| Total Bits|
+    +------------------------------------+----+-----------+-----+-----------+
+    |ap_done_int                         |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter1             |   9|          2|    1|          2|
+    |ap_sig_allocacmp_d0                 |   9|          2|    3|          6|
+    |d0_1_fu_48                          |   9|          2|    3|          6|
+    |fifo_tmp_from_task1_to_task4_blk_n  |   9|          2|    1|          2|
+    +------------------------------------+----+-----------+-----+-----------+
+    |Total                               |  45|         10|    9|         18|
+    +------------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-------------------------+---+----+-----+-----------+
+    |           Name          | FF| LUT| Bits| Const Bits|
+    +-------------------------+---+----+-----+-----------+
+    |ap_CS_fsm                |  1|   0|    1|          0|
+    |ap_done_reg              |  1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter1  |  1|   0|    1|          0|
+    |d0_1_fu_48               |  3|   0|    3|          0|
+    |d0_reg_134               |  3|   0|    3|          0|
+    +-------------------------+---+----+-----+-----------+
+    |Total                    |  9|   0|    9|          0|
+    +-------------------------+---+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++---------------------------------------------+-----+-----+------------+------------------------------+--------------+
+|                  RTL Ports                  | Dir | Bits|  Protocol  |         Source Object        |    C Type    |
++---------------------------------------------+-----+-----+------------+------------------------------+--------------+
+|ap_clk                                       |   in|    1|  ap_ctrl_hs|                  read_tmp_FT1|  return value|
+|ap_rst                                       |   in|    1|  ap_ctrl_hs|                  read_tmp_FT1|  return value|
+|ap_start                                     |   in|    1|  ap_ctrl_hs|                  read_tmp_FT1|  return value|
+|ap_done                                      |  out|    1|  ap_ctrl_hs|                  read_tmp_FT1|  return value|
+|ap_idle                                      |  out|    1|  ap_ctrl_hs|                  read_tmp_FT1|  return value|
+|ap_ready                                     |  out|    1|  ap_ctrl_hs|                  read_tmp_FT1|  return value|
+|fifo_tmp_from_task1_to_task4_dout            |   in|   32|     ap_fifo|  fifo_tmp_from_task1_to_task4|       pointer|
+|fifo_tmp_from_task1_to_task4_num_data_valid  |   in|   11|     ap_fifo|  fifo_tmp_from_task1_to_task4|       pointer|
+|fifo_tmp_from_task1_to_task4_fifo_cap        |   in|   11|     ap_fifo|  fifo_tmp_from_task1_to_task4|       pointer|
+|fifo_tmp_from_task1_to_task4_empty_n         |   in|    1|     ap_fifo|  fifo_tmp_from_task1_to_task4|       pointer|
+|fifo_tmp_from_task1_to_task4_read            |  out|    1|     ap_fifo|  fifo_tmp_from_task1_to_task4|       pointer|
+|tmp_0                                        |  out|   32|      ap_vld|                         tmp_0|       pointer|
+|tmp_0_ap_vld                                 |  out|    1|      ap_vld|                         tmp_0|       pointer|
+|tmp_1                                        |  out|   32|      ap_vld|                         tmp_1|       pointer|
+|tmp_1_ap_vld                                 |  out|    1|      ap_vld|                         tmp_1|       pointer|
+|tmp_2                                        |  out|   32|      ap_vld|                         tmp_2|       pointer|
+|tmp_2_ap_vld                                 |  out|    1|      ap_vld|                         tmp_2|       pointer|
+|tmp_3                                        |  out|   32|      ap_vld|                         tmp_3|       pointer|
+|tmp_3_ap_vld                                 |  out|    1|      ap_vld|                         tmp_3|       pointer|
+|tmp_4                                        |  out|   32|      ap_vld|                         tmp_4|       pointer|
+|tmp_4_ap_vld                                 |  out|    1|      ap_vld|                         tmp_4|       pointer|
++---------------------------------------------+-----+-----+------------+------------------------------+--------------+
+

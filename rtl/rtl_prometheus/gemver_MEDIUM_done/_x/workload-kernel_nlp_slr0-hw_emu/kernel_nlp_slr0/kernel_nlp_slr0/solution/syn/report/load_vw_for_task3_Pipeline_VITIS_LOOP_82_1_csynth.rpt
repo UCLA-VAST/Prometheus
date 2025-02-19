@@ -1,0 +1,197 @@
+
+
+================================================================
+== Vitis HLS Report for 'load_vw_for_task3_Pipeline_VITIS_LOOP_82_1'
+================================================================
+* Date:           Thu Dec  5 15:41:29 2024
+
+* Version:        2023.2 (Build 4023990 on Oct 11 2023)
+* Project:        kernel_nlp_slr0
+* Solution:       solution (Vitis Kernel Flow Target)
+* Product family: virtexuplusHBM
+* Target device:  xcu55c-fsvh2892-2L-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  4.55 ns|  3.318 ns|     1.23 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |       53|       53|  0.241 us|  0.241 us|   53|   53|       no|
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |                   |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |     Loop Name     |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +-------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |- VITIS_LOOP_82_1  |       51|       51|         3|          1|          1|    50|       yes|
+        +-------------------+---------+---------+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++---------------------+---------+------+---------+---------+-----+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
++---------------------+---------+------+---------+---------+-----+
+|DSP                  |        -|     -|        -|        -|    -|
+|Expression           |        -|     -|        0|       30|    -|
+|FIFO                 |        -|     -|        -|        -|    -|
+|Instance             |        -|     -|        -|        -|    -|
+|Memory               |        -|     -|        -|        -|    -|
+|Multiplexer          |        -|     -|        -|       54|    -|
+|Register             |        -|     -|      267|        -|    -|
++---------------------+---------+------+---------+---------+-----+
+|Total                |        0|     0|      267|       84|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available SLR        |     1344|  3008|   869120|   434560|  320|
++---------------------+---------+------+---------+---------+-----+
+|Utilization SLR (%)  |        0|     0|       ~0|       ~0|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available            |     4032|  9024|  2607360|  1303680|  960|
++---------------------+---------+------+---------+---------+-----+
+|Utilization (%)      |        0|     0|       ~0|       ~0|    0|
++---------------------+---------+------+---------+---------+-----+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +---------------------------+----------+----+---+----+------------+------------+
+    |       Variable Name       | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +---------------------------+----------+----+---+----+------------+------------+
+    |add_ln82_fu_90_p2          |         +|   0|  0|  13|           6|           1|
+    |icmp_ln82_fu_84_p2         |      icmp|   0|  0|  13|           6|           5|
+    |ap_block_pp0_stage0_01001  |        or|   0|  0|   2|           1|           1|
+    |ap_enable_pp0              |       xor|   0|  0|   2|           1|           2|
+    +---------------------------+----------+----+---+----+------------+------------+
+    |Total                      |          |   0|  0|  30|          14|           9|
+    +---------------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +----------------------------------+----+-----------+-----+-----------+
+    |               Name               | LUT| Input Size| Bits| Total Bits|
+    +----------------------------------+----+-----------+-----+-----------+
+    |ap_done_int                       |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter1           |   9|          2|    1|          2|
+    |ap_sig_allocacmp_i_46             |   9|          2|    6|         12|
+    |fifo_w_from_off_chip_to_S3_blk_n  |   9|          2|    1|          2|
+    |i_fu_50                           |   9|          2|    6|         12|
+    |kernel_vw_for_task3_blk_n_R       |   9|          2|    1|          2|
+    +----------------------------------+----+-----------+-----+-----------+
+    |Total                             |  54|         12|   16|         32|
+    +----------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +---------------------------------------+-----+----+-----+-----------+
+    |                  Name                 |  FF | LUT| Bits| Const Bits|
+    +---------------------------------------+-----+----+-----+-----------+
+    |ap_CS_fsm                              |    1|   0|    1|          0|
+    |ap_done_reg                            |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter1                |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter2                |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter1_reg       |    1|   0|    1|          0|
+    |i_fu_50                                |    6|   0|    6|          0|
+    |kernel_vw_for_task3_addr_read_reg_123  |  256|   0|  256|          0|
+    +---------------------------------------+-----+----+-----+-----------+
+    |Total                                  |  267|   0|  267|          0|
+    +---------------------------------------+-----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-------------------------------------------+-----+-----+------------+--------------------------------------------+--------------+
+|                 RTL Ports                 | Dir | Bits|  Protocol  |                Source Object               |    C Type    |
++-------------------------------------------+-----+-----+------------+--------------------------------------------+--------------+
+|ap_clk                                     |   in|    1|  ap_ctrl_hs|  load_vw_for_task3_Pipeline_VITIS_LOOP_82_1|  return value|
+|ap_rst                                     |   in|    1|  ap_ctrl_hs|  load_vw_for_task3_Pipeline_VITIS_LOOP_82_1|  return value|
+|ap_start                                   |   in|    1|  ap_ctrl_hs|  load_vw_for_task3_Pipeline_VITIS_LOOP_82_1|  return value|
+|ap_done                                    |  out|    1|  ap_ctrl_hs|  load_vw_for_task3_Pipeline_VITIS_LOOP_82_1|  return value|
+|ap_idle                                    |  out|    1|  ap_ctrl_hs|  load_vw_for_task3_Pipeline_VITIS_LOOP_82_1|  return value|
+|ap_ready                                   |  out|    1|  ap_ctrl_hs|  load_vw_for_task3_Pipeline_VITIS_LOOP_82_1|  return value|
+|m_axi_kernel_vw_for_task3_AWVALID          |  out|    1|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_AWREADY          |   in|    1|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_AWADDR           |  out|   64|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_AWID             |  out|    1|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_AWLEN            |  out|   32|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_AWSIZE           |  out|    3|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_AWBURST          |  out|    2|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_AWLOCK           |  out|    2|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_AWCACHE          |  out|    4|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_AWPROT           |  out|    3|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_AWQOS            |  out|    4|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_AWREGION         |  out|    4|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_AWUSER           |  out|    1|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_WVALID           |  out|    1|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_WREADY           |   in|    1|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_WDATA            |  out|  256|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_WSTRB            |  out|   32|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_WLAST            |  out|    1|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_WID              |  out|    1|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_WUSER            |  out|    1|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_ARVALID          |  out|    1|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_ARREADY          |   in|    1|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_ARADDR           |  out|   64|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_ARID             |  out|    1|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_ARLEN            |  out|   32|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_ARSIZE           |  out|    3|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_ARBURST          |  out|    2|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_ARLOCK           |  out|    2|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_ARCACHE          |  out|    4|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_ARPROT           |  out|    3|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_ARQOS            |  out|    4|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_ARREGION         |  out|    4|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_ARUSER           |  out|    1|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_RVALID           |   in|    1|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_RREADY           |  out|    1|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_RDATA            |   in|  256|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_RLAST            |   in|    1|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_RID              |   in|    1|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_RFIFONUM         |   in|    9|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_RUSER            |   in|    1|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_RRESP            |   in|    2|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_BVALID           |   in|    1|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_BREADY           |  out|    1|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_BRESP            |   in|    2|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_BID              |   in|    1|       m_axi|                         kernel_vw_for_task3|       pointer|
+|m_axi_kernel_vw_for_task3_BUSER            |   in|    1|       m_axi|                         kernel_vw_for_task3|       pointer|
+|fifo_w_from_off_chip_to_S3_din             |  out|  256|     ap_fifo|                  fifo_w_from_off_chip_to_S3|       pointer|
+|fifo_w_from_off_chip_to_S3_num_data_valid  |   in|   11|     ap_fifo|                  fifo_w_from_off_chip_to_S3|       pointer|
+|fifo_w_from_off_chip_to_S3_fifo_cap        |   in|   11|     ap_fifo|                  fifo_w_from_off_chip_to_S3|       pointer|
+|fifo_w_from_off_chip_to_S3_full_n          |   in|    1|     ap_fifo|                  fifo_w_from_off_chip_to_S3|       pointer|
+|fifo_w_from_off_chip_to_S3_write           |  out|    1|     ap_fifo|                  fifo_w_from_off_chip_to_S3|       pointer|
+|sext_ln82                                  |   in|   59|     ap_none|                                   sext_ln82|        scalar|
++-------------------------------------------+-----+-----+------------+--------------------------------------------+--------------+
+

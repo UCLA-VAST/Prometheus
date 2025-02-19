@@ -1,0 +1,197 @@
+
+
+================================================================
+== Vitis HLS Report for 'load_vA_for_task0_Pipeline_VITIS_LOOP_144_1'
+================================================================
+* Date:           Thu Dec  5 15:41:30 2024
+
+* Version:        2023.2 (Build 4023990 on Oct 11 2023)
+* Project:        kernel_nlp_slr0
+* Solution:       solution (Vitis Kernel Flow Target)
+* Product family: virtexuplusHBM
+* Target device:  xcu55c-fsvh2892-2L-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  4.55 ns|  3.318 ns|     1.23 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+-----------+-----------+-------+-------+---------+
+    |  Latency (cycles) |   Latency (absolute)  |    Interval   | Pipeline|
+    |   min   |   max   |    min    |    max    |  min  |  max  |   Type  |
+    +---------+---------+-----------+-----------+-------+-------+---------+
+    |    10003|    10003|  45.464 us|  45.464 us|  10003|  10003|       no|
+    +---------+---------+-----------+-----------+-------+-------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +--------------------+---------+---------+----------+-----------+-----------+-------+----------+
+        |                    |  Latency (cycles) | Iteration|  Initiation Interval  |  Trip |          |
+        |      Loop Name     |   min   |   max   |  Latency |  achieved |   target  | Count | Pipelined|
+        +--------------------+---------+---------+----------+-----------+-----------+-------+----------+
+        |- VITIS_LOOP_144_1  |    10001|    10001|         3|          1|          1|  10000|       yes|
+        +--------------------+---------+---------+----------+-----------+-----------+-------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++---------------------+---------+------+---------+---------+-----+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
++---------------------+---------+------+---------+---------+-----+
+|DSP                  |        -|     -|        -|        -|    -|
+|Expression           |        -|     -|        0|       46|    -|
+|FIFO                 |        -|     -|        -|        -|    -|
+|Instance             |        -|     -|        -|        -|    -|
+|Memory               |        -|     -|        -|        -|    -|
+|Multiplexer          |        -|     -|        -|       54|    -|
+|Register             |        -|     -|      531|        -|    -|
++---------------------+---------+------+---------+---------+-----+
+|Total                |        0|     0|      531|      100|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available SLR        |     1344|  3008|   869120|   434560|  320|
++---------------------+---------+------+---------+---------+-----+
+|Utilization SLR (%)  |        0|     0|       ~0|       ~0|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available            |     4032|  9024|  2607360|  1303680|  960|
++---------------------+---------+------+---------+---------+-----+
+|Utilization (%)      |        0|     0|       ~0|       ~0|    0|
++---------------------+---------+------+---------+---------+-----+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +---------------------------+----------+----+---+----+------------+------------+
+    |       Variable Name       | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +---------------------------+----------+----+---+----+------------+------------+
+    |add_ln144_fu_90_p2         |         +|   0|  0|  21|          14|           1|
+    |icmp_ln144_fu_84_p2        |      icmp|   0|  0|  21|          14|          14|
+    |ap_block_pp0_stage0_01001  |        or|   0|  0|   2|           1|           1|
+    |ap_enable_pp0              |       xor|   0|  0|   2|           1|           2|
+    +---------------------------+----------+----+---+----+------------+------------+
+    |Total                      |          |   0|  0|  46|          30|          18|
+    +---------------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +----------------------------------+----+-----------+-----+-----------+
+    |               Name               | LUT| Input Size| Bits| Total Bits|
+    +----------------------------------+----+-----------+-----+-----------+
+    |ap_done_int                       |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter1           |   9|          2|    1|          2|
+    |ap_sig_allocacmp_i_51             |   9|          2|   14|         28|
+    |fifo_A_from_off_chip_to_S0_blk_n  |   9|          2|    1|          2|
+    |i_fu_50                           |   9|          2|   14|         28|
+    |kernel_vA_for_task0_blk_n_R       |   9|          2|    1|          2|
+    +----------------------------------+----+-----------+-----+-----------+
+    |Total                             |  54|         12|   32|         64|
+    +----------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +---------------------------------------+-----+----+-----+-----------+
+    |                  Name                 |  FF | LUT| Bits| Const Bits|
+    +---------------------------------------+-----+----+-----+-----------+
+    |ap_CS_fsm                              |    1|   0|    1|          0|
+    |ap_done_reg                            |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter1                |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter2                |    1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter1_reg       |    1|   0|    1|          0|
+    |i_fu_50                                |   14|   0|   14|          0|
+    |kernel_vA_for_task0_addr_read_reg_123  |  512|   0|  512|          0|
+    +---------------------------------------+-----+----+-----+-----------+
+    |Total                                  |  531|   0|  531|          0|
+    +---------------------------------------+-----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-------------------------------------------+-----+-----+------------+---------------------------------------------+--------------+
+|                 RTL Ports                 | Dir | Bits|  Protocol  |                Source Object                |    C Type    |
++-------------------------------------------+-----+-----+------------+---------------------------------------------+--------------+
+|ap_clk                                     |   in|    1|  ap_ctrl_hs|  load_vA_for_task0_Pipeline_VITIS_LOOP_144_1|  return value|
+|ap_rst                                     |   in|    1|  ap_ctrl_hs|  load_vA_for_task0_Pipeline_VITIS_LOOP_144_1|  return value|
+|ap_start                                   |   in|    1|  ap_ctrl_hs|  load_vA_for_task0_Pipeline_VITIS_LOOP_144_1|  return value|
+|ap_done                                    |  out|    1|  ap_ctrl_hs|  load_vA_for_task0_Pipeline_VITIS_LOOP_144_1|  return value|
+|ap_idle                                    |  out|    1|  ap_ctrl_hs|  load_vA_for_task0_Pipeline_VITIS_LOOP_144_1|  return value|
+|ap_ready                                   |  out|    1|  ap_ctrl_hs|  load_vA_for_task0_Pipeline_VITIS_LOOP_144_1|  return value|
+|m_axi_kernel_vA_for_task0_AWVALID          |  out|    1|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_AWREADY          |   in|    1|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_AWADDR           |  out|   64|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_AWID             |  out|    1|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_AWLEN            |  out|   32|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_AWSIZE           |  out|    3|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_AWBURST          |  out|    2|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_AWLOCK           |  out|    2|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_AWCACHE          |  out|    4|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_AWPROT           |  out|    3|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_AWQOS            |  out|    4|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_AWREGION         |  out|    4|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_AWUSER           |  out|    1|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_WVALID           |  out|    1|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_WREADY           |   in|    1|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_WDATA            |  out|  512|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_WSTRB            |  out|   64|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_WLAST            |  out|    1|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_WID              |  out|    1|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_WUSER            |  out|    1|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_ARVALID          |  out|    1|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_ARREADY          |   in|    1|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_ARADDR           |  out|   64|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_ARID             |  out|    1|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_ARLEN            |  out|   32|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_ARSIZE           |  out|    3|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_ARBURST          |  out|    2|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_ARLOCK           |  out|    2|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_ARCACHE          |  out|    4|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_ARPROT           |  out|    3|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_ARQOS            |  out|    4|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_ARREGION         |  out|    4|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_ARUSER           |  out|    1|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_RVALID           |   in|    1|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_RREADY           |  out|    1|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_RDATA            |   in|  512|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_RLAST            |   in|    1|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_RID              |   in|    1|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_RFIFONUM         |   in|    9|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_RUSER            |   in|    1|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_RRESP            |   in|    2|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_BVALID           |   in|    1|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_BREADY           |  out|    1|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_BRESP            |   in|    2|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_BID              |   in|    1|       m_axi|                          kernel_vA_for_task0|       pointer|
+|m_axi_kernel_vA_for_task0_BUSER            |   in|    1|       m_axi|                          kernel_vA_for_task0|       pointer|
+|fifo_A_from_off_chip_to_S0_din             |  out|  512|     ap_fifo|                   fifo_A_from_off_chip_to_S0|       pointer|
+|fifo_A_from_off_chip_to_S0_num_data_valid  |   in|   11|     ap_fifo|                   fifo_A_from_off_chip_to_S0|       pointer|
+|fifo_A_from_off_chip_to_S0_fifo_cap        |   in|   11|     ap_fifo|                   fifo_A_from_off_chip_to_S0|       pointer|
+|fifo_A_from_off_chip_to_S0_full_n          |   in|    1|     ap_fifo|                   fifo_A_from_off_chip_to_S0|       pointer|
+|fifo_A_from_off_chip_to_S0_write           |  out|    1|     ap_fifo|                   fifo_A_from_off_chip_to_S0|       pointer|
+|sext_ln144                                 |   in|   58|     ap_none|                                   sext_ln144|        scalar|
++-------------------------------------------+-----+-----+------------+---------------------------------------------+--------------+
+

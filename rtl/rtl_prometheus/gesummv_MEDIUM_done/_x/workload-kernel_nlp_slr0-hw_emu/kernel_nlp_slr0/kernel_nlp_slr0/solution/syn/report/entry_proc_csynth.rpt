@@ -1,0 +1,212 @@
+
+
+================================================================
+== Vitis HLS Report for 'entry_proc'
+================================================================
+* Date:           Thu Dec  5 15:17:33 2024
+
+* Version:        2023.2 (Build 4023990 on Oct 11 2023)
+* Project:        kernel_nlp_slr0
+* Solution:       solution (Vitis Kernel Flow Target)
+* Product family: virtexuplusHBM
+* Target device:  xcu55c-fsvh2892-2L-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  4.55 ns|  1.465 ns|     1.23 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |        0|        0|      0 ns|      0 ns|    0|    0|       no|
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++---------------------+---------+------+---------+---------+-----+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
++---------------------+---------+------+---------+---------+-----+
+|DSP                  |        -|     -|        -|        -|    -|
+|Expression           |        -|     -|        0|        2|    -|
+|FIFO                 |        -|     -|        -|        -|    -|
+|Instance             |        -|     -|        -|        -|    -|
+|Memory               |        -|     -|        -|        -|    -|
+|Multiplexer          |        -|     -|        -|      117|    -|
+|Register             |        -|     -|        2|        -|    -|
++---------------------+---------+------+---------+---------+-----+
+|Total                |        0|     0|        2|      119|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available SLR        |     1344|  3008|   869120|   434560|  320|
++---------------------+---------+------+---------+---------+-----+
+|Utilization SLR (%)  |        0|     0|       ~0|       ~0|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available            |     4032|  9024|  2607360|  1303680|  960|
++---------------------+---------+------+---------+---------+-----+
+|Utilization (%)      |        0|     0|       ~0|       ~0|    0|
++---------------------+---------+------+---------+---------+-----+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +-----------------+----------+----+---+----+------------+------------+
+    |  Variable Name  | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +-----------------+----------+----+---+----+------------+------------+
+    |ap_block_state1  |        or|   0|  0|   2|           1|           1|
+    +-----------------+----------+----+---+----+------------+------------+
+    |Total            |          |   0|  0|   2|           1|           1|
+    +-----------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +-----------------------+----+-----------+-----+-----------+
+    |          Name         | LUT| Input Size| Bits| Total Bits|
+    +-----------------------+----+-----------+-----+-----------+
+    |alpha_c_blk_n          |   9|          2|    1|          2|
+    |ap_done                |   9|          2|    1|          2|
+    |beta_c_blk_n           |   9|          2|    1|          2|
+    |tmp_0_0_val6_c_blk_n   |   9|          2|    1|          2|
+    |tmp_0_1_val7_c_blk_n   |   9|          2|    1|          2|
+    |tmp_0_2_val8_c_blk_n   |   9|          2|    1|          2|
+    |tmp_0_3_val9_c_blk_n   |   9|          2|    1|          2|
+    |tmp_0_4_val10_c_blk_n  |   9|          2|    1|          2|
+    |y_1_0_val1_c_blk_n     |   9|          2|    1|          2|
+    |y_1_1_val2_c_blk_n     |   9|          2|    1|          2|
+    |y_1_2_val3_c_blk_n     |   9|          2|    1|          2|
+    |y_1_3_val4_c_blk_n     |   9|          2|    1|          2|
+    |y_1_4_val5_c_blk_n     |   9|          2|    1|          2|
+    +-----------------------+----+-----------+-----+-----------+
+    |Total                  | 117|         26|   13|         26|
+    +-----------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-------------+---+----+-----+-----------+
+    |     Name    | FF| LUT| Bits| Const Bits|
+    +-------------+---+----+-----+-----------+
+    |ap_CS_fsm    |  1|   0|    1|          0|
+    |ap_done_reg  |  1|   0|    1|          0|
+    +-------------+---+----+-----+-----------+
+    |Total        |  2|   0|    2|          0|
+    +-------------+---+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++--------------------------------+-----+-----+------------+-----------------+--------------+
+|            RTL Ports           | Dir | Bits|  Protocol  |  Source Object  |    C Type    |
++--------------------------------+-----+-----+------------+-----------------+--------------+
+|ap_clk                          |   in|    1|  ap_ctrl_hs|       entry_proc|  return value|
+|ap_rst                          |   in|    1|  ap_ctrl_hs|       entry_proc|  return value|
+|ap_start                        |   in|    1|  ap_ctrl_hs|       entry_proc|  return value|
+|ap_done                         |  out|    1|  ap_ctrl_hs|       entry_proc|  return value|
+|ap_continue                     |   in|    1|  ap_ctrl_hs|       entry_proc|  return value|
+|ap_idle                         |  out|    1|  ap_ctrl_hs|       entry_proc|  return value|
+|ap_ready                        |  out|    1|  ap_ctrl_hs|       entry_proc|  return value|
+|alpha                           |   in|   32|     ap_none|            alpha|        scalar|
+|alpha_c_din                     |  out|   32|     ap_fifo|          alpha_c|       pointer|
+|alpha_c_num_data_valid          |   in|    3|     ap_fifo|          alpha_c|       pointer|
+|alpha_c_fifo_cap                |   in|    3|     ap_fifo|          alpha_c|       pointer|
+|alpha_c_full_n                  |   in|    1|     ap_fifo|          alpha_c|       pointer|
+|alpha_c_write                   |  out|    1|     ap_fifo|          alpha_c|       pointer|
+|beta                            |   in|   32|     ap_none|             beta|        scalar|
+|beta_c_din                      |  out|   32|     ap_fifo|           beta_c|       pointer|
+|beta_c_num_data_valid           |   in|    3|     ap_fifo|           beta_c|       pointer|
+|beta_c_fifo_cap                 |   in|    3|     ap_fifo|           beta_c|       pointer|
+|beta_c_full_n                   |   in|    1|     ap_fifo|           beta_c|       pointer|
+|beta_c_write                    |  out|    1|     ap_fifo|           beta_c|       pointer|
+|y_1_0_val1                      |   in|   32|     ap_none|       y_1_0_val1|        scalar|
+|y_1_0_val1_c_din                |  out|   32|     ap_fifo|     y_1_0_val1_c|       pointer|
+|y_1_0_val1_c_num_data_valid     |   in|    3|     ap_fifo|     y_1_0_val1_c|       pointer|
+|y_1_0_val1_c_fifo_cap           |   in|    3|     ap_fifo|     y_1_0_val1_c|       pointer|
+|y_1_0_val1_c_full_n             |   in|    1|     ap_fifo|     y_1_0_val1_c|       pointer|
+|y_1_0_val1_c_write              |  out|    1|     ap_fifo|     y_1_0_val1_c|       pointer|
+|y_1_1_val2                      |   in|   32|     ap_none|       y_1_1_val2|        scalar|
+|y_1_1_val2_c_din                |  out|   32|     ap_fifo|     y_1_1_val2_c|       pointer|
+|y_1_1_val2_c_num_data_valid     |   in|    3|     ap_fifo|     y_1_1_val2_c|       pointer|
+|y_1_1_val2_c_fifo_cap           |   in|    3|     ap_fifo|     y_1_1_val2_c|       pointer|
+|y_1_1_val2_c_full_n             |   in|    1|     ap_fifo|     y_1_1_val2_c|       pointer|
+|y_1_1_val2_c_write              |  out|    1|     ap_fifo|     y_1_1_val2_c|       pointer|
+|y_1_2_val3                      |   in|   32|     ap_none|       y_1_2_val3|        scalar|
+|y_1_2_val3_c_din                |  out|   32|     ap_fifo|     y_1_2_val3_c|       pointer|
+|y_1_2_val3_c_num_data_valid     |   in|    3|     ap_fifo|     y_1_2_val3_c|       pointer|
+|y_1_2_val3_c_fifo_cap           |   in|    3|     ap_fifo|     y_1_2_val3_c|       pointer|
+|y_1_2_val3_c_full_n             |   in|    1|     ap_fifo|     y_1_2_val3_c|       pointer|
+|y_1_2_val3_c_write              |  out|    1|     ap_fifo|     y_1_2_val3_c|       pointer|
+|y_1_3_val4                      |   in|   32|     ap_none|       y_1_3_val4|        scalar|
+|y_1_3_val4_c_din                |  out|   32|     ap_fifo|     y_1_3_val4_c|       pointer|
+|y_1_3_val4_c_num_data_valid     |   in|    3|     ap_fifo|     y_1_3_val4_c|       pointer|
+|y_1_3_val4_c_fifo_cap           |   in|    3|     ap_fifo|     y_1_3_val4_c|       pointer|
+|y_1_3_val4_c_full_n             |   in|    1|     ap_fifo|     y_1_3_val4_c|       pointer|
+|y_1_3_val4_c_write              |  out|    1|     ap_fifo|     y_1_3_val4_c|       pointer|
+|y_1_4_val5                      |   in|   32|     ap_none|       y_1_4_val5|        scalar|
+|y_1_4_val5_c_din                |  out|   32|     ap_fifo|     y_1_4_val5_c|       pointer|
+|y_1_4_val5_c_num_data_valid     |   in|    3|     ap_fifo|     y_1_4_val5_c|       pointer|
+|y_1_4_val5_c_fifo_cap           |   in|    3|     ap_fifo|     y_1_4_val5_c|       pointer|
+|y_1_4_val5_c_full_n             |   in|    1|     ap_fifo|     y_1_4_val5_c|       pointer|
+|y_1_4_val5_c_write              |  out|    1|     ap_fifo|     y_1_4_val5_c|       pointer|
+|tmp_0_0_val6                    |   in|   32|     ap_none|     tmp_0_0_val6|        scalar|
+|tmp_0_0_val6_c_din              |  out|   32|     ap_fifo|   tmp_0_0_val6_c|       pointer|
+|tmp_0_0_val6_c_num_data_valid   |   in|    3|     ap_fifo|   tmp_0_0_val6_c|       pointer|
+|tmp_0_0_val6_c_fifo_cap         |   in|    3|     ap_fifo|   tmp_0_0_val6_c|       pointer|
+|tmp_0_0_val6_c_full_n           |   in|    1|     ap_fifo|   tmp_0_0_val6_c|       pointer|
+|tmp_0_0_val6_c_write            |  out|    1|     ap_fifo|   tmp_0_0_val6_c|       pointer|
+|tmp_0_1_val7                    |   in|   32|     ap_none|     tmp_0_1_val7|        scalar|
+|tmp_0_1_val7_c_din              |  out|   32|     ap_fifo|   tmp_0_1_val7_c|       pointer|
+|tmp_0_1_val7_c_num_data_valid   |   in|    3|     ap_fifo|   tmp_0_1_val7_c|       pointer|
+|tmp_0_1_val7_c_fifo_cap         |   in|    3|     ap_fifo|   tmp_0_1_val7_c|       pointer|
+|tmp_0_1_val7_c_full_n           |   in|    1|     ap_fifo|   tmp_0_1_val7_c|       pointer|
+|tmp_0_1_val7_c_write            |  out|    1|     ap_fifo|   tmp_0_1_val7_c|       pointer|
+|tmp_0_2_val8                    |   in|   32|     ap_none|     tmp_0_2_val8|        scalar|
+|tmp_0_2_val8_c_din              |  out|   32|     ap_fifo|   tmp_0_2_val8_c|       pointer|
+|tmp_0_2_val8_c_num_data_valid   |   in|    3|     ap_fifo|   tmp_0_2_val8_c|       pointer|
+|tmp_0_2_val8_c_fifo_cap         |   in|    3|     ap_fifo|   tmp_0_2_val8_c|       pointer|
+|tmp_0_2_val8_c_full_n           |   in|    1|     ap_fifo|   tmp_0_2_val8_c|       pointer|
+|tmp_0_2_val8_c_write            |  out|    1|     ap_fifo|   tmp_0_2_val8_c|       pointer|
+|tmp_0_3_val9                    |   in|   32|     ap_none|     tmp_0_3_val9|        scalar|
+|tmp_0_3_val9_c_din              |  out|   32|     ap_fifo|   tmp_0_3_val9_c|       pointer|
+|tmp_0_3_val9_c_num_data_valid   |   in|    3|     ap_fifo|   tmp_0_3_val9_c|       pointer|
+|tmp_0_3_val9_c_fifo_cap         |   in|    3|     ap_fifo|   tmp_0_3_val9_c|       pointer|
+|tmp_0_3_val9_c_full_n           |   in|    1|     ap_fifo|   tmp_0_3_val9_c|       pointer|
+|tmp_0_3_val9_c_write            |  out|    1|     ap_fifo|   tmp_0_3_val9_c|       pointer|
+|tmp_0_4_val10                   |   in|   32|     ap_none|    tmp_0_4_val10|        scalar|
+|tmp_0_4_val10_c_din             |  out|   32|     ap_fifo|  tmp_0_4_val10_c|       pointer|
+|tmp_0_4_val10_c_num_data_valid  |   in|    3|     ap_fifo|  tmp_0_4_val10_c|       pointer|
+|tmp_0_4_val10_c_fifo_cap        |   in|    3|     ap_fifo|  tmp_0_4_val10_c|       pointer|
+|tmp_0_4_val10_c_full_n          |   in|    1|     ap_fifo|  tmp_0_4_val10_c|       pointer|
+|tmp_0_4_val10_c_write           |  out|    1|     ap_fifo|  tmp_0_4_val10_c|       pointer|
++--------------------------------+-----+-----+------------+-----------------+--------------+
+

@@ -1,0 +1,227 @@
+
+
+================================================================
+== Vitis HLS Report for 'read_A2_FT1_7'
+================================================================
+* Date:           Fri Jan 10 12:45:50 2025
+
+* Version:        2023.2 (Build 4023990 on Oct 11 2023)
+* Project:        kernel_nlp_slr0
+* Solution:       solution (Vitis Kernel Flow Target)
+* Product family: virtexuplusHBM
+* Target device:  xcu55c-fsvh2892-2L-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  4.55 ns|  1.923 ns|     1.23 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+-----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute)  |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max    | min | max |   Type  |
+    +---------+---------+----------+-----------+-----+-----+---------+
+    |        1|        8|  4.545 ns|  36.360 ns|    1|    8|       no|
+    +---------+---------+----------+-----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        +----------------------------------------------------+------------------------------------------+---------+---------+-----------+-----------+-----+-----+---------+
+        |                                                    |                                          |  Latency (cycles) |   Latency (absolute)  |  Interval | Pipeline|
+        |                      Instance                      |                  Module                  |   min   |   max   |    min    |    max    | min | max |   Type  |
+        +----------------------------------------------------+------------------------------------------+---------+---------+-----------+-----------+-----+-----+---------+
+        |grp_read_A2_FT1_7_Pipeline_VITIS_LOOP_1176_1_fu_68  |read_A2_FT1_7_Pipeline_VITIS_LOOP_1176_1  |        7|        7|  31.815 ns|  31.815 ns|    7|    7|       no|
+        +----------------------------------------------------+------------------------------------------+---------+---------+-----------+-----------+-----+-----+---------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++---------------------+---------+------+---------+---------+-----+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
++---------------------+---------+------+---------+---------+-----+
+|DSP                  |        -|     -|        -|        -|    -|
+|Expression           |        -|     -|        0|       14|    -|
+|FIFO                 |        -|     -|        -|        -|    -|
+|Instance             |        -|     -|       13|       73|    -|
+|Memory               |        -|     -|        -|        -|    -|
+|Multiplexer          |        -|     -|        -|       23|    -|
+|Register             |        -|     -|        4|        -|    -|
++---------------------+---------+------+---------+---------+-----+
+|Total                |        0|     0|       17|      110|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available SLR        |     1344|  3008|   869120|   434560|  320|
++---------------------+---------+------+---------+---------+-----+
+|Utilization SLR (%)  |        0|     0|       ~0|       ~0|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available            |     4032|  9024|  2607360|  1303680|  960|
++---------------------+---------+------+---------+---------+-----+
+|Utilization (%)      |        0|     0|       ~0|       ~0|    0|
++---------------------+---------+------+---------+---------+-----+
+
++ Detail: 
+    * Instance: 
+    +----------------------------------------------------+------------------------------------------+---------+----+----+----+-----+
+    |                      Instance                      |                  Module                  | BRAM_18K| DSP| FF | LUT| URAM|
+    +----------------------------------------------------+------------------------------------------+---------+----+----+----+-----+
+    |grp_read_A2_FT1_7_Pipeline_VITIS_LOOP_1176_1_fu_68  |read_A2_FT1_7_Pipeline_VITIS_LOOP_1176_1  |        0|   0|  13|  73|    0|
+    +----------------------------------------------------+------------------------------------------+---------+----+----+----+-----+
+    |Total                                               |                                          |        0|   0|  13|  73|    0|
+    +----------------------------------------------------+------------------------------------------+---------+----+----+----+-----+
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +---------------------------------+----------+----+---+----+------------+------------+
+    |          Variable Name          | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +---------------------------------+----------+----+---+----+------------+------------+
+    |ap_block_state2_on_subcall_done  |       and|   0|  0|   2|           1|           1|
+    |icmp_ln1173_fu_114_p2            |      icmp|   0|  0|  12|           4|           1|
+    +---------------------------------+----------+----+---+----+------------+------------+
+    |Total                            |          |   0|  0|  14|           5|           2|
+    +---------------------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +----------------------------------+----+-----------+-----+-----------+
+    |               Name               | LUT| Input Size| Bits| Total Bits|
+    +----------------------------------+----+-----------+-----+-----------+
+    |ap_NS_fsm                         |  14|          3|    1|          3|
+    |fifo_A2_from_off_chip_to_S2_read  |   9|          2|    1|          2|
+    +----------------------------------+----+-----------+-----+-----------+
+    |Total                             |  23|          5|    2|          5|
+    +----------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-----------------------------------------------------------------+---+----+-----+-----------+
+    |                               Name                              | FF| LUT| Bits| Const Bits|
+    +-----------------------------------------------------------------+---+----+-----+-----------+
+    |ap_CS_fsm                                                        |  2|   0|    2|          0|
+    |grp_read_A2_FT1_7_Pipeline_VITIS_LOOP_1176_1_fu_68_ap_start_reg  |  1|   0|    1|          0|
+    |icmp_ln1173_reg_120                                              |  1|   0|    1|          0|
+    +-----------------------------------------------------------------+---+----+-----+-----------+
+    |Total                                                            |  4|   0|    4|          0|
+    +-----------------------------------------------------------------+---+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++--------------------------------------------+-----+-----+------------+-----------------------------+--------------+
+|                  RTL Ports                 | Dir | Bits|  Protocol  |        Source Object        |    C Type    |
++--------------------------------------------+-----+-----+------------+-----------------------------+--------------+
+|ap_clk                                      |   in|    1|  ap_ctrl_hs|                read_A2_FT1.7|  return value|
+|ap_rst                                      |   in|    1|  ap_ctrl_hs|                read_A2_FT1.7|  return value|
+|ap_start                                    |   in|    1|  ap_ctrl_hs|                read_A2_FT1.7|  return value|
+|ap_done                                     |  out|    1|  ap_ctrl_hs|                read_A2_FT1.7|  return value|
+|ap_idle                                     |  out|    1|  ap_ctrl_hs|                read_A2_FT1.7|  return value|
+|ap_ready                                    |  out|    1|  ap_ctrl_hs|                read_A2_FT1.7|  return value|
+|A2_0_address0                               |  out|    4|   ap_memory|                         A2_0|         array|
+|A2_0_ce0                                    |  out|    1|   ap_memory|                         A2_0|         array|
+|A2_0_we0                                    |  out|    1|   ap_memory|                         A2_0|         array|
+|A2_0_d0                                     |  out|   32|   ap_memory|                         A2_0|         array|
+|A2_1_address0                               |  out|    4|   ap_memory|                         A2_1|         array|
+|A2_1_ce0                                    |  out|    1|   ap_memory|                         A2_1|         array|
+|A2_1_we0                                    |  out|    1|   ap_memory|                         A2_1|         array|
+|A2_1_d0                                     |  out|   32|   ap_memory|                         A2_1|         array|
+|A2_2_address0                               |  out|    4|   ap_memory|                         A2_2|         array|
+|A2_2_ce0                                    |  out|    1|   ap_memory|                         A2_2|         array|
+|A2_2_we0                                    |  out|    1|   ap_memory|                         A2_2|         array|
+|A2_2_d0                                     |  out|   32|   ap_memory|                         A2_2|         array|
+|A2_3_address0                               |  out|    4|   ap_memory|                         A2_3|         array|
+|A2_3_ce0                                    |  out|    1|   ap_memory|                         A2_3|         array|
+|A2_3_we0                                    |  out|    1|   ap_memory|                         A2_3|         array|
+|A2_3_d0                                     |  out|   32|   ap_memory|                         A2_3|         array|
+|A2_4_address0                               |  out|    4|   ap_memory|                         A2_4|         array|
+|A2_4_ce0                                    |  out|    1|   ap_memory|                         A2_4|         array|
+|A2_4_we0                                    |  out|    1|   ap_memory|                         A2_4|         array|
+|A2_4_d0                                     |  out|   32|   ap_memory|                         A2_4|         array|
+|A2_5_address0                               |  out|    4|   ap_memory|                         A2_5|         array|
+|A2_5_ce0                                    |  out|    1|   ap_memory|                         A2_5|         array|
+|A2_5_we0                                    |  out|    1|   ap_memory|                         A2_5|         array|
+|A2_5_d0                                     |  out|   32|   ap_memory|                         A2_5|         array|
+|A2_6_address0                               |  out|    4|   ap_memory|                         A2_6|         array|
+|A2_6_ce0                                    |  out|    1|   ap_memory|                         A2_6|         array|
+|A2_6_we0                                    |  out|    1|   ap_memory|                         A2_6|         array|
+|A2_6_d0                                     |  out|   32|   ap_memory|                         A2_6|         array|
+|A2_7_address0                               |  out|    4|   ap_memory|                         A2_7|         array|
+|A2_7_ce0                                    |  out|    1|   ap_memory|                         A2_7|         array|
+|A2_7_we0                                    |  out|    1|   ap_memory|                         A2_7|         array|
+|A2_7_d0                                     |  out|   32|   ap_memory|                         A2_7|         array|
+|A2_8_address0                               |  out|    4|   ap_memory|                         A2_8|         array|
+|A2_8_ce0                                    |  out|    1|   ap_memory|                         A2_8|         array|
+|A2_8_we0                                    |  out|    1|   ap_memory|                         A2_8|         array|
+|A2_8_d0                                     |  out|   32|   ap_memory|                         A2_8|         array|
+|A2_9_address0                               |  out|    4|   ap_memory|                         A2_9|         array|
+|A2_9_ce0                                    |  out|    1|   ap_memory|                         A2_9|         array|
+|A2_9_we0                                    |  out|    1|   ap_memory|                         A2_9|         array|
+|A2_9_d0                                     |  out|   32|   ap_memory|                         A2_9|         array|
+|A2_10_address0                              |  out|    4|   ap_memory|                        A2_10|         array|
+|A2_10_ce0                                   |  out|    1|   ap_memory|                        A2_10|         array|
+|A2_10_we0                                   |  out|    1|   ap_memory|                        A2_10|         array|
+|A2_10_d0                                    |  out|   32|   ap_memory|                        A2_10|         array|
+|A2_11_address0                              |  out|    4|   ap_memory|                        A2_11|         array|
+|A2_11_ce0                                   |  out|    1|   ap_memory|                        A2_11|         array|
+|A2_11_we0                                   |  out|    1|   ap_memory|                        A2_11|         array|
+|A2_11_d0                                    |  out|   32|   ap_memory|                        A2_11|         array|
+|A2_12_address0                              |  out|    4|   ap_memory|                        A2_12|         array|
+|A2_12_ce0                                   |  out|    1|   ap_memory|                        A2_12|         array|
+|A2_12_we0                                   |  out|    1|   ap_memory|                        A2_12|         array|
+|A2_12_d0                                    |  out|   32|   ap_memory|                        A2_12|         array|
+|A2_13_address0                              |  out|    4|   ap_memory|                        A2_13|         array|
+|A2_13_ce0                                   |  out|    1|   ap_memory|                        A2_13|         array|
+|A2_13_we0                                   |  out|    1|   ap_memory|                        A2_13|         array|
+|A2_13_d0                                    |  out|   32|   ap_memory|                        A2_13|         array|
+|A2_14_address0                              |  out|    4|   ap_memory|                        A2_14|         array|
+|A2_14_ce0                                   |  out|    1|   ap_memory|                        A2_14|         array|
+|A2_14_we0                                   |  out|    1|   ap_memory|                        A2_14|         array|
+|A2_14_d0                                    |  out|   32|   ap_memory|                        A2_14|         array|
+|A2_15_address0                              |  out|    4|   ap_memory|                        A2_15|         array|
+|A2_15_ce0                                   |  out|    1|   ap_memory|                        A2_15|         array|
+|A2_15_we0                                   |  out|    1|   ap_memory|                        A2_15|         array|
+|A2_15_d0                                    |  out|   32|   ap_memory|                        A2_15|         array|
+|A2_16_address0                              |  out|    4|   ap_memory|                        A2_16|         array|
+|A2_16_ce0                                   |  out|    1|   ap_memory|                        A2_16|         array|
+|A2_16_we0                                   |  out|    1|   ap_memory|                        A2_16|         array|
+|A2_16_d0                                    |  out|   32|   ap_memory|                        A2_16|         array|
+|A2_17_address0                              |  out|    4|   ap_memory|                        A2_17|         array|
+|A2_17_ce0                                   |  out|    1|   ap_memory|                        A2_17|         array|
+|A2_17_we0                                   |  out|    1|   ap_memory|                        A2_17|         array|
+|A2_17_d0                                    |  out|   32|   ap_memory|                        A2_17|         array|
+|A2_18_address0                              |  out|    4|   ap_memory|                        A2_18|         array|
+|A2_18_ce0                                   |  out|    1|   ap_memory|                        A2_18|         array|
+|A2_18_we0                                   |  out|    1|   ap_memory|                        A2_18|         array|
+|A2_18_d0                                    |  out|   32|   ap_memory|                        A2_18|         array|
+|A2_19_address0                              |  out|    4|   ap_memory|                        A2_19|         array|
+|A2_19_ce0                                   |  out|    1|   ap_memory|                        A2_19|         array|
+|A2_19_we0                                   |  out|    1|   ap_memory|                        A2_19|         array|
+|A2_19_d0                                    |  out|   32|   ap_memory|                        A2_19|         array|
+|fifo_A2_from_off_chip_to_S2_dout            |   in|  128|     ap_fifo|  fifo_A2_from_off_chip_to_S2|       pointer|
+|fifo_A2_from_off_chip_to_S2_num_data_valid  |   in|   11|     ap_fifo|  fifo_A2_from_off_chip_to_S2|       pointer|
+|fifo_A2_from_off_chip_to_S2_fifo_cap        |   in|   11|     ap_fifo|  fifo_A2_from_off_chip_to_S2|       pointer|
+|fifo_A2_from_off_chip_to_S2_empty_n         |   in|    1|     ap_fifo|  fifo_A2_from_off_chip_to_S2|       pointer|
+|fifo_A2_from_off_chip_to_S2_read            |  out|    1|     ap_fifo|  fifo_A2_from_off_chip_to_S2|       pointer|
+|j0                                          |   in|    4|     ap_none|                           j0|        scalar|
++--------------------------------------------+-----+-----+------------+-----------------------------+--------------+
+

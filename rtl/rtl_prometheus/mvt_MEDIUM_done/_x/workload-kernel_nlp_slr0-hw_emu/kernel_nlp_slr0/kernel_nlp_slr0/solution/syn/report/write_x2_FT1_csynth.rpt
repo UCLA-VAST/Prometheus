@@ -1,0 +1,148 @@
+
+
+================================================================
+== Vitis HLS Report for 'write_x2_FT1'
+================================================================
+* Date:           Thu Dec  5 15:24:10 2024
+
+* Version:        2023.2 (Build 4023990 on Oct 11 2023)
+* Project:        kernel_nlp_slr0
+* Solution:       solution (Vitis Kernel Flow Target)
+* Product family: virtexuplusHBM
+* Target device:  xcu55c-fsvh2892-2L-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  4.55 ns|  1.236 ns|     1.23 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |        0|        0|      0 ns|      0 ns|    0|    0|       no|
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++---------------------+---------+------+---------+---------+-----+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
++---------------------+---------+------+---------+---------+-----+
+|DSP                  |        -|     -|        -|        -|    -|
+|Expression           |        -|     -|        0|        2|    -|
+|FIFO                 |        -|     -|        -|        -|    -|
+|Instance             |        -|     -|        -|        -|    -|
+|Memory               |        -|     -|        -|        -|    -|
+|Multiplexer          |        -|     -|        -|        9|    -|
+|Register             |        -|     -|        1|        -|    -|
++---------------------+---------+------+---------+---------+-----+
+|Total                |        0|     0|        1|       11|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available SLR        |     1344|  3008|   869120|   434560|  320|
++---------------------+---------+------+---------+---------+-----+
+|Utilization SLR (%)  |        0|     0|       ~0|       ~0|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available            |     4032|  9024|  2607360|  1303680|  960|
++---------------------+---------+------+---------+---------+-----+
+|Utilization (%)      |        0|     0|       ~0|       ~0|    0|
++---------------------+---------+------+---------+---------+-----+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +-----------------+----------+----+---+----+------------+------------+
+    |  Variable Name  | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +-----------------+----------+----+---+----+------------+------------+
+    |ap_block_state1  |        or|   0|  0|   2|           1|           1|
+    +-----------------+----------+----+---+----+------------+------------+
+    |Total            |          |   0|  0|   2|           1|           1|
+    +-----------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +---------------------------+----+-----------+-----+-----------+
+    |            Name           | LUT| Input Size| Bits| Total Bits|
+    +---------------------------+----+-----------+-----+-----------+
+    |fifo_x2_to_off_chip_blk_n  |   9|          2|    1|          2|
+    +---------------------------+----+-----------+-----+-----------+
+    |Total                      |   9|          2|    1|          2|
+    +---------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-----------+---+----+-----+-----------+
+    |    Name   | FF| LUT| Bits| Const Bits|
+    +-----------+---+----+-----+-----------+
+    |ap_CS_fsm  |  1|   0|    1|          0|
+    +-----------+---+----+-----+-----------+
+    |Total      |  1|   0|    1|          0|
+    +-----------+---+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++------------------------------------+-----+-----+------------+---------------------+--------------+
+|              RTL Ports             | Dir | Bits|  Protocol  |    Source Object    |    C Type    |
++------------------------------------+-----+-----+------------+---------------------+--------------+
+|ap_clk                              |   in|    1|  ap_ctrl_hs|         write_x2_FT1|  return value|
+|ap_rst                              |   in|    1|  ap_ctrl_hs|         write_x2_FT1|  return value|
+|ap_start                            |   in|    1|  ap_ctrl_hs|         write_x2_FT1|  return value|
+|ap_done                             |  out|    1|  ap_ctrl_hs|         write_x2_FT1|  return value|
+|ap_idle                             |  out|    1|  ap_ctrl_hs|         write_x2_FT1|  return value|
+|ap_ready                            |  out|    1|  ap_ctrl_hs|         write_x2_FT1|  return value|
+|fifo_x2_to_off_chip_blk_n           |  out|    1|  ap_ctrl_hs|         write_x2_FT1|  return value|
+|x2_0_val                            |   in|   32|     ap_none|             x2_0_val|        scalar|
+|x2_1_val                            |   in|   32|     ap_none|             x2_1_val|        scalar|
+|x2_2_val                            |   in|   32|     ap_none|             x2_2_val|        scalar|
+|x2_3_val                            |   in|   32|     ap_none|             x2_3_val|        scalar|
+|x2_4_val                            |   in|   32|     ap_none|             x2_4_val|        scalar|
+|x2_5_val                            |   in|   32|     ap_none|             x2_5_val|        scalar|
+|x2_6_val                            |   in|   32|     ap_none|             x2_6_val|        scalar|
+|x2_7_val                            |   in|   32|     ap_none|             x2_7_val|        scalar|
+|x2_8_val                            |   in|   32|     ap_none|             x2_8_val|        scalar|
+|x2_9_val                            |   in|   32|     ap_none|             x2_9_val|        scalar|
+|x2_10_val                           |   in|   32|     ap_none|            x2_10_val|        scalar|
+|x2_11_val                           |   in|   32|     ap_none|            x2_11_val|        scalar|
+|x2_12_val                           |   in|   32|     ap_none|            x2_12_val|        scalar|
+|x2_13_val                           |   in|   32|     ap_none|            x2_13_val|        scalar|
+|x2_14_val                           |   in|   32|     ap_none|            x2_14_val|        scalar|
+|x2_15_val                           |   in|   32|     ap_none|            x2_15_val|        scalar|
+|fifo_x2_to_off_chip_din             |  out|  512|     ap_fifo|  fifo_x2_to_off_chip|       pointer|
+|fifo_x2_to_off_chip_num_data_valid  |   in|   11|     ap_fifo|  fifo_x2_to_off_chip|       pointer|
+|fifo_x2_to_off_chip_fifo_cap        |   in|   11|     ap_fifo|  fifo_x2_to_off_chip|       pointer|
+|fifo_x2_to_off_chip_full_n          |   in|    1|     ap_fifo|  fifo_x2_to_off_chip|       pointer|
+|fifo_x2_to_off_chip_write           |  out|    1|     ap_fifo|  fifo_x2_to_off_chip|       pointer|
++------------------------------------+-----+-----+------------+---------------------+--------------+
+

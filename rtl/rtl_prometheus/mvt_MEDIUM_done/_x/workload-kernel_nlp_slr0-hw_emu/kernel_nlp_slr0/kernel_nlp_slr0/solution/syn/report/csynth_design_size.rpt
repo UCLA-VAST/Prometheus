@@ -1,0 +1,79 @@
+================================================================
+== Design Size Report
+================================================================
+
+* Total Instructions per Compilation Phase
++---------------+-----------------------------+--------------+----------------------------------------------------------------------------------------+
+| Phase         | Step                        | Instructions | Description                                                                            |
++---------------+-----------------------------+--------------+----------------------------------------------------------------------------------------+
+| Compile/Link  |                             |     7,714    | After all functions are compiled and linked into a single design                       |
+|               |                             |              |                                                                                        |
+| Unroll/Inline |                             |              | After user unroll and inline pragmas are applied                                       |
+|               | (1) unroll                  |    38,464    | user unroll pragmas are applied                                                        |
+|               | (2) simplification          |    21,420    | simplification of applied user unroll pragmas                                          |
+|               | (3) inline                  |    19,647    | user inline pragmas are applied                                                        |
+|               | (4) simplification          |    18,047    | simplification of applied user inline pragmas                                          |
+|               |                             |              |                                                                                        |
+| Array/Struct  |                             |              | After user array partition and struct aggregate/disaggregate pragmas are applied       |
+|               | (1) array partition         | 2,645,117 *  | user array partition pragmas are applied                                               |
+|               | (2) simplification          |    99,813    | simplification of applied user array partition & struct aggregate/disaggregate pragmas |
+|               | (3) aggregate/disaggregate  |    99,849    | user struct aggregate/disaggregate pragmas are applied                                 |
+|               | (4) array reshape           |   102,175 *  | apply array reshape pragmas                                                            |
+|               | (5) access patterns         |   101,345 *  | array access pattern optmizations                                                      |
+|               |                             |              |                                                                                        |
+| Performance   |                             |              | After transformations are applied to meet performance pragma targets                   |
+|               | (1) loop simplification     |   101,337 *  | loop and instruction simplification                                                    |
+|               | (2) parallelization         |   101,261 *  | loops are unrolled or pipelined to meet performance targets                            |
+|               | (3) array partition         |   101,261 *  | arrays are partitioned to meet performance targets                                     |
+|               | (4) simplification          |   101,261 *  | simplification of design after performance transformations                             |
+|               |                             |              |                                                                                        |
+| HW Transforms |                             |              | After hardware transfomations                                                          |
+|               | (1) lowering                |   101,325 *  | initial conversion to HW specific instructions                                         |
+|               | (2) optimizations           |   101,930 *  | high level synthesis optimizations                                                     |
++---------------+-----------------------------+--------------+----------------------------------------------------------------------------------------+
+    * - Exceeded design size warning message threshold
+
+* Instructions per Function for each Compilation Phase
++------------------------+--------------+-----------------+------------------+------------------+------------------+------------------+
+| Function               | Location     | Compile/Link    | Unroll/Inline    | Array/Struct     | Performance      | HW Transforms    |
++------------------------+--------------+-----------------+------------------+------------------+------------------+------------------+
+| + kernel_nlp_slr0      | slr0.cpp:970 | 7,714           | 18,047           | 101,345 *        | 101,261 *        | 101,930 *        |
+|    load_vA1_for_task0  | slr0.cpp:9   |   17            |    10            |    160           |    160           |    155           |
+|    load_vB_for_task0   | slr0.cpp:44  |   17            |    10            |    160           |    160           |    155           |
+|    load_vx1_for_task0  | slr0.cpp:79  |   17            |    10            |     52           |     52           |     47           |
+|    load_vC_for_task1   | slr0.cpp:102 |   17            |    10            |    160           |    160           |    155           |
+|    load_vx2_for_task1  | slr0.cpp:137 |   17            |    10            |    160           |    160           |    155           |
+|    load_vA2_for_task1  | slr0.cpp:172 |   17            |    10            |    160           |    160           |    155           |
+|  + FT0_level0          | slr0.cpp:299 | 2,851           | 6,539            | 69,786           | 69,762           | 70,017           |
+|     read_B_FT0         | slr0.cpp:473 |  310            |    91            |  3,524           |  3,523           |  3,558           |
+|     read_x1_FT0        | slr0.cpp:538 |   97            |    25            |     28           |     27           |     34           |
+|     read_A1_FT0        | slr0.cpp:573 |  370            |    99            | 14,144           | 14,143           | 14,181           |
+|   + compute_FT0_level0 | slr0.cpp:285 | 1,878 (3 calls) | 6,255 (3 calls)  | 48,126 (3 calls) | 48,093 (3 calls) | 48,261 (3 calls) |
+|      read_x1_FT0       | slr0.cpp:538 |  291 (3 calls)  |    75 (3 calls)  |     93 (3 calls) |     90 (3 calls) |    111 (3 calls) |
+|      read_A1_FT0       | slr0.cpp:573 | 1,110 (3 calls) |   297 (3 calls)  | 42,441 (3 calls) | 42,435 (3 calls) | 42,552 (3 calls) |
+|      task0_intra       | slr0.cpp:439 |  144 (3 calls)  | 5,763 (3 calls)  |  5,466 (3 calls) |  5,454 (3 calls) |  5,469 (3 calls) |
+|      write_x1_FT0      | slr0.cpp:859 |  285 (3 calls)  |    75 (3 calls)  |    105 (3 calls) |     93 (3 calls) |    102 (3 calls) |
+|     write_x1_FT0       | slr0.cpp:859 |   95            |    25            |     32           |     28           |     31           |
+|  + FT1_level0          | slr0.cpp:376 | 4,579           | 11,337           | 30,440           | 30,380           | 30,815           |
+|     read_C_FT1         | slr0.cpp:648 |  310            |    91            |  1,824           |  1,823           |  1,858           |
+|     read_x2_FT1        | slr0.cpp:713 |  313            |    73            |    100           |     99           |    130           |
+|     read_A2_FT1        | slr0.cpp:784 |  370            |    79            |  2,544           |  2,543           |  2,578           |
+|   + compute_FT1_level0 | slr0.cpp:362 | 3,174 (3 calls) | 10,977 (3 calls) | 18,438 (3 calls) | 18,333 (3 calls) | 18,636 (3 calls) |
+|      read_x2_FT1       | slr0.cpp:713 |  939 (3 calls)  |   219 (3 calls)  |    309 (3 calls) |    306 (3 calls) |    399 (3 calls) |
+|      read_A2_FT1       | slr0.cpp:784 | 1,110 (3 calls) |   237 (3 calls)  |  7,641 (3 calls) |  7,635 (3 calls) |  7,743 (3 calls) |
+|      task1_intra       | slr0.cpp:456 |  144 (3 calls)  | 10,257 (3 calls) | 10,110 (3 calls) | 10,062 (3 calls) | 10,077 (3 calls) |
+|      write_x2_FT1      | slr0.cpp:896 |  933 (3 calls)  |   219 (3 calls)  |    357 (3 calls) |    309 (3 calls) |    390 (3 calls) |
+|     write_x2_FT1       | slr0.cpp:896 |  311            |    73            |    116           |    100           |    127           |
+|    store_vx2_for_task1 | slr0.cpp:207 |   26            |    10            |    160           |    160           |    156           |
+|    store_vx1_for_task0 | slr0.cpp:258 |   26            |    10            |     52           |     52           |     48           |
++------------------------+--------------+-----------------+------------------+------------------+------------------+------------------+
+    * - Exceeded design size warning message threshold
+
+* Design Size Message Settings
++---------------------------------------------+--------+------------------------------------------------------------------+
+| Message Setting                             | Value  | Description                                                      |
++---------------------------------------------+--------+------------------------------------------------------------------+
+| config_compile -design_size_maximum_warning | 100000 | Show a warning when total design instructions exceeds this value |
++---------------------------------------------+--------+------------------------------------------------------------------+
+
+

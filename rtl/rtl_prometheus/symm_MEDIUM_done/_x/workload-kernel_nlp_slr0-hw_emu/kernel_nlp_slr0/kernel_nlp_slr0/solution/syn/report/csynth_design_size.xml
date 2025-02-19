@@ -1,0 +1,91 @@
+<design_size title="Design Size Report">
+    <item name="Total Instructions per Compilation Phase">
+        <table>
+            <keys size="4">Phase, Step, Instructions, Description</keys>
+            <column name="Compile/Link">,  22790, After all functions are compiled and linked into a single design</column>
+            <column name="">, , </column>
+            <column name="Unroll/Inline">, , After user unroll and inline pragmas are applied</column>
+            <column name="">(1) unroll, 211997 *, user unroll pragmas are applied</column>
+            <column name="">(2) simplification,  84466, simplification of applied user unroll pragmas</column>
+            <column name="">(3) inline,  84077, user inline pragmas are applied</column>
+            <column name="">(4) simplification,  79785, simplification of applied user inline pragmas</column>
+            <column name="">, , </column>
+            <column name="Array/Struct">, , After user array partition and struct aggregate/disaggregate pragmas are applied</column>
+            <column name="">(1) array partition, 290659 *, user array partition pragmas are applied</column>
+            <column name="">(2) simplification, 106476 *, simplification of applied user array partition &amp; struct aggregate/disaggregate pragmas</column>
+            <column name="">(3) aggregate/disaggregate , 106546 *, user struct aggregate/disaggregate pragmas are applied</column>
+            <column name="">(4) array reshape, 111560 *, apply array reshape pragmas</column>
+            <column name="">(5) access patterns, 114476 *, array access pattern optmizations</column>
+            <column name="">, , </column>
+            <column name="Performance">, , After transformations are applied to meet performance pragma targets</column>
+            <column name="">(1) loop simplification, 110094 *, loop and instruction simplification</column>
+            <column name="">(2) parallelization, 109258 *, loops are unrolled or pipelined to meet performance targets</column>
+            <column name="">(3) array partition, 109258 *, arrays are partitioned to meet performance targets</column>
+            <column name="">(4) simplification, 109258 *, simplification of design after performance transformations</column>
+            <column name="">, , </column>
+            <column name="HW Transforms">, , After hardware transfomations</column>
+            <column name="">(1) lowering, 109372 *, initial conversion to HW specific instructions</column>
+            <column name="">(2) optimizations, 111270 *, high level synthesis optimizations</column>
+        </table>
+    </item>
+    <item name="Instructions per Function for each Compilation Phase">
+        <hiertable>
+            <header size="7" col0="Function" col1="Location" col2="Compile/Link" col3="Unroll/Inline" col4="Array/Struct" col5="Performance" col6="HW Transforms"/>
+            <rows>
+                <row id="0" col0="kernel_nlp_slr0" col1="slr0.cpp:1494" col2="22790" col3="79785" col4="114476" col4_note="*" col5="109258" col5_note="*" col6="111270" col6_note="*">
+                    <row id="26" col0="load_vA2_for_task2" col1="slr0.cpp:9" col2="17" col3="10" col4="52" col5="52" col6="47"/>
+                    <row id="24" col0="load_vB2_for_task2" col1="slr0.cpp:32" col2="17" col3="10" col4="160" col5="160" col6="155"/>
+                    <row id="11" col0="load_vC_for_task2" col1="slr0.cpp:67" col2="17" col3="10" col4="160" col5="160" col6="155"/>
+                    <row id="5" col0="load_vA3_for_task3" col1="slr0.cpp:102" col2="17" col3="10" col4="160" col5="160" col6="155"/>
+                    <row id="10" col0="load_vB3_for_task3" col1="slr0.cpp:137" col2="17" col3="10" col4="160" col5="160" col6="155"/>
+                    <row id="8" col0="load_vA1_for_task1" col1="slr0.cpp:172" col2="17" col3="10" col4="160" col5="160" col6="155"/>
+                    <row id="18" col0="load_vB1_for_task1" col1="slr0.cpp:207" col2="17" col3="10" col4="160" col5="160" col6="155"/>
+                    <row id="15" col0="FT0_level0" col1="slr0.cpp:345" col2="6491" col3="20712" col4="27294" col5="24075" col6="24649">
+                        <row id="29" col0="read_A1_FT0" col1="slr0.cpp:680" col2="367" col3="96" col4="944" col5="943" col6="981"/>
+                        <row id="4" col0="read_B1_FT0" col1="slr0.cpp:749" col2="1110" col2_disp="1,110 (3 calls)" col3="237" col3_disp="  237 (3 calls)" col4="879" col4_disp="   879 (3 calls)" col5="873" col5_disp="   873 (3 calls)" col6="981" col6_disp="   981 (3 calls)"/>
+                        <row id="12" col0="FT0_level1" col1="slr0.cpp:392" col2="4958" col2_disp="4,958 (2 calls)" col3="20350" col3_disp="20,350 (2 calls)" col4="24750" col4_disp="24,750 (2 calls)" col5="21538" col5_disp="21,538 (2 calls)" col6="21962" col6_disp="21,962 (2 calls)">
+                            <row id="21" col0="compute_FT0_level1" col1="slr0.cpp:378" col2="3392" col2_disp="3,392 (4 calls)" col3="19980" col3_disp="19,980 (4 calls)" col4="21660" col4_disp="21,660 (4 calls)" col5="17812" col5_disp="17,812 (4 calls)" col6="18100" col6_disp="18,100 (4 calls)">
+                                <row id="13" col0="task0_intra" col1="slr0.cpp:601" col2="112" col2_disp="  112 (4 calls)" col3="2564" col3_disp="2,564 (4 calls)" col4="1284" col4_disp=" 1,284 (4 calls)" col5="1284" col5_disp=" 1,284 (4 calls)" col6="1288" col6_disp=" 1,288 (4 calls)"/>
+                                <row id="22" col0="task1_intra" col1="slr0.cpp:616" col2="260" col2_disp="  260 (4 calls)" col3="16712" col3_disp="16,712 (4 calls)" col4="16776" col4_disp="16,776 (4 calls)" col5="15496" col5_disp="15,496 (4 calls)" col6="15516" col6_disp="15,516 (4 calls)"/>
+                                <row id="27" col0="write_tmp_FT0" col1="slr0.cpp:1337" col2="2960" col2_disp="2,960 (8 calls)" col3="648" col3_disp="  648 (8 calls)" col4="3576" col4_disp=" 3,576 (8 calls)" col5="1008" col5_disp=" 1,008 (8 calls)" col6="1264" col6_disp=" 1,264 (8 calls)"/>
+                            </row>
+                            <row id="27" col0="write_tmp_FT0" col1="slr0.cpp:1337" col2="1480" col2_disp="1,480 (4 calls)" col3="324" col3_disp="  324 (4 calls)" col4="1780" col4_disp=" 1,780 (4 calls)" col5="496" col5_disp="   496 (4 calls)" col6="624" col6_disp="   624 (4 calls)"/>
+                        </row>
+                    </row>
+                    <row id="14" col0="FT1_level0" col1="slr0.cpp:432" col2="15967" col3="58869" col4="85778" col5="83779" col6="85237">
+                        <row id="25" col0="read_A3_FT1" col1="slr0.cpp:824" col2="431" col3="160" col4="4651" col5="4650" col6="4688"/>
+                        <row id="7" col0="read_B3_FT1" col1="slr0.cpp:941" col2="1110" col2_disp="1,110 (3 calls)" col3="237" col3_disp="  237 (3 calls)" col4="1026" col4_disp=" 1,026 (3 calls)" col5="1020" col5_disp=" 1,020 (3 calls)" col6="1128" col6_disp=" 1,128 (3 calls)"/>
+                        <row id="3" col0="FT1_level1" col1="slr0.cpp:502" col2="14346" col2_disp="14,346 (2 calls)" col3="58434" col3_disp="58,434 (2 calls)" col4="79024" col4_disp="79,024 (2 calls)" col5="77032" col5_disp="77,032 (2 calls)" col6="78340" col6_disp="78,340 (2 calls)">
+                            <row id="23" col0="read_C_FT1" col1="slr0.cpp:1016" col2="744" col2_disp="  744 (2 calls)" col3="162" col3_disp="  162 (2 calls)" col4="1512" col4_disp=" 1,512 (2 calls)" col5="1508" col5_disp=" 1,508 (2 calls)" col6="1580" col6_disp=" 1,580 (2 calls)"/>
+                            <row id="16" col0="read_B2_FT1" col1="slr0.cpp:1092" col2="744" col2_disp="  744 (2 calls)" col3="162" col3_disp="  162 (2 calls)" col4="1512" col4_disp=" 1,512 (2 calls)" col5="1508" col5_disp=" 1,508 (2 calls)" col6="1580" col6_disp=" 1,580 (2 calls)"/>
+                            <row id="20" col0="read_A2_FT1" col1="slr0.cpp:1169" col2="206" col2_disp="  206 (2 calls)" col3="78" col3_disp="   78 (2 calls)" col4="200" col4_disp="   200 (2 calls)" col5="196" col5_disp="   196 (2 calls)" col6="220" col6_disp="   220 (2 calls)"/>
+                            <row id="19" col0="read_tmp_FT1" col1="slr0.cpp:1206" col2="872" col2_disp="  872 (2 calls)" col3="162" col3_disp="  162 (2 calls)" col4="1512" col4_disp=" 1,512 (2 calls)" col5="1508" col5_disp=" 1,508 (2 calls)" col6="1580" col6_disp=" 1,580 (2 calls)"/>
+                            <row id="6" col0="compute_FT1_level1" col1="slr0.cpp:478" col2="10788" col2_disp="10,788 (6 calls)" col3="57594" col3_disp="57,594 (6 calls)" col4="67596" col4_disp="67,596 (6 calls)" col5="59862" col5_disp="59,862 (6 calls)" col6="60858" col6_disp="60,858 (6 calls)">
+                                <row id="23" col0="read_C_FT1" col1="slr0.cpp:1016" col2="2232" col2_disp="2,232 (6 calls)" col3="486" col3_disp="  486 (6 calls)" col4="4548" col4_disp=" 4,548 (6 calls)" col5="4536" col5_disp=" 4,536 (6 calls)" col6="4752" col6_disp=" 4,752 (6 calls)"/>
+                                <row id="16" col0="read_B2_FT1" col1="slr0.cpp:1092" col2="2232" col2_disp="2,232 (6 calls)" col3="486" col3_disp="  486 (6 calls)" col4="4548" col4_disp=" 4,548 (6 calls)" col5="4536" col5_disp=" 4,536 (6 calls)" col6="4752" col6_disp=" 4,752 (6 calls)"/>
+                                <row id="20" col0="read_A2_FT1" col1="slr0.cpp:1169" col2="618" col2_disp="  618 (6 calls)" col3="234" col3_disp="  234 (6 calls)" col4="1488" col4_disp=" 1,488 (6 calls)" col5="1476" col5_disp=" 1,476 (6 calls)" col6="1584" col6_disp=" 1,584 (6 calls)"/>
+                                <row id="19" col0="read_tmp_FT1" col1="slr0.cpp:1206" col2="2616" col2_disp="2,616 (6 calls)" col3="486" col3_disp="  486 (6 calls)" col4="4548" col4_disp=" 4,548 (6 calls)" col5="4536" col5_disp=" 4,536 (6 calls)" col6="4752" col6_disp=" 4,752 (6 calls)"/>
+                                <row id="1" col0="task2_intra" col1="slr0.cpp:639" col2="312" col2_disp="  312 (6 calls)" col3="25446" col3_disp="25,446 (6 calls)" col4="19806" col4_disp="19,806 (6 calls)" col5="15966" col5_disp="15,966 (6 calls)" col6="15972" col6_disp="15,972 (6 calls)"/>
+                                <row id="9" col0="task3_intra" col1="slr0.cpp:656" col2="396" col2_disp="  396 (6 calls)" col3="29826" col3_disp="29,826 (6 calls)" col4="29916" col4_disp="29,916 (6 calls)" col5="27996" col5_disp="27,996 (6 calls)" col6="28026" col6_disp="28,026 (6 calls)"/>
+                                <row id="2" col0="write_C_FT1" col1="slr0.cpp:1416" col2="2220" col2_disp="2,220 (6 calls)" col3="486" col3_disp="  486 (6 calls)" col4="2682" col4_disp=" 2,682 (6 calls)" col5="756" col5_disp="   756 (6 calls)" col6="948" col6_disp="   948 (6 calls)"/>
+                            </row>
+                            <row id="2" col0="write_C_FT1" col1="slr0.cpp:1416" col2="740" col2_disp="  740 (2 calls)" col3="162" col3_disp="  162 (2 calls)" col4="890" col4_disp="   890 (2 calls)" col5="248" col5_disp="   248 (2 calls)" col6="312" col6_disp="   312 (2 calls)"/>
+                        </row>
+                    </row>
+                    <row id="17" col0="store_vC_for_task2" col1="slr0.cpp:242" col2="26" col3="10" col4="160" col5="160" col6="156"/>
+                    <row id="28" col0="store_vtmp_for_task1" col1="slr0.cpp:293" col2="26" col3="10" col4="160" col5="160" col6="156"/>
+                </row>
+            </rows>
+            <notes>
+                <note name="*" desc="Exceeded design size warning message threshold"/>
+            </notes>
+        </hiertable>
+    </item>
+    <item name="Design Size Message Settings">
+        <table>
+            <keys size="3">Message Setting, Value, Description</keys>
+            <column name="config_compile -design_size_maximum_warning">100000, Show a warning when total design instructions exceeds this value</column>
+        </table>
+    </item>
+</design_size>
+
