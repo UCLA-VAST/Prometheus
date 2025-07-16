@@ -1,0 +1,34 @@
+
+
+
+void kernel_jacobi_2d(int tsteps,int n,float A[1300][1300],float B[1300][1300])
+{
+  int t;
+  int i;
+  int j;
+{
+    
+    
+    
+    for (t = 0; t < 500; t++) {
+      
+      
+      
+      for (i = 1; i < 1300 - 1; i++) {
+        
+        for (j = 1; j < 1300 - 1; j++) {
+          B[i][j] = 0.2 * (A[i][j] + A[i][j - 1] + A[i][1 + j] + A[1 + i][j] + A[i - 1][j]);
+        }
+      }
+      
+      
+      
+      for (i = 1; i < 1300 - 1; i++) {
+        
+        for (j = 1; j < 1300 - 1; j++) {
+          A[i][j] = 0.2 * (B[i][j] + B[i][j - 1] + B[i][1 + j] + B[1 + i][j] + B[i - 1][j]);
+        }
+      }
+    }
+  }
+}
