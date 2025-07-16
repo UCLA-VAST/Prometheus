@@ -3,8 +3,8 @@ import utilities
 import parser
 import random
 
-# POCC_CMD = "/opt/polyopt/default/sources/polyopt-hls/pocc/bin/pocc"
-POCC_CMD = "apptainer exec /opt/public/apptainer/pocc/pocc.sif pocc"
+POCC_CMD = "/opt/polyopt/default/sources/polyopt-hls/pocc/bin/pocc"
+# POCC_CMD = "apptainer exec /opt/public/apptainer/pocc/pocc.sif pocc"
 
 def tile(name_file, output_name_file):
 
