@@ -1,6 +1,6 @@
 # Prometheus: Automatic HLS Optimization and Code Generation Framework
 
-Prometheus is a holistic toolchain for automatic design-space exploration and code generation for FPGA accelerators. It focuses on High-Level Synthesis (HLS) from affine C/C++ kernels and leverages optimization techniques to generate efficient hardware implementations.
+Prometheus is a holistic toolchain for automatic code generation for FPGA accelerators. It focuses on High-Level Synthesis (HLS) from affine C/C++ kernels and leverages optimization techniques to generate efficient hardware implementations.
 
 ## ✨ Key Features
 
@@ -8,8 +8,7 @@ Prometheus is a holistic toolchain for automatic design-space exploration and co
 - Automatic **loop scheduling**, **pragmas insertion**, and **code generation**.
 - Integration with **AMPL** for **Nonlinear Programming (NLP)**-based resource allocation.
 - Generation of optimized **HLS-C++** and **host code**.
-- Optional simulation and synthesis with **Vitis HLS**.
-- Support for **graph partitioning**, **cyclic buffer**, **burst inference**, and more.
+- Simulation and synthesis with **AMD Vitis HLS**.
 
 ---
 
